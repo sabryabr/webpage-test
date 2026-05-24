@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brothers EGY | The Ultimate Egyptian Fleet Configurator</title>
+    <title>Brothers EGY | The Apex of Egyptian Car Rental</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +25,9 @@
             --success: #2ea043;
             --danger: #f85149;
             --warning: #f1c40f;
-            --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.25);
-            --glow-red: 0 0 20px rgba(248, 81, 73, 0.25);
-            --glow-green: 0 0 20px rgba(46, 160, 67, 0.25);
+            --glow-accent: 0 0 25px var(--brand-accent-glow);
+            --glow-red: 0 0 25px rgba(248, 81, 73, 0.3);
+            --glow-green: 0 0 25px rgba(46, 160, 67, 0.3);
         }
 
         /* ----- RESET & BASE ----- */
@@ -40,8 +40,11 @@
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--brand-accent); }
 
-        /* ----- PRELOADER ----- */
-        .preloader { position: fixed; inset: 0; background: var(--bg-base); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s; }
+        /* ----- INTERACTIVE AURORA CANVAS BACKGROUND ----- */
+        #aurora-bg { position: fixed; inset: 0; z-index: -3; pointer-events: none; opacity: 0.8; }
+
+        /* ----- PRELOADER (CINEMATIC) ----- */
+        .preloader { position: fixed; inset: 0; background: var(--bg-base); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s; }
         .loader-track { width: min(400px, 80vw); height: 2px; background: rgba(255,255,255,0.05); position: relative; display: flex; align-items: center; justify-content: flex-end; margin-bottom: 30px; border-radius: 2px; }
         .loader-logo { height: 90px; position: absolute; right: -150px; opacity: 0; animation: driveLeft 3.5s cubic-bezier(0.65, 0, 0.35, 1) forwards; filter: drop-shadow(0 10px 20px rgba(0,240,255,0.3)); z-index: 2; }
         .loader-fill { height: 100%; background: var(--brand-accent); width: 0; position: absolute; right: 0; top: 0; box-shadow: 0 0 15px var(--brand-accent); animation: fillLeft 3.5s cubic-bezier(0.65, 0, 0.35, 1) forwards; z-index: 1; border-radius: 2px; }
@@ -59,8 +62,8 @@
         @keyframes fillLeft { 0% { width: 0; } 45% { width: 220px; } 60% { width: 220px; } 100% { width: 400px; } }
         @keyframes pulseOpacity { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-        /* ----- ANIMATIONS ----- */
-        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* ----- FADE UP ANIMATIONS ----- */
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .fade-up.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.2s; } 
         .delay-2 { transition-delay: 0.4s; } 
@@ -68,11 +71,11 @@
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
 
         /* ----- NAVIGATION ----- */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 3%; position: fixed; width: 94%; top: 1.5rem; left: 3%; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 100px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); opacity: 0; transform: translateY(-20px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s; gap: 1rem; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 3%; position: fixed; width: 94%; top: 1.5rem; left: 3%; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 100px; box-shadow: 0 15px 45px rgba(0,0,0,0.85); opacity: 0; transform: translateY(-20px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s; gap: 1rem; }
         nav.loaded { opacity: 1; transform: translateY(0); }
         .nav-logo h2 { font-weight: 950; letter-spacing: -1px; font-size: clamp(1rem, 3vw, 1.4rem); margin: 0; display: flex; align-items: center; gap: 8px;}
-        .nav-logo img { height: 28px; width: auto; filter: drop-shadow(0 0 5px rgba(0,240,255,0.3)); }
-        .nav-logo span { color: var(--brand-accent); text-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+        .nav-logo img { height: 28px; width: auto; filter: drop-shadow(0 0 5px var(--brand-accent-glow)); }
+        .nav-logo span { color: var(--brand-accent); text-shadow: 0 0 12px var(--brand-accent-glow); transition: color 0.4s, text-shadow 0.4s; }
         .nav-links { display: flex; gap: clamp(0.8rem, 3vw, 2.5rem); flex-wrap: wrap; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: clamp(0.65rem, 2vw, 0.85rem); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; position: relative; padding: 5px 0; }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--brand-accent); transition: 0.3s ease; transform: translateX(-50%); box-shadow: 0 0 8px var(--brand-accent); }
@@ -82,25 +85,25 @@
         .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); }
 
         /* ----- HERO ----- */
-        .hero { position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-top: 25vh; overflow: hidden; padding-bottom: 2rem; }
+        .hero { position: relative; min-height: 98vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-top: 25vh; overflow: hidden; padding-bottom: 2rem; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: url('https://brothersegy.com/wp-content/uploads/2025/11/giza-pyramids-cairo-egypt-with-palm.jpg') center/cover no-repeat; opacity: 0.25; filter: grayscale(10%) contrast(1.15); }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: linear-gradient(180deg, rgba(2,4,10,0.85) 0%, rgba(2,4,10,0.3) 40%, var(--bg-base) 92%); }
         .hero-content { text-align: center; z-index: 10; margin-bottom: 2vh; }
         .hero-content h1 { font-size: clamp(3.2rem, 8vw, 9.5rem); font-weight: 950; line-height: 0.85; text-transform: uppercase; }
         .hero-content h1 .outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.35); display: block; letter-spacing: 2rem; margin-right: -2rem; margin-bottom: 2.2rem; text-shadow: 0 0 30px rgba(255,255,255,0.05); }
         .hero-content h1 .solid { background: linear-gradient(180deg, #fff 0%, #a2a8b3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9)); display: block; letter-spacing: -4px; }
-        .hero-car-wrapper { position: relative; width: 100%; max-width: 1050px; z-index: 5; margin-top: -6%; animation: float 6s ease-in-out infinite; }
+        .hero-car-wrapper { position: relative; width: 100%; max-width: 960px; z-index: 5; margin-top: -5%; animation: float 6s ease-in-out infinite; }
         .hero-car { width: 100%; filter: drop-shadow(0 40px 50px rgba(0,0,0,0.98)); }
 
         /* ----- MARQUEE ----- */
         .marquee { background: var(--bg-surface); padding: clamp(0.8rem, 2vw, 1.2rem) 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); display: flex; overflow: hidden; position: relative; z-index: 20; }
         .marquee-content { display: flex; width: max-content; animation: scroll 35s linear infinite; }
         .marquee-item { font-size: clamp(0.55rem, 1.5vw, 0.8rem); font-weight: 800; text-transform: uppercase; letter-spacing: clamp(1px, 1vw, 3px); margin: 0 clamp(0.8rem, 2vw, 3rem); display: flex; align-items: center; gap: 1rem; color: var(--text-muted); }
-        .marquee-item i { color: var(--brand-accent); font-size: 1rem; text-shadow: 0 0 8px rgba(0,240,255,0.5); }
+        .marquee-item i { color: var(--brand-accent); font-size: 1rem; text-shadow: 0 0 8px var(--brand-accent-glow); }
         @keyframes scroll { to { transform: translateX(-50%); } }
 
         /* ----- BOOKING CONSOLE ----- */
-        .booking-console { width: 90%; max-width: 1200px; margin: 4rem auto 5rem; position: relative; z-index: 25; background: var(--bg-elevated); border: 1px solid var(--glass-border); border-radius: 24px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1fr; padding: 1.2rem; box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05); }
+        .booking-console { width: 90%; max-width: 1200px; margin: 3.5rem auto 4.5rem; position: relative; z-index: 25; background: var(--bg-elevated); border: 1px solid var(--glass-border); border-radius: 24px; display: grid; grid-template-columns: 2fr 2fr 2fr 1fr; padding: 1.2rem; box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05); }
         .console-field { padding: 0.5rem 1.5rem; border-right: 1px solid var(--glass-border); display: flex; flex-direction: column; justify-content: center; position: relative; }
         .console-field:nth-child(3) { border-right: none; }
         .console-field i { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); color: var(--brand-accent); opacity: 0.6; font-size: 1.2rem; pointer-events: none; transition: 0.3s; }
@@ -110,22 +113,49 @@
         
         .btn-console { background: var(--text-main); color: var(--bg-base); border: none; border-radius: 16px; font-weight: 900; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; height: 100%; padding: 1.5rem; box-shadow: 0 4px 15px rgba(255,255,255,0.05); }
         .btn-console::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
-        .btn-console:hover { background: var(--brand-accent); color: #000; box-shadow: var(--glow-cyan); transform: translateY(-2px); }
+        .btn-console:hover { background: var(--brand-accent); color: #000; box-shadow: var(--glow-accent); transform: translateY(-2px); }
         .btn-console:hover::before { transform: translateX(100%); }
+
+        /* ----- MOUSE TRACKING GLOW FOR BENTO CARDS ----- */
+        .matrix-card, .bento-studio, .bento-calc, .logic-card { position: relative; }
+        .matrix-card::before, .bento-studio::before, .bento-calc::before, .logic-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), var(--brand-accent-glow), transparent 40%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 10;
+        }
+        .matrix-card:hover::before, .bento-studio:hover::before, .bento-calc:hover::before, .logic-card:hover::before {
+            opacity: 1;
+        }
 
         /* ----- VIRTUAL SHOWROOM BENTO GRID ----- */
         .showroom-section { max-width: 1500px; margin: 0 auto 5rem; padding: 0 5%; }
         .showroom-container { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
         
         /* Studio Bento Card */
-        .bento-studio { grid-column: span 7; background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-elevated) 100%); border: 1px solid var(--glass-border); border-radius: 32px; padding: 2.2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 540px; position: relative; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); }
-        .bento-studio::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 80%, rgba(0,240,255,0.08), transparent 70%); pointer-events: none; }
+        .bento-studio { grid-column: span 7; background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-elevated) 100%); border: 1px solid var(--glass-border); border-radius: 32px; padding: 2.2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 580px; position: relative; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); }
         
+        /* Dynamic Neon Configurator Stages */
+        .studio-stage-neon { position: absolute; inset: 0; z-index: 0; pointer-events: none; transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .stage-cyber { background: radial-gradient(circle at 50% 80%, rgba(0, 240, 255, 0.1), transparent 70%); }
+        .stage-sunset { background: radial-gradient(circle at 50% 80%, rgba(217, 119, 6, 0.1), transparent 70%); }
+        .stage-port { background: radial-gradient(circle at 50% 80%, rgba(124, 58, 237, 0.1), transparent 70%); }
+
         .studio-header { display: flex; justify-content: space-between; align-items: flex-start; z-index: 5; }
-        .studio-title-block h4 { font-size: 0.75rem; text-transform: uppercase; color: var(--brand-accent); letter-spacing: 2px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .studio-title-block h4 { font-size: 0.75rem; text-transform: uppercase; color: var(--brand-accent); letter-spacing: 2px; font-weight: 800; display: flex; align-items: center; gap: 8px; transition: color 0.4s; }
         .studio-title-block h3 { font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 950; margin-top: 0.4rem; text-transform: uppercase; line-height: 1.1; letter-spacing: -1px; }
         
-        .studio-viewport { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; margin: 1.5rem 0; width: 100%; min-height: 250px; cursor: grab; user-select: none; }
+        /* 3D Viewport Cockpit */
+        .studio-viewport { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; margin: 1rem 0; width: 100%; min-height: 300px; cursor: grab; user-select: none; }
         .studio-viewport:active { cursor: grabbing; }
         
         /* Interactive spots */
@@ -136,39 +166,65 @@
         .hotspot-node:hover .hotspot-tooltip { opacity: 1; visibility: visible; }
         .hotspot-tooltip strong { color: var(--text-main); display: block; margin-bottom: 0.2rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; }
 
-        .studio-grid-shadow { position: absolute; bottom: 10%; width: 80%; height: 20px; background: radial-gradient(ellipse, rgba(0,0,0,0.9) 0%, transparent 75%); filter: blur(4px); z-index: 1; }
-        .studio-rotator-car { width: 105%; max-width: 520px; object-fit: contain; z-index: 2; position: relative; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.9)); pointer-events: none; }
+        .studio-grid-shadow { position: absolute; bottom: 10%; width: 85%; height: 25px; background: radial-gradient(ellipse, rgba(0,0,0,0.92) 0%, transparent 75%); filter: blur(5px); z-index: 1; }
+        .studio-rotator-car { width: 95%; max-width: 580px; object-fit: contain; z-index: 2; position: relative; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.95)); transition: transform 0.1s ease-out, filter 0.5s ease-out; }
+        
+        /* Interactive dynamic glowing custom matrix headlight overlays */
+        .headlights-glow { position: absolute; width: 100%; height: 100%; inset: 0; pointer-events: none; z-index: 4; opacity: 0; transition: opacity 0.5s ease; mix-blend-mode: screen; }
+        .headlights-glow.active { opacity: 0.8; }
+        
         .studio-reflection-layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.15; background: linear-gradient(105deg, transparent, rgba(255,255,255,0.4) 40%, transparent 60%); mix-blend-mode: overlay; transition: transform 0.1s ease-out; transform: translateX(0); }
-        .studio-angle-HUD { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 2px; z-index: 5; background: rgba(2,4,10,0.6); padding: 0.4rem 1rem; border-radius: 50px; border: 1px solid var(--glass-border); }
+        
+        .studio-angle-HUD { position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 2px; z-index: 5; background: rgba(2,4,10,0.65); padding: 0.4rem 1rem; border-radius: 50px; border: 1px solid var(--glass-border); }
         .studio-angle-HUD span { color: var(--brand-accent); font-weight: 900; }
+        
+        /* Cyberpunk config widgets inside bento cards */
+        .studio-config-hud { position: absolute; bottom: 120px; right: 2rem; display: flex; flex-direction: column; gap: 10px; z-index: 5; }
+        .studio-hud-btn { background: rgba(13, 17, 23, 0.7); border: 1px solid var(--glass-border); color: var(--text-muted); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; }
+        .studio-hud-btn:hover, .studio-hud-btn.active { border-color: var(--brand-accent); color: var(--brand-accent); box-shadow: 0 0 15px var(--brand-accent-glow); }
+
         .studio-drag-tip { position: absolute; top: 0; right: 0; font-size: 0.65rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1.5px; font-weight: 800; display: flex; align-items: center; gap: 6px; z-index: 5; border: 1px solid var(--glass-border); padding: 0.4rem 0.8rem; border-radius: 8px; background: rgba(13,17,23,0.5); }
         .studio-drag-tip i { animation: float 2s infinite; color: var(--brand-accent); }
 
+        /* Color customizer row */
+        .studio-color-panel { display: flex; gap: 10px; margin-top: 1rem; z-index: 5; }
+        .color-dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s; position: relative; }
+        .color-dot.active { border-color: white; box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+        .color-dot::after { content: ''; position: absolute; inset: -4px; border: 1px solid var(--glass-border); border-radius: 50%; opacity: 0; transition: 0.3s; }
+        .color-dot.active::after { opacity: 1; border-color: inherit; }
+
+        /* Left-Bottom Studio Specifications Row */
+        .studio-meta-footer { z-index: 5; margin-top: 1rem; border-top: 1px solid var(--glass-border); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+        .studio-core-specs-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .studio-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+        .studio-feature-item { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .studio-feature-item i { color: var(--brand-accent); font-size: 0.85rem; text-shadow: 0 0 5px var(--brand-accent-glow); }
+
         /* Right Side Bento Grid Configurator */
         .showroom-panel-stack { grid-column: span 5; display: flex; flex-direction: column; gap: 2rem; }
-        .bento-calc { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 32px; padding: 2rem; position: relative; box-shadow: inset 0 1px 0 rgba(255,255,255,0.03); display: flex; flex-direction: column; justify-content: space-between; min-height: 540px; }
+        .bento-calc { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 32px; padding: 2rem; position: relative; box-shadow: inset 0 1px 0 rgba(255,255,255,0.03); display: flex; flex-direction: column; justify-content: space-between; min-height: 580px; }
         
         .calc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
         .calc-header h3 { font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
         .calc-header h3 i { color: var(--brand-accent); }
         .calc-duration-badge { font-size: 0.65rem; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); color: var(--brand-accent); padding: 0.4rem 0.8rem; border-radius: 50px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 
-        .calc-slider-block { margin-bottom: 1.5rem; }
+        .calc-slider-block { margin-bottom: 1.2rem; }
         .calc-slider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
         .calc-slider-header label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 800; letter-spacing: 1px; }
-        .calc-slider-header span { font-size: 1.1rem; color: var(--text-main); font-weight: 900; }
+        .calc-slider-header span { font-size: 1.1rem; color: var(--text-main); font-weight: 950; }
         .calc-slider-header span strong { color: var(--brand-accent); }
         .calc-slider { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 50px; background: rgba(255,255,255,0.1); outline: none; cursor: pointer; }
         .calc-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--brand-accent); box-shadow: 0 0 10px var(--brand-accent); transition: 0.2s; }
         .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
-        .insurance-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; background: var(--bg-base); padding: 0.4rem; border-radius: 16px; border: 1px solid var(--glass-border); }
+        .insurance-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; background: var(--bg-base); padding: 0.4rem; border-radius: 16px; border: 1px solid var(--glass-border); }
         .insurance-tab { background: transparent; border: none; padding: 0.8rem; border-radius: 12px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; }
         .insurance-tab.active { background: var(--bg-elevated); color: var(--text-main); border: 1px solid var(--glass-border); }
         .insurance-tab.active.tab-full { color: var(--brand-accent); text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); border-color: rgba(0, 240, 255, 0.2); }
         .insurance-tab:hover:not(.active) { color: var(--text-main); }
 
-        .calc-extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem; }
+        .calc-extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.2rem; }
         .extra-pill-option { background: var(--bg-base); border: 1px solid var(--glass-border); padding: 0.8rem; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: 0.3s; }
         .extra-pill-option:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.02); }
         .extra-pill-option.active { border-color: var(--brand-accent); background: rgba(0, 240, 255, 0.03); }
@@ -179,7 +235,7 @@
         .extra-pill-option i { font-size: 0.8rem; color: var(--text-muted); }
         .extra-pill-option.active i { color: var(--brand-accent); text-shadow: 0 0 5px var(--brand-accent); }
 
-        .route-surcharge-banner { background: rgba(0, 240, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.15); border-radius: 12px; padding: 0.8rem 1.2rem; margin-bottom: 1.5rem; display: none; align-items: center; justify-content: space-between; gap: 1rem; }
+        .route-surcharge-banner { background: rgba(0, 240, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.15); border-radius: 12px; padding: 0.8rem 1.2rem; margin-bottom: 1.2rem; display: none; align-items: center; justify-content: space-between; gap: 1rem; }
         .route-surcharge-banner.active { display: flex; }
         .route-details { text-align: left; }
         .route-details strong { font-size: 0.75rem; text-transform: uppercase; color: var(--brand-accent); display: block; letter-spacing: 0.5px; }
@@ -188,21 +244,27 @@
         .route-cost span { font-size: 0.65rem; color: var(--text-muted); font-weight: 500; display: block; text-transform: uppercase; }
 
         /* Dynamic Billing Summary Box */
-        .calc-receipt-box { border-top: 1px dashed var(--glass-border); padding-top: 1.5rem; margin-top: auto; }
+        .calc-receipt-box { border-top: 1px dashed var(--glass-border); padding-top: 1.2rem; margin-top: auto; }
         .calc-row { display: flex; justify-content: space-between; margin-bottom: 0.8rem; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
         .calc-row span.val-highlight { color: var(--text-main); font-weight: 800; }
         .calc-row span.val-danger { color: var(--danger); font-weight: 800; text-shadow: 0 0 10px rgba(248, 81, 73, 0.2); }
         .calc-row span.val-success { color: var(--success); font-weight: 800; }
+        
+        /* Digit Rolling Container classes */
+        .rolling-number-box { display: inline-flex; height: 1.5em; overflow: hidden; position: relative; font-weight: 950; }
+        .rolling-digit { display: flex; flex-direction: column; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .rolling-digit span { height: 1.5em; display: flex; align-items: center; justify-content: flex-end; }
+
         .calc-grand-total { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 1.2rem; border-top: 1px solid var(--glass-border); }
-        .calc-grand-total .lbl-block strong { font-size: 1.4rem; font-weight: 950; color: var(--brand-accent); display: block; text-shadow: 0 0 15px rgba(0, 240, 255, 0.4); line-height: 1; }
+        .calc-grand-total .lbl-block strong { font-size: 1.4rem; font-weight: 950; color: var(--brand-accent); display: block; text-shadow: 0 0 15px var(--brand-accent-glow); line-height: 1; transition: color 0.4s; }
         .calc-grand-total .lbl-block span { font-size: 0.65rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         .calc-split-box { text-align: right; }
         .calc-split-box .due-now { font-size: 1.1rem; font-weight: 900; color: var(--text-main); line-height: 1; }
         .calc-split-box .due-now span { font-size: 0.6rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; display: block; letter-spacing: 0.5px; }
         .calc-split-box .due-arrival { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-top: 0.2rem; }
 
-        .btn-reserve-showroom { background: var(--brand-accent); color: #000; border: none; width: 100%; border-radius: 14px; padding: 1.1rem; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; transition: 0.3s; margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--glow-cyan); }
-        .btn-reserve-showroom:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 240, 255, 0.6); }
+        .btn-reserve-showroom { background: var(--brand-accent); color: #000; border: none; width: 100%; border-radius: 14px; padding: 1.1rem; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; transition: 0.3s; margin-top: 1.2rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--glow-accent); }
+        .btn-reserve-showroom:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--brand-accent-glow); }
 
         /* ----- THE FLEET MATRIX BENTO ----- */
         .fleet-matrix { padding: 0 5% 6rem; max-width: 1500px; margin: 0 auto; }
@@ -210,20 +272,20 @@
         
         .matrix-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; align-items: stretch; margin-bottom: 2rem;}
         
-        /* Grid Controllers */
+        /* Grid Spans */
         .card-main { grid-column: span 8; }
         .card-side { grid-column: span 4; }
         .card-half { grid-column: span 6; }
         .card-third { grid-column: span 4; }
 
-        .matrix-card { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 24px; padding: clamp(1.5rem, 2.5vw, 2.2rem); position: relative; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; overflow: hidden; }
-        .matrix-card:hover { border-color: var(--brand-accent); transform: translateY(-6px); box-shadow: 0 25px 45px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05); }
+        .matrix-card { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 28px; padding: clamp(1.5rem, 2.5vw, 2.2rem); position: relative; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); display: flex; overflow: hidden; }
+        .matrix-card:hover { border-color: var(--brand-accent); transform: translateY(-6px); box-shadow: 0 25px 45px rgba(0,0,0,0.65), inset 0 0 20px rgba(0, 240, 255, 0.05); }
         
-        /* Layout logic for different spans */
+        /* Display Layouts */
         .card-main { flex-direction: row; justify-content: space-between; align-items: center; min-height: 380px; }
-        .card-side, .card-half, .card-third { flex-direction: column; justify-content: space-between; min-height: clamp(280px, 50vw, 400px); }
+        .card-side, .card-half, .card-third { flex-direction: column; justify-content: space-between; min-height: clamp(340px, 50vw, 420px); }
 
-        /* Premium Glass Deal Tags */
+        /* Glowing glass ribbons */
         .deal-tag-glowing { position: absolute; top: 22px; right: 22px; padding: 0.45rem 1rem; border-radius: 50px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; z-index: 10; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         .tag-popular { background: rgba(220, 38, 38, 0.12); border: 1px solid rgba(220, 38, 38, 0.25); color: #ff5e5e; box-shadow: 0 0 15px rgba(220, 38, 38, 0.15); }
         .tag-value { background: rgba(22, 163, 74, 0.12); border: 1px solid rgba(22, 163, 74, 0.25); color: #5eff5e; box-shadow: 0 0 15px rgba(22, 163, 74, 0.15); }
@@ -232,26 +294,43 @@
         .tag-trending { background: rgba(124, 58, 237, 0.12); border: 1px solid rgba(124, 58, 237, 0.25); color: #a85eff; box-shadow: 0 0 15px rgba(124, 58, 237, 0.15); }
         .tag-standard { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-muted); }
 
-        .mc-title { font-size: clamp(1.4rem, 3.5vw, 2.3rem); font-weight: 950; line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -0.5px; }
+        .mc-title { font-size: clamp(1.4rem, 3.5vw, 2.3rem); font-weight: 950; line-height: 1.1; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: -0.5px; }
         .card-side .mc-title, .card-third .mc-title, .card-half .mc-title { font-size: clamp(1.2rem, 3vw, 1.7rem); }
 
-        .mc-specs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .mc-specs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
         .spec-pill { background: var(--bg-base); border: 1px solid var(--glass-border); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: clamp(0.6rem, 1.2vw, 0.75rem); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); }
         .spec-pill i { color: var(--brand-accent); }
 
         .mc-price { font-size: clamp(1.4rem, 3vw, 2.1rem); font-weight: 950; margin-top: auto; color: var(--text-main); }
         .mc-price span { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; }
 
-        .main-img-container { flex: 1; position: relative; display: flex; justify-content: flex-end; align-items: flex-end; height: 100%; min-height: 200px; }
-        .mc-img-large { width: 120%; max-width: clamp(280px, 30vw, 500px); object-fit: contain; filter: drop-shadow(-20px 30px 20px rgba(0,0,0,0.85)); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); right: -5%; position: absolute; bottom: 0; }
-        .matrix-card:hover .mc-img-large { transform: scale(1.04) translateX(-10px) rotate(-1deg); }
+        /* Light stages */
+        .main-img-container { flex: 1; position: relative; display: flex; justify-content: flex-end; align-items: flex-end; height: 100%; min-height: 220px; background: radial-gradient(circle at 65% 75%, rgba(0, 240, 255, 0.04) 0%, transparent 65%); border-radius: 20px; }
+        .mc-img-large { width: 125%; max-width: clamp(280px, 30vw, 520px); object-fit: contain; filter: drop-shadow(-20px 30px 20px rgba(0,0,0,0.85)); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); right: -5%; position: absolute; bottom: 0; }
+        .matrix-card:hover .mc-img-large { transform: scale(1.05) translateX(-10px) rotate(-1deg); }
         
-        .side-img-container { width: 100%; display: flex; justify-content: center; align-items: center; margin: 1rem 0; flex: 1; min-height: 140px; }
-        .mc-img-small { width: 105%; max-width: clamp(180px, 25vw, 320px); object-fit: contain; filter: drop-shadow(0 20px 20px rgba(0,0,0,0.85)); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .matrix-card:hover .mc-img-small { transform: scale(1.05); }
+        .side-img-container { width: 100%; display: flex; justify-content: center; align-items: center; margin: 1rem 0; flex: 1; min-height: 160px; background: radial-gradient(circle at 50% 60%, rgba(0, 240, 255, 0.05) 0%, transparent 60%); border-radius: 20px; }
+        .mc-img-small { width: 100%; max-width: clamp(180px, 25vw, 340px); height: auto; max-height: 180px; object-fit: contain; filter: drop-shadow(0 20px 20px rgba(0,0,0,0.85)); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .matrix-card:hover .mc-img-small { transform: scale(1.06); }
 
         .btn-card-action { background: var(--bg-base); border: 1px solid var(--glass-border); border-radius: 12px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); cursor: pointer; transition: 0.3s; text-decoration: none; }
         .matrix-card:hover .btn-card-action { background: var(--brand-accent); color: #000; border-color: var(--brand-accent); box-shadow: 0 0 15px var(--brand-accent-glow); }
+
+        /* ----- OPERATIONS HUBS ----- */
+        .branches-section { padding: 0 5% 6rem; max-width: 1500px; margin: 0 auto; }
+        .branches-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .branch-card { position: relative; height: 350px; border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border); display: flex; align-items: flex-end; padding: 2.2rem; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; z-index: 5; }
+        .branch-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1; filter: brightness(0.5) contrast(1.1); }
+        .branch-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(2, 4, 10, 0.95) 0%, rgba(2, 4, 10, 0.3) 50%, transparent 100%); z-index: 2; transition: opacity 0.5s; }
+        .branch-content { position: relative; z-index: 3; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .branch-content h3 { font-size: 2.2rem; font-weight: 950; text-transform: uppercase; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: -0.5px; transition: color 0.3s; }
+        .branch-content p { font-size: 0.9rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 0.6rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+        .branch-content p i { color: var(--brand-accent); font-size: 1.1rem; text-shadow: 0 0 10px var(--brand-accent-glow); }
+        .branch-card:hover { border-color: var(--brand-accent); box-shadow: 0 25px 50px rgba(0, 240, 255, 0.12), inset 0 0 15px rgba(0, 240, 255, 0.05); transform: translateY(-8px); }
+        .branch-card:hover .branch-bg { transform: scale(1.06); filter: brightness(0.65) contrast(1.15); }
+        .branch-card:hover .branch-content { transform: translateY(-4px); }
+        .branch-card:hover .branch-content h3 { color: var(--brand-accent); text-shadow: 0 0 15px var(--brand-accent-glow); }
+        .branch-card:hover .branch-content p { color: var(--text-main); }
 
         /* ----- BOTTOM TRANSPARENCY HUB ----- */
         .bottom-wrapper { background: var(--bg-elevated); border-top: 1px solid var(--glass-border); padding-top: 5rem; width: 100%; }
@@ -432,6 +511,9 @@
 </head>
 <body>
 
+    <!-- INTERACTIVE BACKGROUND -->
+    <canvas id="aurora-bg"></canvas>
+
     <div class="preloader" id="preloader">
         <div class="loader-track">
             <img src="https://brothersegy.com/wp-content/uploads/2026/02/Logo.png" alt="Brothers EGY Logo" class="loader-logo">
@@ -524,6 +606,9 @@
         <div class="showroom-container fade-up delay-1">
             <!-- Bento Rotator Card -->
             <div class="bento-studio" id="studio-card">
+                <!-- Glowing configurator stage layer -->
+                <div class="studio-stage-neon stage-cyber" id="studio-stage-layer"></div>
+
                 <div class="studio-header">
                     <div class="studio-title-block">
                         <h4 id="showroom-cat"><i class="fa-solid fa-star"></i> FLAGSHIP 7-SEATER</h4>
@@ -537,9 +622,34 @@
                 <div class="studio-viewport" id="studio-viewport">
                     <div class="studio-grid-shadow"></div>
                     <div class="studio-reflection-layer" id="studio-reflection"></div>
+                    
+                    <!-- Headlight glow vectors overlays -->
+                    <svg class="headlights-glow" id="headlights-cyan" viewBox="0 0 600 300">
+                        <defs>
+                            <radialGradient id="cyan-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
+                                <stop offset="100%" stop-color="#00f0ff" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                        <!-- Headlight positions projected -->
+                        <circle cx="210" cy="165" r="45" fill="url(#cyan-glow)" />
+                        <circle cx="390" cy="165" r="45" fill="url(#cyan-glow)" />
+                    </svg>
+
+                    <svg class="headlights-glow" id="headlights-yellow" viewBox="0 0 600 300">
+                        <defs>
+                            <radialGradient id="yellow-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#f1c40f" stop-opacity="0.8" />
+                                <stop offset="100%" stop-color="#f1c40f" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="210" cy="165" r="45" fill="url(#yellow-glow)" />
+                        <circle cx="390" cy="165" r="45" fill="url(#yellow-glow)" />
+                    </svg>
+
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Jetour-X70.png" alt="Jetour X70" class="studio-rotator-car" id="studio-car-img">
                     
-                    <!-- Dynamic Diagnostic Spotlights -->
+                    <!-- Spotlights -->
                     <div class="hotspot-node" style="top: 25%; left: 32%;">
                         <div class="hotspot-tooltip">
                             <strong>Luxury Glass Cockpit</strong>
@@ -562,12 +672,33 @@
                     <div class="studio-angle-HUD">
                         Orbit: <span id="studio-angle">0°</span>
                     </div>
+
+                    <!-- Cyber HUD control buttons -->
+                    <div class="studio-config-hud">
+                        <div class="studio-hud-btn" id="hud-headlights-btn" title="Toggle Headlights"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div class="studio-hud-btn" id="hud-sound-btn" title="Toggle Engine Audio"><i class="fa-solid fa-volume-high"></i></div>
+                        <div class="studio-hud-btn" id="hud-stage-btn" title="Cycle Studio Atmosphere"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    </div>
                 </div>
 
-                <div class="mc-specs" id="showroom-specs" style="margin-bottom: 0; z-index: 5;">
-                    <div class="spec-pill">2026</div>
-                    <div class="spec-pill"><i class="fa-solid fa-user-group"></i> 7 Seats</div>
-                    <div class="spec-pill"><i class="fa-solid fa-suitcase-rolling"></i> 4 Bags</div>
+                <!-- Dynamic Live color customize bar -->
+                <div class="studio-color-panel" id="studio-color-panel">
+                    <div class="color-dot active" style="background: #00f0ff; color: #00f0ff;" onclick="changeCarPaint(0, '#00f0ff')"></div>
+                    <div class="color-dot" style="background: #f85149; color: #f85149;" onclick="changeCarPaint(140, '#f85149')"></div>
+                    <div class="color-dot" style="background: #2ea043; color: #2ea043;" onclick="changeCarPaint(90, '#2ea043')"></div>
+                    <div class="color-dot" style="background: #f1c40f; color: #f1c40f;" onclick="changeCarPaint(50, '#f1c40f')"></div>
+                    <div class="color-dot" style="background: #7c3aed; color: #7c3aed;" onclick="changeCarPaint(230, '#7c3aed')"></div>
+                </div>
+
+                <div class="studio-meta-footer">
+                    <div class="studio-core-specs-row" id="showroom-core-specs">
+                        <div class="spec-pill">2026</div>
+                        <div class="spec-pill"><i class="fa-solid fa-user-group"></i> 7 Seats</div>
+                        <div class="spec-pill"><i class="fa-solid fa-suitcase-rolling"></i> 4 Bags</div>
+                    </div>
+                    <div class="studio-features-grid" id="showroom-features-grid">
+                        <!-- Filled Dynamically -->
+                    </div>
                 </div>
             </div>
             
@@ -635,7 +766,9 @@
                     <div class="calc-grand-total">
                         <div class="lbl-block">
                             <span>Reservation Total</span>
-                            <strong id="calc-total-lbl">25,000 EGP</strong>
+                            <strong class="rolling-number-box" id="calc-total-lbl">
+                                <!-- Dynamic Slot Machine rolling counter injected -->
+                            </strong>
                         </div>
                         <div class="calc-split-box">
                             <div class="due-now" id="calc-due-now-lbl">7,500 EGP <span>Pay 30% Reservation</span></div>
@@ -686,7 +819,7 @@
     <section class="fleet-matrix" id="fleet">
         <div class="section-header fade-up">
             <h2>THE <span>COLLECTION.</span></h2>
-            <p>Immaculate condition. Click any model to configure rates or book instantly.</p>
+            <p>Immaculate condition. Click Configure Model or the arrow icon to load a car into the virtual showroom configurations above.</p>
         </div>
 
         <!-- CATEGORY: Premium SUVs -->
@@ -694,7 +827,7 @@
         <div class="matrix-grid fade-up delay-1">
             <div class="matrix-card card-main">
                 <div class="deal-tag-glowing tag-popular">Most Popular</div>
-                <div style="z-index: 10; position: relative; width: 45%;">
+                <div style="z-index: 10; position: relative; width: 42%;">
                     <h3 class="mc-title">JETOUR <br>X70</h3>
                     <div class="mc-specs">
                         <div class="spec-pill"><i class="fa-solid fa-gears"></i> Auto</div>
@@ -722,8 +855,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/MG-ZS.png" alt="MG ZS" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.7rem;">1,400 - 1,800 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.6rem;">1,400 - 1,800 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('mg_zs')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -745,8 +878,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Kia-Sportage.png" alt="Kia Sportage" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.6rem;">2,200 - 2,600 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.5rem;">2,200 - 2,600 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('kia_sportage')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -764,8 +897,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Hyundai-Tucson.png" alt="Hyundai Tucson" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.6rem;">2,200 - 2,600 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.5rem;">2,200 - 2,600 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('hyundai_tucson')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -783,8 +916,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Haval-Jolion-1.png" alt="Haval Jolion" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.6rem;">1,800 - 2,200 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.5rem;">1,800 - 2,200 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('haval_jolion')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -802,16 +935,16 @@
                     </div>
                 </div>
                 <div class="side-img-container">
-                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/Renault-Duster-1.png" alt="Renault Duster" class="mc-img-small" style="max-width: 250px;">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/Renault-Duster-1.png" alt="Renault Duster" class="mc-img-small">
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <div class="mc-price" style="font-size: 1.7rem;">1,400 - 1,800 <span>EGP</span></div>
+                    <div class="mc-price" style="font-size: 1.5rem;">1,400 - 1,800 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('renault_duster')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <div class="matrix-card card-half">
-                <div class="deal-tag-glowing tag-standard">Compact Cruiser</div>
+                <div class="deal-tag-glowing tag-standard">Comfort Cruiser</div>
                 <div>
                     <h3 class="mc-title">Chery Tiggo 3</h3>
                     <div class="mc-specs">
@@ -821,10 +954,10 @@
                     </div>
                 </div>
                 <div class="side-img-container">
-                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/Chery-Tiggo-3.png" alt="Chery Tiggo 3" class="mc-img-small" style="max-width: 250px;">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/Chery-Tiggo-3.png" alt="Chery Tiggo 3" class="mc-img-small">
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <div class="mc-price" style="font-size: 1.7rem;">1,100 - 1,500 <span>EGP</span></div>
+                    <div class="mc-price" style="font-size: 1.4rem;">1,100 - 1,500 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('chery_tiggo_3')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -835,7 +968,7 @@
         <div class="matrix-grid fade-up delay-1">
             <div class="matrix-card card-main">
                 <div class="deal-tag-glowing tag-rated">Classic Sedan</div>
-                <div style="z-index: 10; position: relative; width: 45%;">
+                <div style="z-index: 10; position: relative; width: 42%;">
                     <h3 class="mc-title">Toyota Corolla</h3>
                     <div class="mc-specs">
                         <div class="spec-pill"><i class="fa-solid fa-gears"></i> Auto</div>
@@ -863,8 +996,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Nissan-Sunny.png" alt="Nissan Sunny" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.7rem;">1,000 - 1,400 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.6rem;">1,000 - 1,400 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('nissan_sunny')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -884,8 +1017,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Hyundai-CN7.png" alt="Hyundai CN7" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.5rem;">1,400 - 1,800 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.4rem;">1,400 - 1,800 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('hyundai_cn7')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -903,8 +1036,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/MG-5-2.png" alt="MG 5" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.5rem;">1,200 - 1,500 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.4rem;">1,200 - 1,500 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('mg_5')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -922,8 +1055,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Renault-Logan.png" alt="Renault Logan" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.5rem;">1,000 - 1,400 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.4rem;">1,000 - 1,400 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('renault_logan')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -943,8 +1076,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Fiat-Tipo.png" alt="Fiat Tipo" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.5rem;">1,200 - 1,500 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.4rem;">1,200 - 1,500 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('fiat_tipo')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -962,8 +1095,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Hyundai-Elantra.png" alt="Hyundai Elantra" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.5rem;">1,200 - 1,500 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.4rem;">1,200 - 1,500 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('hyundai_elantra')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -981,8 +1114,8 @@
                 <div class="side-img-container">
                     <img src="https://brothersegy.com/wp-content/uploads/2026/01/Chery-Arrizo.png" alt="Chery Arrizo" class="mc-img-small">
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="mc-price" style="font-size: 1.5rem;">1,000 - 1,400 <span>EGP</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div class="mc-price" style="font-size: 1.4rem;">1,000 - 1,400 <span>EGP</span></div>
                     <a href="#showroom" onclick="loadCarToShowroom('chery_arrizo')" class="btn-card-action"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -1074,6 +1207,230 @@
 
     <!-- CONFIGURATOR SCRIPTS -->
     <script>
+        // Aurora particle shader effect
+        const canvas = document.getElementById('aurora-bg');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        let particles = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.r = Math.random() * 2 + 1;
+                this.alpha = Math.random() * 0.5 + 0.1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 240, 255, ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 40; i++) particles.push(new Particle());
+
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateBg() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw slow floating glowing gradient mapped to mouse coords
+            const glowGradient = ctx.createRadialGradient(mouseX, mouseY, 10, mouseX, mouseY, 400);
+            glowGradient.addColorStop(0, 'rgba(0, 240, 255, 0.03)');
+            glowGradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = glowGradient;
+            ctx.fillRect(0, 0, width, height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateBg);
+        }
+        animateBg();
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Vercel/Stripe card glow cursor tracking hook
+        const trackingClasses = ['.matrix-card', '.bento-studio', '.bento-calc', '.logic-card'];
+        window.addEventListener('mousemove', (e) => {
+            trackingClasses.forEach(selector => {
+                document.querySelectorAll(selector).forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        });
+
+        // Web Audio Synth Engine
+        let audioCtx = null;
+        let isSoundOn = false;
+        let engineOsc = null;
+        let engineGain = null;
+
+        function startAudioEngine() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            // Synthesize powerful starting engine roar!
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            const filterNode = audioCtx.createBiquadFilter();
+
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(35, audioCtx.currentTime); // Deep exhaust frequency
+            osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.3); // Rev up!
+            osc.frequency.exponentialRampToValueAtTime(45, audioCtx.currentTime + 0.8); // Drop to idle
+
+            filterNode.type = 'lowpass';
+            filterNode.frequency.setValueAtTime(100, audioCtx.currentTime);
+            filterNode.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.3);
+            filterNode.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.8);
+
+            gainNode.gain.setValueAtTime(0.001, audioCtx.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.3, audioCtx.currentTime + 0.1); // Ignite burst
+            gainNode.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 0.8); // Steady idle
+
+            osc.connect(filterNode);
+            filterNode.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            osc.start();
+            
+            // Keep steady hum running
+            engineOsc = osc;
+            engineGain = gainNode;
+        }
+
+        function stopAudioEngine() {
+            if (engineOsc) {
+                try {
+                    engineOsc.stop();
+                } catch(e){}
+                engineOsc = null;
+            }
+        }
+
+        function playBeepClick() {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.12);
+        }
+
+        // Active headlights/ambient customization HUD controls
+        let isHeadlightsActive = false;
+        let activeStageIndex = 0;
+        const stages = ['cyber', 'sunset', 'port'];
+        const stageColors = ['#00f0ff', '#d97706', '#7c3aed'];
+
+        const headlinesBtn = document.getElementById('hud-headlights-btn');
+        const headlightsCyan = document.getElementById('headlights-cyan');
+        const headlightsYellow = document.getElementById('headlights-yellow');
+
+        headlinesBtn.addEventListener('click', () => {
+            playBeepClick();
+            isHeadlightsActive = !isHeadlightsActive;
+            headlinesBtn.classList.toggle('active');
+            
+            if (isHeadlightsActive) {
+                // If sunset stage, headlights are yellow! Else cyan
+                if (activeStageIndex === 1) {
+                    headlightsYellow.classList.add('active');
+                    headlightsCyan.classList.remove('active');
+                } else {
+                    headlightsCyan.classList.add('active');
+                    headlightsYellow.classList.remove('active');
+                }
+            } else {
+                headlightsCyan.classList.remove('active');
+                headlightsYellow.classList.remove('active');
+            }
+        });
+
+        const soundBtn = document.getElementById('hud-sound-btn');
+        soundBtn.addEventListener('click', () => {
+            isSoundOn = !isSoundOn;
+            soundBtn.classList.toggle('active');
+            if (isSoundOn) {
+                startAudioEngine();
+            } else {
+                stopAudioEngine();
+            }
+        });
+
+        const stageBtn = document.getElementById('hud-stage-btn');
+        const stageLayer = document.getElementById('studio-stage-layer');
+        stageBtn.addEventListener('click', () => {
+            playBeepClick();
+            activeStageIndex = (activeStageIndex + 1) % stages.length;
+            
+            // Cycle visual atmospheres
+            stageLayer.className = `studio-stage-neon stage-${stages[activeStageIndex]}`;
+            
+            // Adjust variable accents
+            document.documentElement.style.setProperty('--brand-accent', stageColors[activeStageIndex]);
+            document.documentElement.style.setProperty('--brand-accent-glow', stageColors[activeStageIndex] + '44');
+            
+            // If headlights are active, toggle appropriate tint immediately
+            if (isHeadlightsActive) {
+                if (activeStageIndex === 1) {
+                    headlightsYellow.classList.add('active');
+                    headlightsCyan.classList.remove('active');
+                } else {
+                    headlightsCyan.classList.add('active');
+                    headlightsYellow.classList.remove('active');
+                }
+            }
+        });
+
+        // Hue configurations paint customizer
+        function changeCarPaint(deg, colorCode) {
+            playBeepClick();
+            const dots = document.querySelectorAll('.color-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Apply matrix filter to car asset in the showroom
+            studioCar.style.filter = `hue-rotate(${deg}deg) saturate(1.2)`;
+            
+            // Sync highlight glow themes dynamically with color customizer
+            document.documentElement.style.setProperty('--brand-accent', colorCode);
+            document.documentElement.style.setProperty('--brand-accent-glow', colorCode + '44');
+        }
+
         // Complete 15-Car Hurghada Fleet Database
         const fleet = {
             jetour_x70: {
@@ -1090,7 +1447,7 @@
                 img: "https://brothersegy.com/wp-content/uploads/2026/01/Jetour-X70.png",
                 insurance_deposit: 40000,
                 full_cover_fee: 1750,
-                specs: ["7-Seater Luxury", "Dual Screen Cluster", "Panoramic Vista Roof", "360° Vision Assist"]
+                specs: ["7-Seater Luxury", "Dual Screen Cockpit", "Panoramic Vista Roof", "360° Vision Assist"]
             },
             mg_zs: {
                 id: "mg_zs",
@@ -1318,7 +1675,6 @@
             }
         };
 
-        // Distance surcharge matrix mapping (EGP)
         const distances = {
             "Cairo-Alexandria": 220,
             "Cairo-Hurghada": 450,
@@ -1328,7 +1684,6 @@
             "Hurghada-Alexandria": 670
         };
 
-        // State Machine
         let selectedCarId = "jetour_x70";
         let rentalDays = 10;
         let isFullInsurance = false;
@@ -1337,68 +1692,53 @@
         let pickupLoc = "Cairo";
         let returnLoc = "Cairo";
 
-        // Preloader countdown trigger
-        window.addEventListener('DOMContentLoaded', () => {
-            const preloader = document.getElementById('preloader');
-            const percentLbl = document.getElementById('load-percentage');
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.floor(Math.random() * 15) + 5;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        preloader.style.opacity = '0';
-                        preloader.style.visibility = 'hidden';
-                        document.getElementById('navbar').classList.add('loaded');
-                        triggerFadeUp();
-                    }, 500);
-                }
-                percentLbl.textContent = progress + '%';
-            }, 80);
-        });
-
-        // Trigger animations on scroll
-        function triggerFadeUp() {
-            const elements = document.querySelectorAll('.fade-up');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.95) {
-                    el.classList.add('active');
-                }
-            });
-        }
-        window.addEventListener('scroll', triggerFadeUp);
-
         // Load vehicle configuration showroom dynamically
         function loadCarToShowroom(carId) {
             const car = fleet[carId];
             if (!car) return;
             selectedCarId = carId;
 
+            // Synthesis engine rumble audio feedback
+            if (audioCtx) {
+                playBeepClick();
+                if (isSoundOn) {
+                    stopAudioEngine();
+                    setTimeout(startAudioEngine, 100);
+                }
+            }
+
             // Update DOM headers
             document.getElementById('showroom-cat').innerHTML = `<i class="fa-solid fa-star"></i> ${car.tag}`;
             document.getElementById('showroom-name').textContent = car.name;
             document.getElementById('studio-car-img').src = car.img;
             
-            // Adjust visual filters for stylized sunny/megane/jolion elements
+            // Adjust visual filters for styled elements
             const imgEl = document.getElementById('studio-car-img');
             imgEl.style.filter = '';
+            
+            // Reset active dots paint
+            const dots = document.querySelectorAll('.color-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[0].classList.add('active'); // Default Electric Cyan
+            
             if (carId === 'nissan_sunny') imgEl.style.filter = 'grayscale(100%)';
             if (carId === 'haval_jolion') imgEl.style.filter = 'hue-rotate(180deg)';
             
-            // Re-render specs pills
-            const specContainer = document.getElementById('showroom-specs');
-            specContainer.innerHTML = `
+            // Re-render core specs row
+            const coreSpecContainer = document.getElementById('showroom-core-specs');
+            coreSpecContainer.innerHTML = `
                 <div class="spec-pill">2026</div>
                 <div class="spec-pill"><i class="fa-solid fa-user-group"></i> ${car.seats}</div>
                 <div class="spec-pill"><i class="fa-solid fa-suitcase-rolling"></i> ${car.bags}</div>
-                ${car.specs.map(spec => `<div class="spec-pill">${spec}</div>`).join('')}
             `;
 
-            // Clear full protection triggers if not supported natively
-            const fullTab = document.getElementById('insurance-full-tab');
-            fullTab.style.display = 'block';
+            // Re-render highlights checklist grid
+            const featuresContainer = document.getElementById('showroom-features-grid');
+            featuresContainer.innerHTML = car.specs.map(spec => `
+                <div class="studio-feature-item">
+                    <i class="fa-solid fa-circle-check"></i> ${spec}
+                </div>
+            `).join('');
 
             calculateBooking();
         }
@@ -1463,6 +1803,42 @@
             studioCar.style.transform = `scale(1.01) rotateY(${(deltaX * 0.2)}deg)`;
             studioReflection.style.transform = `translateX(${currentRotationAngle * 1.2}px)`;
         });
+
+        // Digit Rolling slot machine animator
+        function animateRollingNumber(targetId, targetNum) {
+            const container = document.getElementById(targetId);
+            if (!container) return;
+
+            const numStr = Math.round(targetNum).toLocaleString();
+            let htmlStr = "";
+
+            for (let char of numStr) {
+                if (char === ',' || char === '.') {
+                    htmlStr += `<span>${char}</span>`;
+                } else if (/\d/.test(char)) {
+                    htmlStr += `
+                        <div class="rolling-digit">
+                            <span style="transform: translateY(-${char * 10}%);">
+                                0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9
+                            </span>
+                        </div>
+                    `;
+                } else {
+                    htmlStr += `<span>${char}</span>`;
+                }
+            }
+            htmlStr += `<span style="margin-left: 5px; font-size: 0.8rem; font-weight:700; color: var(--text-muted);">EGP</span>`;
+            container.innerHTML = htmlStr;
+
+            // Trigger scroll transitions after DOM insertion
+            setTimeout(() => {
+                const digits = container.querySelectorAll('.rolling-digit span');
+                digits.forEach((digit, i) => {
+                    const targetChar = numStr.replace(/,/g, '')[i];
+                    digit.style.transform = `translateY(-${targetChar * 10}%)`;
+                });
+            }, 30);
+        }
 
         // Configurator state-syncing controls
         const sliderDays = document.getElementById('calc-days-slider');
@@ -1537,7 +1913,6 @@
             if (rentalDays >= 15) {
                 activeUnitPrice = car.priceMin;
             } else if (rentalDays > 3) {
-                // Smooth drop from priceMax down to priceMin
                 const percent = (rentalDays - 3) / 12;
                 activeUnitPrice = Math.round(car.priceMax - (percent * (car.priceMax - car.priceMin)));
             }
@@ -1587,8 +1962,9 @@
             const payNowFee = Math.round(reservationTotal * 0.30);
             const dueArrivalFee = reservationTotal - payNowFee;
 
-            // Render Output values
-            document.getElementById('calc-total-lbl').textContent = reservationTotal.toLocaleString() + ' EGP';
+            // Render Output values with dynamic digit rolling
+            animateRollingNumber('calc-total-lbl', reservationTotal);
+
             document.getElementById('calc-due-now-lbl').innerHTML = `${payNowFee.toLocaleString()} EGP <span>Pay 30% Reservation</span>`;
             document.getElementById('calc-due-arrival-lbl').textContent = `Due on arrival: ${dueArrivalFee.toLocaleString()} EGP`;
 
@@ -1630,6 +2006,59 @@
 
         // Initialize default vehicle showroom
         loadCarToShowroom("jetour_x70");
+
+        // CINEMATIC PRELOADER PERCENTAGE COUNTER & SHUTDOWN
+        const preloader = document.getElementById('preloader');
+        const percentLabel = document.getElementById('load-percentage');
+        
+        let percentageCount = 0;
+        const duration = 3500; // Match 3.5s CSS keyframes
+        const stepTime = Math.floor(duration / 100);
+        
+        const loaderInterval = setInterval(() => {
+            percentageCount++;
+            if (percentageCount >= 100) {
+                percentageCount = 100;
+                clearInterval(loaderInterval);
+                
+                // Smoothly dismiss the preloader once the animation finishes
+                setTimeout(() => {
+                    if (preloader) {
+                        preloader.style.opacity = '0';
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                            
+                            // Immediately reveal hero and booking console elements
+                            document.querySelectorAll('.hero .fade-up, .marquee, .booking-console').forEach(el => {
+                                el.classList.add('active');
+                            });
+                        }, 800); // Wait for opacity transition
+                    }
+                }, 200);
+            }
+            if (percentLabel) {
+                percentLabel.textContent = `${percentageCount}%`;
+            }
+        }, stepTime);
+
+        // MODERN INTERSECTION OBSERVER FOR SCROLL REVEAL FADE-UPS
+        const scrollRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Unobserve to prevent animations re-triggering once revealed
+                    scrollRevealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger as soon as 10% of the element is visible
+            rootMargin: '0px 0px -40px 0px' // Offset trigger for a smoother layout lift
+        });
+
+        // Observe all fade-up components
+        document.querySelectorAll('.fade-up').forEach(el => {
+            scrollRevealObserver.observe(el);
+        });
     </script>
 
 </body>
