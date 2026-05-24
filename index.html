@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brothers EGY | The Apex of Egyptian Car Rental</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-base: #02040a;
+            --bg-surface: #0d1117;
+            --bg-elevated: #161b22;
+            --brand-blue: #0056b3;
+            --brand-accent: #00f0ff;
+            --brand-accent-glow: rgba(0, 240, 255, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(13, 17, 23, 0.7);
+            --success: #2ea043;
+            --danger: #f85149;
+            --warning: #f1c40f;
+        }
+
+        /* ----- RESET & BASE ----- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { background-color: var(--bg-base); color: var(--text-main); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        ::selection { background: var(--brand-accent); color: #000; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-accent); }
+
+        /* ----- DYNAMIC PRELOADER (LARGE LOGO DRIVES LEFT) ----- */
+        .preloader { position: fixed; inset: 0; background: var(--bg-base); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; animation: hidePreloader 0.5s 3.5s forwards; }
+        .loader-track { width: min(400px, 80vw); height: 2px; background: rgba(255,255,255,0.05); position: relative; display: flex; align-items: center; justify-content: flex-end; margin-bottom: 30px; }
+        
+        .loader-logo { height: 90px; position: absolute; right: -150px; opacity: 0; animation: driveLeft 3s cubic-bezier(0.65, 0, 0.35, 1) forwards; filter: drop-shadow(0 10px 20px rgba(0,240,255,0.3)); z-index: 2; }
+        
+        .loader-fill { height: 100%; background: var(--brand-accent); width: 0; position: absolute; right: 0; top: 0; box-shadow: 0 0 10px var(--brand-accent); animation: fillLeft 3s cubic-bezier(0.65, 0, 0.35, 1) forwards; z-index: 1; }
+        .loading-text { font-size: clamp(0.6rem, 2vw, 0.85rem); text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 800; animation: pulseOpacity 1s infinite; }
+
+        @keyframes driveLeft {
+            0% { right: -150px; opacity: 0; transform: scale(1); }
+            15% { opacity: 1; }
+            40% { right: 155px; transform: scale(1.05); } /* Idle center */
+            60% { right: 155px; transform: scale(1.05); } /* Idle center */
+            90% { opacity: 1; }
+            100% { right: 500px; opacity: 0; transform: scale(1) rotate(-5deg); } /* Drive off left */
+        }
+        @keyframes fillLeft { 0% { width: 0; } 40% { width: 200px; } 60% { width: 200px; } 100% { width: 400px; } }
+        @keyframes hidePreloader { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+        @keyframes pulseOpacity { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+        /* ----- UTILITIES & ANIMATIONS ----- */
+        .fade-up { animation: fadeUpAnim 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; opacity: 0; transform: translateY(40px); }
+        .delay-1 { animation-delay: 3.4s; } .delay-2 { animation-delay: 3.6s; } .delay-3 { animation-delay: 3.8s; }
+        @keyframes fadeUpAnim { to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+
+        /* ----- NAVIGATION ----- */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 3%; position: fixed; width: 94%; top: 1.5rem; left: 3%; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 100px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); opacity: 0; animation: fadeUpAnim 1s 3.4s forwards; gap: 1rem; }
+        .nav-logo h2 { font-weight: 900; letter-spacing: -1px; font-size: clamp(1rem, 3vw, 1.5rem); margin: 0; display: flex; align-items: center; gap: 8px;}
+        .nav-logo img { height: 28px; width: auto; }
+        .nav-logo span { color: var(--brand-accent); }
+        .nav-links { display: flex; gap: clamp(0.8rem, 3vw, 2.5rem); flex-wrap: wrap; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: clamp(0.65rem, 2vw, 0.85rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; white-space: nowrap; }
+        .nav-links a:hover { color: var(--text-main); text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .btn-whatsapp { background: #25D366; color: #000; padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(0.8rem, 2vw, 1.5rem); border-radius: 50px; font-weight: 800; font-size: clamp(0.65rem, 1.5vw, 0.85rem); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: 0.3s; white-space: nowrap; }
+        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
+
+        /* ----- HERO SECTION ----- */
+        .hero { position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-top: 25vh; overflow: hidden; padding-bottom: 2rem; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: url('https://brothersegy.com/wp-content/uploads/2025/11/giza-pyramids-cairo-egypt-with-palm.jpg') center/cover no-repeat; opacity: 0.35; filter: grayscale(20%) contrast(1.2); }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: linear-gradient(180deg, rgba(2,4,10,0.8) 0%, rgba(2,4,10,0.4) 40%, var(--bg-base) 90%); }
+
+        .hero-content { text-align: center; z-index: 10; margin-bottom: 4vh; }
+        .hero-content h1 { font-size: clamp(3.5rem, 8vw, 9.5rem); font-weight: 900; line-height: 0.85; text-transform: uppercase; position: relative; }
+        
+        .hero-content h1 .outline { 
+            color: transparent; 
+            -webkit-text-stroke: 1px rgba(255,255,255,0.4); 
+            display: block; 
+            letter-spacing: 2rem; 
+            margin-right: -2rem; 
+            margin-bottom: 2.5rem; /* Space between words */
+        }
+        .hero-content h1 .solid { 
+            background: linear-gradient(180deg, #fff 0%, #999 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)); 
+            display: block; 
+            letter-spacing: -4px;
+        }
+
+        .hero-car-wrapper { position: relative; width: 100%; max-width: 1050px; z-index: 5; margin-top: -6%; animation: float 6s ease-in-out infinite; }
+        .hero-car { width: 100%; filter: drop-shadow(0 50px 60px rgba(0,0,0,0.95)); }
+
+        /* ----- INFINITE MARQUEE ----- */
+        .marquee { background: var(--bg-surface); padding: clamp(0.8rem, 2vw, 1.2rem) 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); display: flex; overflow: hidden; position: relative; z-index: 20; }
+        .marquee-content { display: flex; width: max-content; animation: scroll 30s linear infinite; }
+        .marquee-item { font-size: clamp(0.55rem, 1.5vw, 0.8rem); font-weight: 800; text-transform: uppercase; letter-spacing: clamp(0px, 1vw, 3px); margin: 0 clamp(0.8rem, 2vw, 3rem); display: flex; align-items: center; gap: 1rem; color: var(--text-muted); }
+        .marquee-item i { color: var(--brand-accent); font-size: 1rem; }
+        @keyframes scroll { to { transform: translateX(-50%); } }
+
+        /* ----- BOOKING CONSOLE ----- */
+        .booking-console { width: 90%; max-width: 1200px; margin: 5rem auto 6rem; position: relative; z-index: 25; background: var(--bg-elevated); border: 1px solid var(--glass-border); border-radius: 24px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1fr; padding: 1.2rem; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .console-field { padding: 0.5rem 1.5rem; border-right: 1px solid var(--glass-border); display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .console-field:nth-child(3) { border-right: none; }
+        .console-field i { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); color: var(--brand-accent); opacity: 0.5; font-size: 1.2rem; pointer-events: none; }
+        .console-field label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; margin-bottom: 0.3rem; letter-spacing: 1px; }
+        .console-field select, .console-field input { width: 100%; background: transparent; border: none; color: white; font-size: 1.1rem; font-weight: 600; outline: none; appearance: none; cursor: pointer; padding-right: 2rem; }
+        
+        .btn-console { background: var(--text-main); color: var(--bg-base); border: none; border-radius: 16px; font-weight: 900; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; height: 100%; padding: 1.5rem; }
+        .btn-console:hover { background: var(--brand-accent); box-shadow: 0 0 20px var(--brand-accent-glow); }
+
+        /* ----- BRANCHES / HUBS SECTION ----- */
+        .branches-section { max-width: 1500px; margin: 0 auto 6rem; padding: 0 5%; }
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border); gap: 2rem; }
+        .section-header h2 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; line-height: 0.9; text-transform: uppercase; letter-spacing: -2px; }
+        .section-header h2 span { color: var(--brand-accent); }
+        .section-header p { color: var(--text-muted); font-size: clamp(0.8rem, 2vw, 1rem); max-width: 300px; text-align: right; }
+
+        .branches-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .branch-card { height: clamp(250px, 50vw, 420px); border-radius: 24px; position: relative; overflow: hidden; border: 1px solid var(--glass-border); transition: 0.4s; cursor: pointer; display: flex; align-items: flex-end; padding: clamp(1.5rem, 3vw, 2.5rem); background-color: #111; }
+        .branch-card:hover { transform: translateY(-10px); border-color: var(--brand-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .branch-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 0; filter: grayscale(20%) brightness(0.6); }
+        .branch-card:hover .branch-bg { transform: scale(1.1); filter: grayscale(0%) brightness(0.8); }
+        .branch-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(2,4,10,0.95) 0%, rgba(2,4,10,0.2) 60%, rgba(2,4,10,0.1) 100%); z-index: 1; }
+        .branch-content { position: relative; z-index: 2; width: 100%; }
+        .branch-content h3 { font-size: clamp(1.3rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: -1px; }
+        .branch-content p { color: var(--text-muted); font-size: clamp(0.75rem, 2vw, 0.95rem); font-weight: 500; display: flex; align-items: center; gap: 8px; }
+        .branch-content p i { color: var(--brand-accent); }
+
+        /* ----- THE FLEET MATRIX (PERFECT ALIGNMENT) ----- */
+        .fleet-matrix { padding: 0 5% 6rem; max-width: 1500px; margin: 0 auto; }
+        .category-title { font-size: clamp(1rem, 2.5vw, 1.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-main); margin: 4rem 0 2rem; padding-left: 1rem; border-left: 4px solid var(--brand-accent); }
+        
+        .matrix-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; align-items: stretch; margin-bottom: 2rem;}
+        
+        /* Grid Controllers */
+        .card-main { grid-column: span 8; }
+        .card-side { grid-column: span 4; }
+        .card-half { grid-column: span 6; }
+        .card-third { grid-column: span 4; }
+
+        .matrix-card { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 24px; padding: clamp(1.5rem, 2.5vw, 2.5rem); position: relative; transition: all 0.4s ease; display: flex; overflow: hidden; }
+        .matrix-card:hover { border-color: var(--brand-accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--brand-accent-glow) inset; }
+        
+        /* Layout logic for different spans */
+        .card-main { flex-direction: row; justify-content: space-between; align-items: center; min-height: 400px; }
+        .card-side, .card-half, .card-third { flex-direction: column; justify-content: space-between; min-height: clamp(280px, 50vw, 420px); }
+
+        .mc-tag { background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); padding: 0.4rem 1rem; border-radius: 50px; font-size: clamp(0.55rem, 1.2vw, 0.7rem); font-weight: 800; color: var(--brand-accent); display: inline-block; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .mc-tag.warning { color: var(--warning); background: rgba(241, 196, 15, 0.1); border-color: rgba(241, 196, 15, 0.2); }
+        .mc-title { font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .card-side .mc-title, .card-third .mc-title, .card-half .mc-title { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+
+        .mc-specs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .spec-pill { background: var(--bg-base); border: 1px solid var(--glass-border); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: clamp(0.6rem, 1.2vw, 0.75rem); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); }
+
+        .mc-price { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; margin-top: auto; }
+        .mc-price span { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; }
+
+        .main-img-container { flex: 1; position: relative; display: flex; justify-content: flex-end; align-items: flex-end; height: 100%; }
+        .mc-img-large { width: 120%; max-width: clamp(300px, 30vw, 550px); object-fit: contain; filter: drop-shadow(-20px 30px 20px rgba(0,0,0,0.8)); transition: 0.5s ease; right: -5%; position: absolute; bottom: 0; }
+        .matrix-card:hover .mc-img-large { transform: scale(1.05) translateX(-10px); }
+        
+        .side-img-container { width: 100%; display: flex; justify-content: center; align-items: center; margin: 1.5rem 0; flex: 1; }
+        .mc-img-small { width: 110%; max-width: clamp(180px, 25vw, 350px); object-fit: contain; filter: drop-shadow(0 20px 20px rgba(0,0,0,0.8)); transition: 0.5s ease; }
+        .matrix-card:hover .mc-img-small { transform: scale(1.05); }
+
+        /* ----- BOTTOM SECTIONS (FIXED STRUCTURE) ----- */
+        .bottom-wrapper { background: var(--bg-elevated); border-top: 1px solid var(--glass-border); padding-top: 6rem; width: 100%; }
+
+        .transparency-hub { max-width: 1400px; margin: 0 auto 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 0 5%; }
+        .logic-card { background: var(--bg-base); border: 1px solid var(--glass-border); border-radius: 30px; padding: clamp(1.5rem, 3vw, 4rem); position: relative; overflow: hidden; }
+        .logic-card h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        
+        .deposit-widget { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 20px; padding: clamp(1.5rem, 2vw, 2rem); margin-top: 2rem; }
+        .deposit-row { display: flex; justify-content: space-between; margin-bottom: 1.2rem; font-size: clamp(0.9rem, 1.5vw, 1rem); font-weight: 600; color: var(--text-muted); }
+        .deposit-total { display: flex; justify-content: space-between; border-top: 1px dashed var(--glass-border); padding-top: 1.5rem; font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 900; color: var(--brand-accent); }
+        
+        .void-alert { background: rgba(248, 81, 73, 0.05); border: 1px solid rgba(248, 81, 73, 0.2); border-left: 4px solid var(--danger); padding: 1.5rem; margin-top: 2.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: flex-start; }
+        .void-alert i { font-size: 1.5rem; color: var(--danger); margin-top: 5px; }
+        .void-alert p { font-size: 0.9rem; font-weight: 600; color: #ffb3b0; margin: 0; line-height: 1.5; }
+
+        .exception-tag { position: absolute; top: 3rem; right: 3rem; background: var(--bg-surface); border: 1px solid var(--glass-border); padding: 0.6rem 1.2rem; border-radius: 10px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+
+        /* ----- FOOTER ----- */
+        footer { padding: clamp(1.5rem, 3vw, 4rem) 5% clamp(1rem, 2vw, 2rem); background: var(--bg-base); border-top: 1px solid var(--glass-border); }
+        .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+        .footer-brand h2 { font-weight: 900; font-size: clamp(1.2rem, 3vw, 2rem); margin-bottom: 1.5rem; letter-spacing: -1px; display: flex; align-items: center; gap: 8px;}
+        .footer-brand img { height: 35px; }
+        .footer-brand span { color: var(--brand-accent); }
+        .footer-brand p { color: var(--text-muted); font-size: clamp(0.75rem, 1.5vw, 0.95rem); line-height: 1.8; max-width: 350px; }
+        .footer-col h4 { font-size: clamp(0.95rem, 1.8vw, 1.1rem); font-weight: 800; margin-bottom: 1.5rem; color: var(--text-main); }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.8rem; }
+        .footer-col a { color: var(--text-muted); text-decoration: none; font-size: clamp(0.75rem, 1.5vw, 0.9rem); font-weight: 500; transition: 0.3s; }
+        .footer-col a:hover { color: var(--brand-accent); padding-left: 5px; }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: clamp(0.65rem, 1.2vw, 0.85rem); }
+
+        /* ----- MEDIA QUERIES ----- */
+        @media (max-width: 1200px) {
+            .booking-console { grid-template-columns: 1fr 1fr; gap: 1rem; padding: 2rem; }
+            .console-field { border-right: none; border-bottom: 1px solid var(--glass-border); padding: 1rem 0; }
+            .console-field:nth-child(3) { border-bottom: none; }
+            .matrix-card.card-main { flex-direction: column; align-items: flex-start; }
+            .main-img-container { width: 100%; margin-top: 2rem; }
+            .mc-img-large { position: relative; right: auto; bottom: auto; width: 100%; }
+            .branches-grid { grid-template-columns: 1fr; }
+            .card-side, .card-third, .card-half { grid-column: span 6; }
+        }
+        @media (max-width: 900px) {
+            .hero-content h1 { font-size: 5rem; }
+            .hero-content h1 .outline { letter-spacing: 0.5rem; margin-right: -0.5rem; }
+            .matrix-card { grid-column: span 12 !important; }
+            .booking-console { grid-template-columns: 1fr; }
+            .console-field:nth-child(3) { border-bottom: 1px solid var(--glass-border); }
+            .transparency-hub, .footer-grid { grid-template-columns: 1fr; }
+            
+            /* Tablet fixes */
+            nav { width: 90%; padding: 0.8rem 2%; left: 5%; }
+            .nav-links { gap: 1.5rem; font-size: 0.75rem; }
+            .nav-logo h2 { font-size: 1.2rem; }
+            .loader-track { width: 300px; }
+            .section-header h2 { font-size: 2.5rem; }
+            .section-header p { font-size: 0.9rem; }
+            .logic-card { padding: 2.5rem; }
+            .logic-card h3 { font-size: 1.8rem; }
+        }
+        @media (max-width: 768px) {
+            /* Mobile layout */
+            nav { width: 92%; left: 4%; top: 1rem; flex-wrap: wrap; gap: 1rem; padding: 0.8rem 1.5%; }
+            .nav-logo { order: 1; width: 100%; }
+            .nav-links { order: 3; width: 100%; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+            .btn-whatsapp { order: 2; }
+            .hero { padding-top: 15vh; padding-bottom: 1.5rem; }
+            .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+            .hero-content h1 .outline { letter-spacing: 0.3rem; margin-right: -0.3rem; margin-bottom: 1.5rem; }
+            .hero-car-wrapper { margin-top: -8%; max-width: 500px; }
+            .marquee-item { font-size: 0.65rem; margin: 0 1.5rem; letter-spacing: 1px; }
+            .booking-console { width: 95%; margin: 3rem auto 4rem; padding: 1.5rem 1rem; }
+            .console-field { padding: 0.8rem 0; }
+            .console-field label { font-size: 0.65rem; }
+            .console-field select, .console-field input { font-size: 0.95rem; }
+            .branches-section { margin-bottom: 4rem; padding: 0 3%; }
+            .branch-card { height: 300px; padding: 1.5rem; }
+            .branch-content h3 { font-size: 1.8rem; }
+            .branch-content p { font-size: 0.85rem; }
+            .fleet-matrix { padding: 0 3% 4rem; }
+            .category-title { font-size: 1.2rem; margin: 3rem 0 1.5rem; }
+            .matrix-card { padding: 1.5rem; min-height: 320px !important; }
+            .mc-title { font-size: 1.5rem; margin-bottom: 1rem; }
+            .card-side .mc-title, .card-third .mc-title { font-size: 1.3rem; }
+            .mc-price { font-size: 1.8rem; }
+            .mc-specs { gap: 0.3rem; margin-bottom: 1rem; }
+            .spec-pill { font-size: 0.65rem; padding: 0.3rem 0.6rem; }
+            .mc-tag { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
+            .side-img-container { margin: 1rem 0; }
+            .mc-img-small { max-width: 250px; }
+            .mc-img-large { max-width: 400px; }
+            .btn-console { padding: 0.8rem 1.5rem; font-size: 0.8rem; }
+            .logic-card { padding: 2rem; }
+            .logic-card h3 { font-size: 1.5rem; }
+            .void-alert { padding: 1rem; gap: 1rem; }
+            .void-alert i { font-size: 1.2rem; }
+            footer { padding: 2rem 3% 1rem; }
+            .footer-grid { gap: 2rem; margin-bottom: 2rem; }
+            .footer-col h4 { font-size: 1rem; margin-bottom: 1rem; }
+            .footer-col a { font-size: 0.85rem; }
+            .footer-bottom { font-size: 0.75rem; flex-direction: column; gap: 1rem; }
+        }
+        @media (max-width: 640px) {
+            /* Small phone fixes */
+            nav { position: static; width: 100%; left: 0; top: 0; border-radius: 0; margin-bottom: 0.5rem; opacity: 1 !important; animation: none; }
+            .nav-logo { gap: 4px; }
+            .nav-logo h2 { font-size: 1rem; }
+            .nav-logo img { height: 20px; }
+            .nav-links { font-size: 0.65rem; gap: 0.8rem; }
+            .nav-links a { font-size: 0.65rem; letter-spacing: 0.5px; }
+            .btn-whatsapp { padding: 0.5rem 1rem; font-size: 0.7rem; }
+            .btn-whatsapp i { font-size: 0.9rem; }
+            .preloader { display: none; }
+            .loader-track { display: none; }
+            .loading-text { display: none; }
+            .hero { min-height: 80vh; padding-top: 8rem; }
+            .hero-content h1 { font-size: clamp(2rem, 5vw, 3rem); }
+            .hero-content h1 .outline { margin-bottom: 1rem; }
+            .hero-car-wrapper { margin-top: 0; max-width: 100%; }
+            .marquee { padding: 0.8rem 0; }
+            .marquee-content { animation: scroll 20s linear infinite; }
+            .marquee-item { font-size: 0.55rem; margin: 0 0.8rem; letter-spacing: 0px; }
+            .booking-console { width: 98%; margin: 2rem auto 3rem; padding: 1rem 0.8rem; gap: 0.5rem; }
+            .console-field { padding: 0.6rem 0.5rem; }
+            .console-field label { font-size: 0.6rem; }
+            .console-field select, .console-field input { font-size: 0.85rem; padding-right: 1.5rem; }
+            .console-field i { right: 0.8rem; font-size: 1rem; }
+            .btn-console { padding: 0.8rem 1rem; font-size: 0.75rem; }
+            .branches-section { margin-bottom: 3rem; padding: 0 2%; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+            .section-header h2 { font-size: 1.8rem; }
+            .section-header p { text-align: left; font-size: 0.8rem; max-width: none; }
+            .branch-card { height: 250px; padding: 1rem; }
+            .branch-content h3 { font-size: 1.5rem; }
+            .branch-content p { font-size: 0.75rem; }
+            .fleet-matrix { padding: 0 2% 3rem; }
+            .category-title { font-size: 1rem; margin: 2rem 0 1rem; }
+            .matrix-card { padding: 1rem; min-height: 280px !important; }
+            .mc-title { font-size: 1.2rem; margin-bottom: 0.8rem; }
+            .card-side .mc-title, .card-third .mc-title, .card-half .mc-title { font-size: 1.1rem; }
+            .mc-price { font-size: 1.5rem; }
+            .mc-specs { gap: 0.2rem; }
+            .spec-pill { font-size: 0.6rem; padding: 0.25rem 0.5rem; }
+            .mc-tag { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
+            .side-img-container { margin: 0.8rem 0; }
+            .mc-img-small { max-width: 180px; }
+            .transparency-hub { padding: 0 2%; }
+            .logic-card { padding: 1.5rem; border-radius: 16px; }
+            .logic-card h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+            .logic-card p { font-size: 0.9rem; }
+            .deposit-widget { padding: 1.5rem; }
+            .deposit-row { font-size: 0.9rem; }
+            .deposit-total { font-size: 1.4rem; }
+            .void-alert { padding: 0.8rem; gap: 0.8rem; }
+            .void-alert i { font-size: 1rem; }
+            .void-alert p { font-size: 0.8rem; }
+            footer { padding: 1.5rem 2%; }
+            .footer-grid { gap: 1.5rem; margin-bottom: 1.5rem; }
+            .footer-brand h2 { font-size: 1.3rem; }
+            .footer-brand img { height: 25px; }
+            .footer-brand p { font-size: 0.8rem; }
+            .footer-col h4 { font-size: 0.9rem; margin-bottom: 0.8rem; }
+            .footer-col a { font-size: 0.75rem; }
+            .footer-bottom { font-size: 0.65rem; flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            /* Extra small phones */
+            nav { flex-direction: column; padding: 0.5rem 1%; }
+            .nav-logo h2 { font-size: 0.9rem; }
+            .nav-links { width: 100%; justify-content: space-around; }
+            .btn-whatsapp { width: 100%; justify-content: center; }
+            .hero { min-height: 70vh; padding-top: 6rem; }
+            .hero-content h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+            .marquee-item { font-size: 0.5rem; margin: 0 0.5rem; }
+            .booking-console { width: 100%; margin: 1.5rem 0; padding: 0.8rem 0.5rem; border-radius: 12px; }
+            .branches-section { margin-bottom: 2rem; padding: 0 1%; }
+            .branch-card { height: 200px; padding: 0.8rem; }
+            .branch-content h3 { font-size: 1.2rem; }
+            .fleet-matrix { padding: 0 1%; }
+            .matrix-card { padding: 0.8rem; }
+            .mc-title { font-size: 1rem; }
+            .logic-card { padding: 1rem; }
+            .footer-grid { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader">
+        <div class="loader-track">
+            <img src="https://brothersegy.com/wp-content/uploads/2026/02/Logo.png" alt="Brothers EGY Logo" class="loader-logo">
+            <div class="loader-fill"></div>
+        </div>
+        <div class="loading-text">Preparing Your Journey</div>
+    </div>
+
+    <nav class="fade-up delay-1">
+        <div class="nav-logo">
+            <img src="https://brothersegy.com/wp-content/uploads/2026/02/Logo.png" alt="Logo">
+            <h2>BROTHERS<span>EGY</span></h2>
+        </div>
+        <div class="nav-links">
+            <a href="#">The Fleet</a>
+            <a href="#">Cairo Hub</a>
+            <a href="#">Transparency</a>
+        </div>
+        <a href="#" class="btn-whatsapp"><i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> 24/7 Support</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content fade-up delay-2">
+            <h1>
+                <span class="outline">ELEVATE</span>
+                <span class="solid">THE JOURNEY.</span>
+            </h1>
+        </div>
+
+        <div class="hero-car-wrapper fade-up delay-3">
+            <img src="https://brothersegy.com/wp-content/uploads/2026/01/Kia-Sportage.png" alt="Premium SUV" class="hero-car">
+        </div>
+    </section>
+
+    <div class="marquee fade-up delay-3">
+        <div class="marquee-content">
+            <div class="marquee-item">NO CREDIT CARD REQUIRED <i class="fa-solid fa-bolt"></i></div>
+            <div class="marquee-item">PAY CASH ON ARRIVAL <i class="fa-solid fa-bolt"></i></div>
+            <div class="marquee-item">ZERO HIDDEN FEES <i class="fa-solid fa-bolt"></i></div>
+            <div class="marquee-item">24/7 TERMINAL DELIVERY <i class="fa-solid fa-bolt"></i></div>
+            <div class="marquee-item">12H FREE CANCELLATION <i class="fa-solid fa-bolt"></i></div>
+            <div class="marquee-item">NO CREDIT CARD REQUIRED <i class="fa-solid fa-bolt"></i></div>
+            <div class="marquee-item">PAY CASH ON ARRIVAL <i class="fa-solid fa-bolt"></i></div>
+        </div>
+    </div>
+
+    <div class="booking-console">
+        <div class="console-field">
+            <label>Operations Hub</label>
+            <select>
+                <option>Cairo Int. Airport (CAI)</option>
+                <option>Alexandria City Center</option>
+                <option>Hurghada Sheraton Hub</option>
+            </select>
+            <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="console-field">
+            <label>Pick-up Date</label>
+            <input type="text" value="Select Date & Time" readonly>
+            <i class="fa-regular fa-calendar"></i>
+        </div>
+        <div class="console-field">
+            <label>Return Date</label>
+            <input type="text" value="Select Date & Time" readonly>
+            <i class="fa-regular fa-calendar"></i>
+        </div>
+        <button class="btn-console">Find Vehicle</button>
+    </div>
+
+    <section class="branches-section">
+        <div class="section-header">
+            <h2>OUR <span>HUBS.</span></h2>
+            <p>Seamless coverage across Egypt's most vital destinations.</p>
+        </div>
+        <div class="branches-grid">
+            <div class="branch-card">
+                <div class="branch-bg" style="background-image: url('https://brothersegy.com/wp-content/uploads/2025/11/giza-pyramids-cairo-egypt-with-palm.jpg');"></div>
+                <div class="branch-content">
+                    <h3>Cairo</h3>
+                    <p><i class="fa-solid fa-plane-arrival"></i> International Airport & GEM</p>
+                </div>
+            </div>
+            <div class="branch-card">
+                <div class="branch-bg" style="background-image: url('https://brothersegy.com/wp-content/uploads/2025/11/hurghada-costal-destiantion-near-the-red-sea.jpg');"></div>
+                <div class="branch-content">
+                    <h3>Hurghada</h3>
+                    <p><i class="fa-solid fa-water"></i> Sheraton Hub & Coastal Resorts</p>
+                </div>
+            </div>
+            <div class="branch-card">
+                <div class="branch-bg" style="background-image: url('https://brothersegy.com/wp-content/uploads/2025/11/A-picture-from-above-of-the-city-of-Alexandria-in-Egypt.jpg');"></div>
+                <div class="branch-content">
+                    <h3>Alexandria</h3>
+                    <p><i class="fa-solid fa-city"></i> City Center Operations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fleet-matrix">
+        <div class="section-header">
+            <h2>THE <span>COLLECTION.</span></h2>
+            <p>Immaculate condition. Real-time availability options across all hubs.</p>
+        </div>
+
+        <h3 class="category-title">Premium & Large SUVs</h3>
+        <div class="matrix-grid">
+            <div class="matrix-card card-main">
+                <div style="z-index: 10; position: relative; width: 45%;">
+                    <div class="mc-tag"><i class="fa-solid fa-star"></i> FLAGSHIP 7-SEATER</div>
+                    <h3 class="mc-title">JETOUR <br>X90 PLUS</h3>
+                    
+                    <div class="mc-specs">
+                        <div class="spec-pill">2026</div>
+                        <div class="spec-pill"><i class="fa-solid fa-users"></i> 7 Seats</div>
+                        <div class="spec-pill">Dark Olive Green</div>
+                    </div>
+
+                    <div class="mc-price">2,200 <span>EGP / day</span></div>
+                    <button class="btn-console" style="padding: 1rem 2.5rem; margin-top: 1.5rem; font-size: 0.85rem; height: auto;">Reserve Now</button>
+                </div>
+                <div class="main-img-container">
+                    <img src="https://freepngimg.com/thumb/car/4-2-car-png-hd-thumb.png" alt="Jetour X90 Plus" class="mc-img-large">
+                </div>
+            </div>
+
+            <div class="matrix-card card-side">
+                <div>
+                    <div class="mc-tag" style="background: var(--bg-base); color: var(--text-main); border-color: var(--glass-border);">PREMIUM SUV</div>
+                    <h3 class="mc-title">SOUEAST <br>S09</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2026</div>
+                        <div class="spec-pill">Auto</div>
+                        <div class="spec-pill">White</div>
+                    </div>
+                </div>
+                <div class="side-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/Jetour-X70.png" alt="Soueast S09" class="mc-img-small">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="mc-price" style="font-size: 1.8rem;">2,000 <span>EGP</span></div>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="category-title">Compact SUVs & Crossovers</h3>
+        <div class="matrix-grid">
+            <div class="matrix-card card-main">
+                <div style="z-index: 10; position: relative; width: 45%;">
+                    <div class="mc-tag"><i class="fa-solid fa-fire"></i> HIGH DEMAND</div>
+                    <h3 class="mc-title">HYUNDAI <br>TUCSON</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2022</div>
+                        <div class="spec-pill"><i class="fa-solid fa-gears"></i> Auto</div>
+                        <div class="spec-pill">Black</div>
+                    </div>
+                    <div class="mc-price">1,800 <span>EGP / day</span></div>
+                    <button class="btn-console" style="padding: 1rem 2.5rem; margin-top: 1.5rem; font-size: 0.85rem; height: auto;">Reserve Now</button>
+                </div>
+                <div class="main-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/Hyundai-Tucson.png" alt="Hyundai Tucson" class="mc-img-large">
+                </div>
+            </div>
+
+            <div class="matrix-card card-side">
+                <div>
+                    <div class="mc-tag" style="background: var(--bg-base); color: var(--text-main); border-color: var(--glass-border);">COMPACT SUV</div>
+                    <h3 class="mc-title">MG ZS</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2025</div>
+                        <div class="spec-pill">Auto</div>
+                        <div class="spec-pill">Silver</div>
+                    </div>
+                </div>
+                <div class="side-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/MG-ZS.png" alt="MG ZS" class="mc-img-small">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="mc-price" style="font-size: 1.8rem;">1,400 <span>EGP</span></div>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="matrix-grid">
+            <div class="matrix-card card-third">
+                <div>
+                    <div class="mc-tag" style="background: var(--bg-base); color: var(--text-main); border-color: var(--glass-border);">LUXURY CROSSOVER</div>
+                    <h3 class="mc-title">KIA <br>SPORTAGE</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">Auto</div>
+                        <div class="spec-pill">5 Seats</div>
+                    </div>
+                </div>
+                <div class="side-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/Kia-Sportage.png" alt="Kia Sportage" class="mc-img-small">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="mc-price" style="font-size: 1.8rem;">2,200 <span>EGP</span></div>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                </div>
+            </div>
+
+            <div class="matrix-card card-third">
+                <div>
+                    <div class="mc-tag warning"><i class="fa-solid fa-triangle-exclamation"></i> POLICY EXCEPTION</div>
+                    <h3 class="mc-title">HAVAL <br>JOLION</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2022</div>
+                        <div class="spec-pill">Auto</div>
+                        <div class="spec-pill">Light Blue</div>
+                    </div>
+                </div>
+                <div class="side-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/MG-ZS.png" alt="Haval Jolion" class="mc-img-small" style="filter: hue-rotate(180deg);">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="mc-price" style="font-size: 1.8rem;">1,500 <span>EGP</span></div>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                </div>
+            </div>
+
+            <div class="matrix-card card-third">
+                <div>
+                    <div class="mc-tag" style="background: var(--bg-base); color: var(--text-main); border-color: var(--glass-border);">RUGGED UTILITY</div>
+                    <h3 class="mc-title">RENAULT <br>DUSTER</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2025</div>
+                        <div class="spec-pill">Auto</div>
+                        <div class="spec-pill">Ashen</div>
+                    </div>
+                </div>
+                <div class="side-img-container">
+                    <img src="https://freepngimg.com/thumb/car/3-2-car-free-download-png-thumb.png" alt="Renault Duster" class="mc-img-small">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="mc-price" style="font-size: 1.8rem;">1,400 <span>EGP</span></div>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="category-title">Economy Sedans</h3>
+        <div class="matrix-grid">
+            <div class="matrix-card card-main">
+                <div style="z-index: 10; position: relative; width: 45%;">
+                    <div class="mc-tag"><i class="fa-solid fa-bolt"></i> BEST VALUE</div>
+                    <h3 class="mc-title">MG 5</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2026</div>
+                        <div class="spec-pill"><i class="fa-solid fa-gears"></i> Auto</div>
+                        <div class="spec-pill">Red</div>
+                    </div>
+                    <div class="mc-price">1,200 <span>EGP / day</span></div>
+                    <button class="btn-console" style="padding: 1rem 2.5rem; margin-top: 1.5rem; font-size: 0.85rem; height: auto;">Reserve Now</button>
+                </div>
+                <div class="main-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/MG-5-2.png" alt="MG 5" class="mc-img-large">
+                </div>
+            </div>
+
+            <div class="matrix-card card-side">
+                <div>
+                    <div class="mc-tag" style="background: var(--bg-base); color: var(--text-main); border-color: var(--glass-border);">RELIABLE SEDAN</div>
+                    <h3 class="mc-title">NISSAN <br>SUNNY</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2026</div>
+                        <div class="spec-pill">Auto</div>
+                        <div class="spec-pill">Silver</div>
+                    </div>
+                </div>
+                <div class="side-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/MG-5-2.png" alt="Nissan Sunny" class="mc-img-small" style="filter: grayscale(100%);">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="mc-price" style="font-size: 1.8rem;">1,000 <span>EGP</span></div>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="matrix-grid">
+            <div class="matrix-card card-half">
+                <div>
+                    <div class="mc-tag" style="background: var(--bg-base); color: var(--text-main); border-color: var(--glass-border);">EUROPEAN SEDAN</div>
+                    <h3 class="mc-title">RENAULT <br>MEGANE</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2020</div>
+                        <div class="spec-pill">Auto</div>
+                        <div class="spec-pill">Grey</div>
+                    </div>
+                </div>
+                <div class="side-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/MG-5-2.png" alt="Renault Megane" class="mc-img-small" style="filter: sepia(0.5) hue-rotate(200deg);">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="mc-price" style="font-size: 1.8rem;">1,100 <span>EGP</span></div>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                </div>
+            </div>
+
+            <div class="matrix-card card-half">
+                <div>
+                    <div class="mc-tag" style="background: var(--bg-base); color: var(--text-main); border-color: var(--glass-border);">CITY COMPACT</div>
+                    <h3 class="mc-title">CHEVROLET <br>AVEO</h3>
+                    <div class="mc-specs">
+                        <div class="spec-pill">2017</div>
+                        <div class="spec-pill">Auto</div>
+                        <div class="spec-pill">Blue</div>
+                    </div>
+                </div>
+                <div class="side-img-container">
+                    <img src="https://brothersegy.com/wp-content/uploads/2026/01/MG-5-2.png" alt="Chevrolet Aveo" class="mc-img-small" style="filter: hue-rotate(90deg);">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="mc-price" style="font-size: 1.8rem;">800 <span>EGP</span></div>
+                    <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-wrapper">
+        <section class="transparency-hub">
+            <div class="logic-card">
+                 <h2 class="card-title">Flexible Payments</h2>
+            <ul style="color: var(--text-muted); margin-top: 1rem; list-style-position: inside; line-height: 1.8;">
+                <li>No Credit Card Needed</li>
+                <li>Pay Cash on Arrival</li>
+                <li>12h Free Cancellation</li>
+            </ul>
+
+            </div>
+
+            <div class="logic-card">
+                <h3>Radical Transparency.</h3>
+                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">Unlike our standard fleet, please note that basic insurance is <strong>not included</strong> in the base daily rental price for the 2022 Haval model.</p>
+                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">We believe in upfront honesty to ensure you experience absolute zero surprises upon arrival at the airport.</p>
+                
+                <div class="void-alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <h4 style="color: var(--danger); margin-bottom: 0.3rem; font-weight: 800; font-size: 0.9rem; text-transform: uppercase;">The Void Rule</h4>
+                        <p>Regardless of your insurance tier, NO POLICE REPORT = NO COVERAGE in the event of an incident. Always prioritize safety and legal documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>BROTHERS<span>EGY</span></h2>
+                    <p>Delivering premium mobility solutions across Cairo, Hurghada, and Alexandria. Backed by verified Google trust and transparent business practices.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Operations</h4>
+                    <ul>
+                        <li><a href="#">Cairo Int. Airport (CAI)</a></li>
+                        <li><a href="#">Hurghada Base</a></li>
+                        <li><a href="#">Alexandria City</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>The Fleet</h4>
+                    <ul>
+                        <li><a href="#">Premium SUV</a></li>
+                        <li><a href="#">Compact SUVs</a></li>
+                        <li><a href="#">Economy Sedans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support & Legal</h4>
+                    <ul>
+                        <li><a href="#">Contact 24/7 Support</a></li>
+                        <li><a href="#">Insurance Terms</a></li>
+                        <li><a href="#">Rental Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Brothers EGY Car Rental. All rights reserved. Built for seamless journeys.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
