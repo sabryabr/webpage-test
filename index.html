@@ -1041,7 +1041,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
 @media(max-width:768px){
   .nav-links,.nav-wa,.nav-book{display:none}
   .hamburger{display:flex}
-  #fab{display:none}
+  #fab{bottom:20%;transform:scale(0.85);transform-origin:right bottom}
   #mob-bar{display:block}
   body{padding-bottom:68px}
   .feat-grid{grid-template-columns:1fr}
@@ -1067,7 +1067,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   .book-btn-row{grid-template-columns:1fr auto auto}
   .tour-img-wrap,.tour-img{height:140px}
 }
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+
 /* Compare modal — mobile responsive */
 @media(max-width:680px){
   .modal-overlay{padding:.6rem}
