@@ -11,22 +11,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* ═══ ROOT ═══ */
 :root{
-  --bg:#02040a; --surface:#0d1117; --elevated:#161b22;
-  --accent:#00f0ff; --accent-glow:rgba(0,240,255,.35);
-  --purple:#a855f7; --green:#25D366; --success:#2ea043;
-  --danger:#f85149; --warning:#f1c40f;
-  --text:#fff; --muted:#8b949e;
-  --border:rgba(255,255,255,.08); --glass:rgba(13,17,23,.92); --r:18px;
+  --bg:#02040a;--surface:#0d1117;--elevated:#161b22;
+  --accent:#00f0ff;--accent-glow:rgba(0,240,255,.35);
+  --purple:#a855f7;--green:#25D366;--success:#2ea043;
+  --danger:#f85149;--warning:#f1c40f;
+  --text:#fff;--muted:#8b949e;
+  --border:rgba(255,255,255,.08);--glass:rgba(13,17,23,.92);--r:18px;
 }
 [data-theme="light"]{
-  --bg:#f0f4f8; --surface:#ffffff; --elevated:#e8edf3;
-  --accent:#0099bb; --accent-glow:rgba(0,153,187,.22);
-  --purple:#7c3aed; --green:#18a349; --success:#18a349;
-  --danger:#c0392b; --warning:#b8860b;
-  --text:#0d1117; --muted:#556070;
-  --border:rgba(0,0,0,.09); --glass:rgba(240,244,248,.96);
+  --bg:#f0f4f8;--surface:#ffffff;--elevated:#e8edf3;
+  --accent:#0099bb;--accent-glow:rgba(0,153,187,.22);
+  --purple:#7c3aed;--green:#18a349;--success:#18a349;
+  --danger:#c0392b;--warning:#b8860b;
+  --text:#0d1117;--muted:#556070;
+  --border:rgba(0,0,0,.09);--glass:rgba(240,244,248,.96);
 }
 [data-theme="light"] ::-webkit-scrollbar-track{background:#e8edf3}
 [data-theme="light"] ::-webkit-scrollbar-thumb{background:#b0bac8}
@@ -44,6 +43,7 @@
 [data-theme="light"] .fab-collapse-btn{background:rgba(255,255,255,.95)}
 [data-theme="light"] #mob-bar{background:rgba(255,255,255,.98)}
 [data-theme="light"] .modal-overlay{background:rgba(240,244,248,.97)}
+[data-theme="light"] .tf-group input,[data-theme="light"] .tf-group select,[data-theme="light"] .tf-group textarea{background:var(--surface);color:var(--text);border-color:rgba(0,0,0,.12)}
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden;background:var(--bg)}
@@ -58,39 +58,17 @@ a{text-decoration:none;color:inherit}
 img{max-width:100%;height:auto}
 button,select,input,textarea{font-family:'Outfit',sans-serif}
 
-/* ═══ SCROLL PROGRESS ═══ */
 #pg-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--accent),var(--purple),var(--accent));background-size:200%;animation:pgAnimate 3s linear infinite;z-index:999999;pointer-events:none}
 @keyframes pgAnimate{to{background-position:-200% 0}}
 
-/* ═══ THEME TOGGLE — PILL STYLE ═══ */
-.theme-pill{
-  display:flex;align-items:center;gap:0;
-  background:var(--elevated);border:1px solid var(--border);
-  border-radius:50px;padding:3px;flex-shrink:0;
-  box-shadow:0 2px 8px rgba(0,0,0,.2);
-}
-.theme-pill-btn{
-  display:flex;align-items:center;gap:5px;
-  padding:.32rem .75rem;border-radius:50px;
-  font-size:.68rem;font-weight:800;text-transform:uppercase;
-  letter-spacing:.5px;border:none;cursor:pointer;transition:.25s;
-  background:transparent;color:var(--muted);white-space:nowrap;
-}
+/* ── THEME PILL ── */
+.theme-pill{display:flex;align-items:center;background:var(--elevated);border:1px solid var(--border);border-radius:50px;padding:3px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.theme-pill-btn{display:flex;align-items:center;gap:5px;padding:.32rem .75rem;border-radius:50px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;border:none;cursor:pointer;transition:.25s;background:transparent;color:var(--muted);white-space:nowrap}
 .theme-pill-btn i{font-size:.72rem}
-.theme-pill-btn.active{
-  background:var(--accent);color:#000;
-  box-shadow:0 2px 8px var(--accent-glow);
-}
-[data-theme="light"] .theme-pill-btn.active{background:var(--accent);color:#000}
+.theme-pill-btn.t-active{background:var(--accent);color:#000;box-shadow:0 2px 8px var(--accent-glow)}
 
-/* ═══ NAV ═══ */
-#main-nav{
-  position:fixed;top:0;left:0;right:0;z-index:99999;
-  background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.7rem 2.5rem;gap:1rem;transition:padding .3s,box-shadow .3s;
-}
+/* ── NAV ── */
+#main-nav{position:fixed;top:0;left:0;right:0;z-index:99999;background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.7rem 2.5rem;gap:1rem;transition:padding .3s,box-shadow .3s}
 #main-nav.scrolled{padding:.5rem 2.5rem;box-shadow:0 4px 30px rgba(0,0,0,.15)}
 .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
 .nav-logo img{height:34px;filter:drop-shadow(0 0 10px var(--accent-glow))}
@@ -116,9 +94,9 @@ button,select,input,textarea{font-family:'Outfit',sans-serif}
 .mm-cta{display:flex;flex-direction:column;gap:.8rem;width:260px;margin-top:1rem}
 .mm-cta button,.mm-cta a{width:100%;text-align:center;justify-content:center;padding:1rem;border-radius:14px;font-size:.9rem}
 
-/* ═══ FAB ═══ */
+/* ── FAB ── */
 #fab{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);z-index:99990;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem}
-.fab-collapse-btn{width:32px;height:32px;border-radius:50%;background:var(--elevated);border:1px solid var(--border);color:var(--muted);font-size:.65rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s;align-self:flex-end;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.fab-collapse-btn{width:32px;height:32px;border-radius:50%;background:var(--elevated);border:1px solid var(--border);color:var(--muted);font-size:.65rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s;box-shadow:0 2px 10px rgba(0,0,0,.3)}
 .fab-collapse-btn:hover{border-color:var(--accent);color:var(--accent)}
 #fab.collapsed .fab-actions,#fab.collapsed .fab-main-label{display:none}
 #fab.collapsed .fab-main{padding:.75rem;border-radius:50%}
@@ -142,7 +120,7 @@ button,select,input,textarea{font-family:'Outfit',sans-serif}
 .fab-top.show{display:flex}
 .fab-top:hover{border-color:var(--accent);color:var(--accent)}
 
-/* ═══ MOBILE BAR ═══ */
+/* ── MOBILE BAR ── */
 #mob-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--glass);backdrop-filter:blur(20px);border-top:1px solid var(--border);z-index:9999;padding:.55rem .3rem calc(.55rem + env(safe-area-inset-bottom))}
 .mob-bar-row{display:flex;justify-content:space-around;align-items:center}
 .mob-btn{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-size:.55rem;font-weight:800;text-transform:uppercase;text-decoration:none;padding:.3rem .4rem;border-radius:8px;transition:.2s;border:none;background:none;cursor:pointer;min-width:44px}
@@ -151,7 +129,7 @@ button,select,input,textarea{font-family:'Outfit',sans-serif}
 .mob-btn-wa{background:var(--green);color:#000 !important;padding:.5rem 1rem;border-radius:50px;flex-direction:row;gap:.4rem;font-size:.68rem;min-width:auto}
 .mob-btn-wa i{font-size:.95rem}
 
-/* ═══ SHARED ═══ */
+/* ── SHARED ── */
 .pg-section{background:var(--bg);padding:4rem 0;width:100%}
 .pg-section.dark{background:var(--bg)}
 .pg-section.surface{background:var(--surface)}
@@ -174,16 +152,16 @@ button,select,input,textarea{font-family:'Outfit',sans-serif}
 .chip{background:var(--elevated);border:1px solid var(--border);padding:.3rem .75rem;border-radius:8px;font-size:.68rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem;color:var(--muted)}
 .chip i{color:var(--accent);font-size:.6rem}
 
-/* ═══ FORM FIELDS ═══ */
+/* ── FORM FIELDS ── */
 .field-group{display:flex;flex-direction:column;gap:.38rem}
 .field-label{font-size:.58rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);font-weight:800}
-.field-input,.field-select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding-top:.82rem;padding-bottom:.82rem;padding-left:1rem;padding-right:1rem;border-radius:11px;font-size:.82rem;font-weight:600;outline:none;transition:border-color .3s,box-shadow .3s;width:100%;min-width:0;min-height:46px;line-height:1.4;display:block}
+.field-input,.field-select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:.82rem 1rem;border-radius:11px;font-size:.82rem;font-weight:600;outline:none;transition:border-color .3s,box-shadow .3s;width:100%;min-width:0;min-height:46px;line-height:1.4;display:block}
 .field-input:focus,.field-select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,240,255,.08)}
 .field-select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%2300f0ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85rem center;background-color:var(--bg);padding-right:2.4rem}
 .field-select option{background:var(--surface);color:var(--text)}
 input[type="date"].field-input{color-scheme:dark}
 
-/* ═══ HERO ═══ */
+/* ── HERO ── */
 #hero{position:relative;min-height:860px;min-height:min(100vh,860px);width:100%;padding:110px 0 0;overflow:hidden;background:var(--bg)}
 .hero-bg{position:absolute;inset:0;background:url('https://brothersegy.com/wp-content/uploads/2025/11/giza-pyramids-cairo-egypt-with-palm.jpg') center 30%/cover no-repeat;opacity:.08;filter:grayscale(40%);pointer-events:none}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,4,10,.75) 0%,rgba(2,4,10,.2) 40%,var(--bg) 95%);pointer-events:none}
@@ -204,7 +182,7 @@ input[type="date"].field-input{color-scheme:dark}
 .hero-stage{position:relative;width:100%;max-width:640px;height:380px;perspective:1200px;margin:0 auto}
 .hero-car-canvas{width:100%;height:100%;position:relative;display:flex;align-items:center;justify-content:center}
 .hero-car-slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.hero-car-slot img{width:88%;max-height:320px;object-fit:contain;filter:drop-shadow(0 30px 50px rgba(0,0,0,.95)) drop-shadow(0 0 25px rgba(0,240,255,.07));transform-origin:center center;will-change:transform,opacity;transform:translateZ(0)} /* FIX: force GPU layer, remove filter from will-change */
+.hero-car-slot img{width:88%;max-height:320px;object-fit:contain;filter:drop-shadow(0 30px 50px rgba(0,0,0,.95)) drop-shadow(0 0 25px rgba(0,240,255,.07));transform-origin:center center;will-change:transform;transform:translateZ(0)}
 @keyframes carSpinOut{0%{transform:perspective(900px) rotateY(0deg) scale(1) translateZ(0);opacity:1}100%{transform:perspective(900px) rotateY(-70deg) scale(.6) translateX(-80px) translateZ(0);opacity:0;filter:blur(3px)}}
 @keyframes carSpinIn{0%{transform:perspective(900px) rotateY(70deg) scale(.6) translateX(80px) translateZ(0);opacity:0;filter:blur(3px)}100%{transform:perspective(900px) rotateY(0deg) scale(1) translateX(0) translateZ(0);opacity:1;filter:none}}
 @keyframes heroFloat{0%,100%{transform:translateY(0) translateZ(0)}50%{transform:translateY(-10px) translateZ(0)}}
@@ -231,7 +209,7 @@ input[type="date"].field-input{color-scheme:dark}
 @keyframes tickRoll{to{transform:translateX(-50%)}}
 @media(max-width:768px){.ticker-track{animation-duration:200s}}
 
-/* ═══ STATS ═══ */
+/* ── STATS ── */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;max-width:1000px;margin:0 auto}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.7rem;text-align:center;transition:.4s}
 .stat-card:hover{border-color:var(--accent);transform:translateY(-3px)}
@@ -239,22 +217,13 @@ input[type="date"].field-input{color-scheme:dark}
 .stat-num{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:950;color:var(--accent);line-height:1;display:block}
 .stat-lbl{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-top:.5rem;display:block}
 
-/* ═══ BRAND STORY — REWRITTEN ═══ */
+/* ── BRAND STORY ── */
 .story-section{padding:5rem 0;background:var(--bg)}
-
-/* Philosophy pull-quote */
-.story-philosophy{
-  max-width:820px;margin:0 auto 3.5rem;
-  background:linear-gradient(135deg,rgba(0,240,255,.04),rgba(168,85,247,.03));
-  border:1px solid rgba(0,240,255,.15);border-radius:22px;
-  padding:2.2rem 2.8rem;text-align:center;position:relative;overflow:hidden;
-}
+.story-philosophy{max-width:820px;margin:0 auto 3.5rem;background:linear-gradient(135deg,rgba(0,240,255,.04),rgba(168,85,247,.03));border:1px solid rgba(0,240,255,.15);border-radius:22px;padding:2.2rem 2.8rem;text-align:center;position:relative;overflow:hidden}
 .story-philosophy::before{content:'\201C';position:absolute;top:-.5rem;left:1.5rem;font-size:8rem;font-weight:900;color:rgba(0,240,255,.06);line-height:1;pointer-events:none}
 .story-philosophy blockquote{font-size:1.05rem;font-style:italic;color:var(--muted);line-height:1.8;margin:0}
 .story-philosophy blockquote strong{color:var(--text);font-style:normal}
 .story-philosophy cite{display:block;margin-top:.8rem;font-size:.72rem;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-style:normal}
-
-/* Timeline — vertical line with event cards */
 .story-timeline{position:relative;max-width:860px;margin:0 auto 3.5rem;padding:0 1rem}
 .story-tl-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,var(--accent) 15%,var(--accent) 85%,transparent);transform:translateX(-50%);pointer-events:none}
 .story-tl-item{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;margin-bottom:2.5rem}
@@ -265,31 +234,22 @@ input[type="date"].field-input{color-scheme:dark}
 .tl-card p{font-size:.76rem;color:var(--muted);line-height:1.6;margin:0}
 .tl-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:0 1.2rem}
 .tl-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);box-shadow:0 0 10px var(--accent-glow);flex-shrink:0}
-.tl-year{
-  font-size:1.1rem;font-weight:950;color:var(--accent);
-  white-space:nowrap;line-height:1;
-}
-/* Alternating sides */
+.tl-year{font-size:1.1rem;font-weight:950;color:var(--accent);white-space:nowrap;line-height:1}
 .story-tl-item:nth-child(odd) .tl-card{text-align:right;grid-column:1}
 .story-tl-item:nth-child(odd) .tl-dot-wrap{grid-column:2}
 .story-tl-item:nth-child(odd) .tl-empty{grid-column:3}
 .story-tl-item:nth-child(even) .tl-empty{grid-column:1}
 .story-tl-item:nth-child(even) .tl-dot-wrap{grid-column:2}
 .story-tl-item:nth-child(even) .tl-card{text-align:left;grid-column:3}
-
-/* Brotherhood pillars */
 .story-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:860px;margin:0 auto}
-.sp-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:18px;padding:1.6rem 1.4rem;text-align:center;transition:.4s;
-}
+.sp-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:1.6rem 1.4rem;text-align:center;transition:.4s}
 .sp-card:hover{border-color:var(--accent);transform:translateY(-4px)}
 .sp-ico{width:52px;height:52px;border-radius:14px;background:rgba(0,240,255,.07);border:1px solid rgba(0,240,255,.14);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--accent);margin:0 auto 1rem;transition:.4s}
 .sp-card:hover .sp-ico{background:var(--accent);color:#000;border-color:var(--accent)}
 .sp-card h4{font-size:.88rem;font-weight:900;color:var(--text);margin-bottom:.4rem;text-transform:uppercase}
 .sp-card p{font-size:.76rem;color:var(--muted);line-height:1.65;margin:0}
 
-/* ═══ DEAL BUILDER ═══ */
+/* ── DEAL BUILDER ── */
 #deal-section{background:var(--bg);padding:4rem 0;width:100%}
 .deal-wrap{max-width:1500px;margin:0 auto;padding:0 2.5rem}
 .deal-bento{display:grid;grid-template-columns:5fr 7fr;gap:1.5rem;align-items:start}
@@ -300,25 +260,10 @@ input[type="date"].field-input{color-scheme:dark}
 .studio-hud{display:flex;gap:5px}
 .hud-btn{width:34px;height:34px;border-radius:50%;background:var(--elevated);border:1px solid var(--border);color:var(--muted);font-size:.75rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s}
 .hud-btn:hover,.hud-btn.lit{border-color:var(--accent);color:var(--accent);box-shadow:0 0 10px rgba(0,240,255,.3)}
-.studio-vp{
-  position:relative;flex:1;display:flex;align-items:center;justify-content:center;
-  min-height:200px;margin:.6rem 0;cursor:grab;user-select:none;
-  /* FIX mobile blur: create independent stacking context */
-  transform:translateZ(0);
-  -webkit-transform:translateZ(0);
-  isolation:isolate;
-}
+.studio-vp{position:relative;flex:1;display:flex;align-items:center;justify-content:center;min-height:200px;margin:.6rem 0;cursor:grab;user-select:none;transform:translateZ(0);-webkit-transform:translateZ(0);isolation:isolate}
 .studio-vp:active{cursor:grabbing}
 .studio-shadow{position:absolute;bottom:5%;left:15%;right:15%;height:16px;background:radial-gradient(ellipse,rgba(0,0,0,.6),transparent 70%);filter:blur(5px);z-index:1;pointer-events:none}
-.studio-car-img{
-  width:92%;max-width:420px;max-height:200px;object-fit:contain;
-  filter:drop-shadow(0 14px 26px rgba(0,0,0,.95));
-  z-index:2;position:relative;pointer-events:none;
-  /* FIX: only will-change transform, not filter — filter+will-change together causes mobile blur */
-  will-change:transform;
-  transform:translateZ(0);
-  -webkit-transform:translateZ(0);
-}
+.studio-car-img{width:92%;max-width:420px;max-height:200px;object-fit:contain;filter:drop-shadow(0 14px 26px rgba(0,0,0,.95));z-index:2;position:relative;pointer-events:none;will-change:transform;transform:translateZ(0);-webkit-transform:translateZ(0)}
 .studio-car-img.spin-out{animation:studioOut .45s cubic-bezier(.55,0,.45,1) forwards}
 .studio-car-img.spin-in{animation:studioIn .55s cubic-bezier(.34,1.56,.64,1) forwards}
 @keyframes studioOut{0%{transform:perspective(800px) rotateY(0deg) scale(1) translateZ(0);opacity:1}100%{transform:perspective(800px) rotateY(-90deg) scale(.5) translateX(-60px) translateZ(0);opacity:0;filter:blur(4px)}}
@@ -373,7 +318,7 @@ input[type="date"].field-input{color-scheme:dark}
 .range-input{width:100%;-webkit-appearance:none;height:4px;border-radius:50px;background:var(--border);outline:none;cursor:pointer;margin:8px 0 .9rem}
 .range-input::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(0,240,255,.7);cursor:pointer}
 
-/* ═══ HUBS ═══ */
+/* ── HUBS ── */
 .hubs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .hub-card{height:320px;border-radius:22px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1.6rem;border:2px solid transparent;transition:.4s;text-decoration:none;color:#fff}
 .hub-card:hover{border-color:var(--accent);box-shadow:0 0 32px var(--accent-glow)}
@@ -388,52 +333,29 @@ input[type="date"].field-input{color-scheme:dark}
 .hub-cta{display:inline-flex;align-items:center;gap:5px;background:var(--accent);color:#000;padding:.48rem 1rem;border-radius:50px;font-size:.68rem;font-weight:900;text-transform:uppercase;transition:.3s;opacity:0;transform:translateY(6px)}
 .hub-card:hover .hub-cta{opacity:1;transform:translateY(0)}
 
-/* ═══ FLEET CAROUSEL ═══ */
+/* ── FLEET CAROUSEL ── */
 .fleet-section{background:var(--bg);padding:4rem 0;width:100%}
 .hub-switcher{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.8rem;flex-wrap:wrap}
 .hub-sw-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:.52rem 1.2rem;border-radius:50px;font-size:.72rem;font-weight:700;cursor:pointer;transition:.3s;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:6px}
 .hub-sw-btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
 .hub-sw-btn:hover:not(.active){border-color:var(--accent);color:var(--accent)}
-
-/* Category tabs */
 .car-cat-tabs{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
-.car-cat-tab{
-  background:var(--surface);border:1px solid var(--border);color:var(--muted);
-  padding:.45rem 1.1rem;border-radius:50px;font-size:.7rem;font-weight:700;
-  cursor:pointer;transition:.3s;display:flex;align-items:center;gap:6px;
-  text-transform:uppercase;letter-spacing:.5px;
-}
+.car-cat-tab{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:.45rem 1.1rem;border-radius:50px;font-size:.7rem;font-weight:700;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.5px}
 .car-cat-tab.active{background:var(--accent);color:#000;border-color:var(--accent)}
 .car-cat-tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
 .cat-count{background:rgba(0,0,0,.15);border-radius:50px;padding:.1rem .45rem;font-size:.58rem}
 .car-cat-tab.active .cat-count{background:rgba(0,0,0,.2)}
-
-/* Carousel wrapper */
-.fleet-carousel-wrap{position:relative}
-.fleet-carousel{
-  display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;padding-bottom:.5rem;
-  scrollbar-width:none;
-}
+.carousel-outer{position:relative}
+.fleet-carousel{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;scrollbar-width:none}
 .fleet-carousel::-webkit-scrollbar{display:none}
-.fleet-carousel .fc{
-  flex:0 0 280px;scroll-snap-align:start;
-}
-.car-nav-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:40px;height:40px;border-radius:50%;
-  background:var(--glass);backdrop-filter:blur(12px);
-  border:1px solid var(--border);color:var(--text);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:.3s;z-index:10;font-size:.9rem;
-}
+.fleet-carousel .fc{flex:0 0 280px;scroll-snap-align:start}
+.car-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--border);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s;z-index:10;font-size:.9rem}
 .car-nav-btn:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 14px var(--accent-glow)}
 .car-nav-prev{left:-18px}
 .car-nav-next{right:-18px}
 .carousel-dots{display:flex;gap:5px;justify-content:center;margin-top:.8rem}
 .cdot{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:pointer;transition:.3s}
 .cdot.active{background:var(--accent);width:18px;border-radius:3px}
-
 .fc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;display:flex;flex-direction:column;transition:.4s;position:relative;overflow:hidden}
 .fc:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.12)}
 .fc-ribbon{position:absolute;top:12px;right:12px;padding:.22rem .65rem;border-radius:50px;font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;z-index:8}
@@ -468,7 +390,7 @@ input[type="date"].field-input{color-scheme:dark}
 .fc-cmp-cb{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
 .fc-cmp-lbl{font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;cursor:pointer;user-select:none}
 
-/* ═══ COMPARE BAR ═══ */
+/* ── COMPARE BAR ── */
 #cmp-bar{position:fixed;bottom:68px;left:0;right:0;z-index:10000;background:var(--glass);backdrop-filter:blur(20px);border-top:2px solid var(--accent);padding:.9rem 2.5rem;display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
 @media(min-width:769px){#cmp-bar{bottom:0}}
 #cmp-bar.show{display:flex}
@@ -483,7 +405,7 @@ input[type="date"].field-input{color-scheme:dark}
 .cmp-hint{font-size:.68rem;color:var(--muted)}
 .cmp-car-price{font-size:.56rem;color:var(--accent);font-weight:800;display:block;margin-top:2px}
 
-/* ═══ COMPARE MODAL ═══ */
+/* ── COMPARE MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(2,4,10,.96);backdrop-filter:blur(16px);z-index:999990;display:none;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto}
 .modal-overlay.open{display:flex}
 .modal-box{background:var(--surface);border:1px solid var(--border);border-radius:22px;width:100%;max-width:860px;padding:2rem;position:relative;margin:auto;animation:mIn .25s ease}
@@ -530,7 +452,7 @@ input[type="date"].field-input{color-scheme:dark}
 .cmp-lose-ico{display:inline-flex;align-items:center;justify-content:center;background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.18);color:var(--danger);width:16px;height:16px;border-radius:50%;font-size:.5rem;margin-left:4px;vertical-align:middle;flex-shrink:0}
 .cmp-table th,.cmp-table td{white-space:nowrap}
 
-/* ═══ WHY US ═══ */
+/* ── WHY US ── */
 .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
 .feat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem 1.3rem;transition:.4s}
 .feat-card:hover{border-color:var(--accent);transform:translateY(-4px)}
@@ -539,7 +461,7 @@ input[type="date"].field-input{color-scheme:dark}
 .feat-card h3{font-size:.9rem;font-weight:800;margin:0 0 .45rem;color:var(--text)}
 .feat-card p{color:var(--muted);font-size:.78rem;line-height:1.65;margin:0}
 
-/* ═══ VS TABLE ═══ */
+/* ── VS TABLE ── */
 .vs-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;max-width:880px;margin:0 auto}
 .vs-table{width:100%;border-collapse:collapse}
 .vs-table th{padding:.85rem 1.2rem;font-size:.73rem;font-weight:900;text-transform:uppercase;letter-spacing:1px}
@@ -553,7 +475,7 @@ input[type="date"].field-input{color-scheme:dark}
 .b-good{display:inline-flex;align-items:center;gap:4px;background:rgba(46,160,67,.1);border:1px solid rgba(46,160,67,.2);color:var(--success);padding:.22rem .7rem;border-radius:50px;font-size:.68rem;font-weight:800}
 .b-bad{display:inline-flex;align-items:center;gap:4px;background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.18);color:var(--danger);padding:.22rem .7rem;border-radius:50px;font-size:.68rem;font-weight:700}
 
-/* ═══ REVIEWS ═══ */
+/* ── REVIEWS ── */
 .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .rev-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.7rem;transition:.4s;position:relative}
 .rev-card:hover{transform:translateY(-4px);border-color:var(--accent)}
@@ -566,7 +488,7 @@ input[type="date"].field-input{color-scheme:dark}
 .rev-info h5{font-size:.8rem;font-weight:800;margin:0;color:var(--text)}
 .rev-info span{font-size:.64rem;color:var(--muted)}
 
-/* ═══ TRANSPARENCY ═══ */
+/* ── TRANSPARENCY ── */
 .trans-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;max-width:980px;margin:0 auto}
 .trans-card{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:1.8rem}
 .dep-widget{background:var(--elevated);border:1px solid var(--border);border-radius:13px;padding:1.1rem;border-left:3px solid var(--accent)}
@@ -577,67 +499,36 @@ input[type="date"].field-input{color-scheme:dark}
 .void-alert i{font-size:1.2rem;color:var(--danger);margin-top:2px}
 .void-alert p{font-size:.76rem;color:#ffb3b0;line-height:1.6}
 
-/* ═══ TOURS & TRANSFERS ═══ */
-
-/* Shared tour enquiry form */
-.tour-form-panel{
-  background:var(--surface);border:1px solid rgba(168,85,247,.2);
-  border-radius:var(--r);padding:2rem;margin-bottom:3rem;position:relative;
-}
-.tour-form-panel h3{
-  font-size:1rem;font-weight:900;text-transform:uppercase;
-  color:var(--text);margin-bottom:1.4rem;
-  display:flex;align-items:center;gap:8px;
-}
+/* ── TOURS ── */
+.tour-form-panel{background:var(--surface);border:1px solid rgba(168,85,247,.2);border-radius:var(--r);padding:2rem;margin-bottom:3rem}
+.tour-form-panel h3{font-size:1rem;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:1.4rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .tour-form-panel h3 i{color:var(--purple)}
-.tour-form-panel h3 .tf-selected-tour{
-  color:var(--purple);font-size:.75rem;font-weight:700;
-  text-transform:none;letter-spacing:0;
-  background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);
-  padding:.2rem .7rem;border-radius:50px;margin-left:.3rem;
-}
+.tf-selected-label{color:var(--purple);font-size:.75rem;font-weight:700;text-transform:none;letter-spacing:0;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);padding:.2rem .7rem;border-radius:50px;margin-left:.3rem}
 .tf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.9rem;margin-bottom:.9rem}
 .tf-group{display:flex;flex-direction:column;gap:.38rem}
 .tf-group label{font-size:.58rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:2px}
-.tf-group input,.tf-group select,.tf-group textarea{
-  background:var(--elevated);border:1px solid var(--border);border-radius:11px;
-  padding:.78rem 1rem;color:var(--text);font-family:'Outfit',sans-serif;
-  font-size:.82rem;font-weight:600;outline:none;transition:border-color .3s,box-shadow .3s;
-  min-height:46px;width:100%;
-}
+.tf-group input,.tf-group select,.tf-group textarea{background:var(--elevated);border:1px solid var(--border);border-radius:11px;padding:.78rem 1rem;color:var(--text);font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;outline:none;transition:border-color .3s,box-shadow .3s;min-height:46px;width:100%}
 .tf-group input:focus,.tf-group select:focus,.tf-group textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(168,85,247,.12)}
 .tf-group textarea{resize:vertical;min-height:76px;line-height:1.5}
-.tf-group select{
-  appearance:none;-webkit-appearance:none;cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%23a855f7'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right .85rem center;
-  padding-right:2.4rem;
-}
+.tf-group select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%23a855f7'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85rem center;padding-right:2.4rem;background-color:var(--elevated)}
+.tf-group select option{background:var(--surface);color:var(--text)}
 .tf-actions{display:flex;align-items:center;justify-content:flex-end;gap:.7rem;margin-top:.5rem;flex-wrap:wrap}
 .tf-btn-wa{background:var(--green);color:#000;border:none;border-radius:12px;padding:.82rem 1.6rem;font-size:.82rem;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;transition:.3s;font-family:'Outfit',sans-serif;white-space:nowrap}
 .tf-btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,.5)}
 .tf-btn-ms{background:#0084ff;color:#fff;border:none;border-radius:12px;padding:.82rem 1.4rem;font-size:.82rem;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;transition:.3s;font-family:'Outfit',sans-serif}
 .tf-btn-ms:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,132,255,.4)}
-
-/* Tour carousel */
 .tour-cat-tabs{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
 .tour-cat-tab{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:.45rem 1.1rem;border-radius:50px;font-size:.7rem;font-weight:700;cursor:pointer;transition:.3s;text-transform:uppercase;letter-spacing:.5px}
 .tour-cat-tab.active{background:var(--purple);color:#fff;border-color:var(--purple)}
 .tour-cat-tab:hover:not(.active){border-color:var(--purple);color:var(--purple)}
-
 .tour-carousel-wrap{position:relative;margin-bottom:2.5rem}
 .tour-carousel{display:flex;gap:1.3rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;scrollbar-width:none}
 .tour-carousel::-webkit-scrollbar{display:none}
 .tour-card{flex:0 0 310px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--border);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:.4s;position:relative}
 .tour-card:hover{border-color:var(--accent);transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.18)}
-
-/* FIXED: brighter images */
 .tour-img-wrap{overflow:hidden;position:relative;height:185px}
-.tour-img{width:100%;height:100%;object-fit:cover;
-  filter:brightness(.78) saturate(.95); /* was .65 — now much more visible */
-  transition:filter .5s,transform .5s;display:block}
+.tour-img{width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.95);transition:filter .5s,transform .5s;display:block}
 .tour-card:hover .tour-img{filter:brightness(.92) saturate(1.1);transform:scale(1.04)}
-
 .tour-badge{position:absolute;top:12px;left:12px;background:rgba(0,240,255,.15);border:1px solid rgba(0,240,255,.3);color:var(--accent);font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:.28rem .8rem;border-radius:50px;backdrop-filter:blur(8px);z-index:2}
 .tour-badge.purple{background:rgba(168,85,247,.15);border-color:rgba(168,85,247,.3);color:var(--purple)}
 .tour-badge.green{background:rgba(37,211,102,.15);border-color:rgba(37,211,102,.3);color:var(--green)}
@@ -651,114 +542,60 @@ input[type="date"].field-input{color-scheme:dark}
 .tour-chip{display:inline-flex;align-items:center;gap:4px;background:var(--elevated);border:1px solid var(--border);padding:.22rem .6rem;border-radius:6px;font-size:.6rem;color:var(--muted);font-weight:700}
 .tour-chip i{color:var(--accent);font-size:.52rem}
 .tour-footer{padding-top:.8rem;border-top:1px solid var(--border)}
-/* Dual pricing */
 .tour-price-row{display:flex;gap:.6rem;margin-bottom:.7rem;flex-wrap:wrap}
-.tour-price-box{
-  flex:1;background:var(--elevated);border:1px solid var(--border);
-  border-radius:10px;padding:.5rem .7rem;text-align:center;
-  min-width:90px;
-}
+.tour-price-box{flex:1;background:var(--elevated);border:1px solid var(--border);border-radius:10px;padding:.5rem .7rem;text-align:center;min-width:90px}
 .tpb-lbl{font-size:.5rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);display:block;margin-bottom:2px}
 .tpb-price{font-size:.92rem;font-weight:950;color:var(--accent);display:block;line-height:1}
 .tpb-sub{font-size:.52rem;color:var(--muted);font-weight:600}
 .tour-price-box.highlight{border-color:rgba(0,240,255,.25);background:rgba(0,240,255,.04)}
-.tour-enquire-btn{
-  width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;
-  background:var(--green);color:#000;border:none;border-radius:10px;
-  padding:.65rem;font-size:.72rem;font-weight:900;text-transform:uppercase;
-  cursor:pointer;transition:.3s;
-}
+.tour-enquire-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--green);color:#000;border:none;border-radius:10px;padding:.65rem;font-size:.72rem;font-weight:900;text-transform:uppercase;cursor:pointer;transition:.3s;font-family:'Outfit',sans-serif}
 .tour-enquire-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,.5)}
+.tour-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--border);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s;z-index:10;font-size:.9rem}
+.tour-nav-btn:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 14px var(--accent-glow)}
+.tour-nav-prev{left:-18px}
+.tour-nav-next{right:-18px}
 
-/* Nav buttons for carousels */
-.tour-nav-btn,.car-nav-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:40px;height:40px;border-radius:50%;
-  background:var(--glass);backdrop-filter:blur(12px);
-  border:1px solid var(--border);color:var(--text);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:.3s;z-index:10;font-size:.9rem;
-}
-.tour-nav-btn:hover,.car-nav-btn:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 14px var(--accent-glow)}
-.tour-nav-prev,.car-nav-prev{left:-18px}
-.tour-nav-next,.car-nav-next{right:-18px}
-.carousel-dots{display:flex;gap:5px;justify-content:center;margin-top:.8rem}
-.cdot{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:pointer;transition:.3s}
-.cdot.active{background:var(--accent);width:18px;border-radius:3px}
-
-/* ═══ AIRPORT TRANSFERS — FANCY ═══ */
+/* ── AIRPORT TRANSFERS ── */
 .transfer-section{margin-top:3.5rem}
-.transfer-section-head{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:1.5rem;flex-wrap:wrap;gap:.8rem;
-}
+.transfer-section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.8rem}
 .transfer-section-head h3{font-size:1.4rem;font-weight:950;text-transform:uppercase;color:var(--text);letter-spacing:-1px}
 .transfer-section-head h3 span{color:var(--accent)}
-
-/* Airport hub selector */
 .airport-tabs{display:flex;gap:.5rem;flex-wrap:wrap}
-.airport-tab{
-  display:flex;align-items:center;gap:.5rem;
-  background:var(--surface);border:1px solid var(--border);
-  color:var(--muted);padding:.5rem 1.1rem;border-radius:50px;
-  font-size:.72rem;font-weight:700;cursor:pointer;transition:.3s;
-  text-transform:uppercase;letter-spacing:.5px;
-}
+.airport-tab{display:flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:.5rem 1.1rem;border-radius:50px;font-size:.72rem;font-weight:700;cursor:pointer;transition:.3s;text-transform:uppercase;letter-spacing:.5px}
 .airport-tab.active{background:var(--accent);color:#000;border-color:var(--accent)}
 .airport-tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
-.airport-tab i{font-size:.8rem}
-
-/* Airport panel */
 .airport-panel{display:none}
 .airport-panel.active{display:block}
-.airport-bento{
-  display:grid;grid-template-columns:1fr 1.3fr;gap:1.4rem;align-items:start;
-}
-.airport-info-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:20px;padding:1.6rem;
-}
+.airport-bento{display:grid;grid-template-columns:1fr 1.3fr;gap:1.4rem;align-items:start}
+.airport-info-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.6rem}
 .airport-info-card h4{font-size:.9rem;font-weight:900;color:var(--text);text-transform:uppercase;margin-bottom:.4rem}
 .airport-info-card p{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
 .airport-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
 .atag{display:inline-flex;align-items:center;gap:4px;background:rgba(0,240,255,.06);border:1px solid rgba(0,240,255,.12);color:var(--accent);padding:.22rem .65rem;border-radius:6px;font-size:.6rem;font-weight:800}
-.airport-price-strip{
-  display:flex;gap:.6rem;padding:.8rem;
-  background:var(--elevated);border:1px solid var(--border);border-radius:12px;
-  margin-top:.6rem;
-}
+.airport-price-strip{display:flex;gap:.6rem;padding:.8rem;background:var(--elevated);border:1px solid var(--border);border-radius:12px;margin-top:.6rem}
 .aps-item{flex:1;text-align:center}
 .aps-lbl{font-size:.52rem;font-weight:800;text-transform:uppercase;color:var(--muted);display:block;letter-spacing:1px;margin-bottom:2px}
 .aps-val{font-size:.88rem;font-weight:950;color:var(--accent);display:block}
 .aps-sub{font-size:.5rem;color:var(--muted);font-weight:600}
 .airport-divider{width:1px;background:var(--border)}
-
-/* Transfer booking form */
-.transfer-form{
-  background:var(--surface);border:1px solid rgba(0,240,255,.15);
-  border-radius:20px;padding:1.6rem;
-}
-.transfer-form h4{
-  font-size:.88rem;font-weight:900;color:var(--text);
-  text-transform:uppercase;margin-bottom:1.2rem;
-  display:flex;align-items:center;gap:7px;
-}
+.transfer-form{background:var(--surface);border:1px solid rgba(0,240,255,.15);border-radius:20px;padding:1.6rem}
+.transfer-form h4{font-size:.88rem;font-weight:900;color:var(--text);text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:7px}
 .transfer-form h4 i{color:var(--accent)}
-.tf-type-sw{
-  display:grid;grid-template-columns:1fr 1fr;gap:.4rem;
-  background:var(--elevated);padding:3px;border-radius:12px;border:1px solid var(--border);
-  margin-bottom:.9rem;
-}
-.tf-type-btn{background:transparent;border:none;padding:.6rem;border-radius:9px;font-size:.68rem;font-weight:800;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center;gap:5px}
+.tf-type-sw{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;background:var(--elevated);padding:3px;border-radius:12px;border:1px solid var(--border);margin-bottom:.9rem}
+.tf-type-btn{background:transparent;border:none;padding:.6rem;border-radius:9px;font-size:.68rem;font-weight:800;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center;gap:5px;font-family:'Outfit',sans-serif}
 .tf-type-btn.active{background:var(--accent);color:#000}
+.transfer-form .tf-group input,.transfer-form .tf-group select{background:var(--elevated);border:1px solid var(--border);border-radius:11px;padding:.78rem 1rem;color:var(--text);font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;outline:none;transition:border-color .3s;min-height:46px;width:100%}
+.transfer-form .tf-group input:focus,.transfer-form .tf-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,240,255,.08)}
+.transfer-form .tf-group select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%2300f0ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85rem center;padding-right:2.4rem;background-color:var(--elevated)}
+.transfer-form .tf-actions{display:flex;justify-content:flex-end;margin-top:.9rem}
 
-/* ═══ TOURS CTA STRIP ═══ */
+/* ── TOURS CTA ── */
 .tours-cta-strip{background:linear-gradient(135deg,rgba(168,85,247,.07),rgba(0,240,255,.04));border:1px solid rgba(168,85,247,.15);border-radius:20px;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:2.5rem}
 .tours-cta-strip h3{font-size:1.2rem;font-weight:950;text-transform:uppercase;color:var(--text);margin:0 0 .3rem}
 .tours-cta-strip p{font-size:.8rem;color:var(--muted);margin:0}
 .tours-cta-strip .cta-right{display:flex;gap:.8rem;flex-wrap:wrap}
 
-/* ═══ CTA BANNER ═══ */
+/* ── CTA BANNER ── */
 .cta-banner{background:linear-gradient(135deg,rgba(0,240,255,.06),rgba(168,85,247,.04),rgba(0,240,255,.02));border:1px solid rgba(0,240,255,.14);border-radius:26px;padding:4rem 2.5rem;text-align:center;position:relative;overflow:hidden;max-width:1100px;margin:0 auto}
 .cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0,rgba(0,240,255,.08),transparent 60%);pointer-events:none}
 .cta-banner h2{font-size:clamp(1.8rem,4.5vw,3.4rem);font-weight:950;text-transform:uppercase;letter-spacing:-2px;margin:0 0 1rem;line-height:1.05;position:relative;z-index:2;color:var(--text)}
@@ -769,7 +606,7 @@ input[type="date"].field-input{color-scheme:dark}
 .cta-trust-item{display:flex;align-items:center;gap:6px;font-size:.73rem;color:var(--muted);font-weight:600}
 .cta-trust-item i{color:var(--accent)}
 
-/* ═══ FOOTER ═══ */
+/* ── FOOTER ── */
 footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2rem;width:100%}
 .footer-inner{max-width:1500px;margin:0 auto;padding:0 2.5rem}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
@@ -786,85 +623,14 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
 .footer-socials a{color:var(--muted);font-size:.9rem;transition:.3s}
 .footer-socials a:hover{color:var(--accent);transform:translateY(-2px)}
 
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:1200px){
-  .deal-bento{grid-template-columns:1fr}
-  .deal-studio{position:static}
-  .feat-grid{grid-template-columns:repeat(2,1fr)}
-  .trans-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
-  .hubs-grid{grid-template-columns:1fr}
-  .story-pillars{grid-template-columns:1fr 1fr}
-  .airport-bento{grid-template-columns:1fr}
-}
-@media(max-width:900px){
-  #hero{min-height:auto !important}
-  .hero-inner{grid-template-columns:1fr;text-align:center;padding:0 1.5rem 60px}
-  .hero-desc,.hero-ctas,.hero-pills-row{margin-left:auto;margin-right:auto;justify-content:center}
-  .hero-right{order:-1}
-  .hero-stage{max-width:300px;height:210px}
-  .hero-h1{font-size:clamp(2.8rem,9vw,4rem);letter-spacing:-2px}
-  .reviews-grid{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .fg-3{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hubs-grid{grid-template-columns:1fr}
-  .story-tl-line{display:none}
-  .story-tl-item{grid-template-columns:1fr !important;gap:.5rem}
-  .story-tl-item .tl-empty{display:none}
-  .story-tl-item .tl-dot-wrap{flex-direction:row;padding:0;justify-content:flex-start}
-  .story-tl-item:nth-child(odd) .tl-card,.story-tl-item:nth-child(even) .tl-card{text-align:left;grid-column:1}
-  .story-tl-item:nth-child(odd) .tl-dot-wrap,.story-tl-item:nth-child(even) .tl-dot-wrap{grid-column:1}
-  .story-pillars{grid-template-columns:1fr}
-  .tf-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:768px){
-  .nav-links,.nav-wa,.nav-book{display:none}
-  .hamburger{display:flex}
-  #fab{display:none}
-  #mob-bar{display:block}
-  body{padding-bottom:68px}
-  .feat-grid{grid-template-columns:1fr}
-  .section-wrap,.deal-wrap,.footer-inner{padding:0 1rem}
-  #main-nav{padding:.65rem 1rem}
-  .hero-inner{padding:0 1rem 40px}
-  .fg-3{grid-template-columns:minmax(0,1fr)}
-  .fg-2{grid-template-columns:minmax(0,1fr)}
-  .extras-grid{grid-template-columns:1fr 1fr}
-  .book-btn-row{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .vs-table th,.vs-table td{padding:.6rem .7rem;font-size:.72rem}
-  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
-  #cmp-bar{padding:.8rem 1rem}
-  .tours-cta-strip{flex-direction:column;text-align:center}
-  .tours-cta-strip .cta-right{justify-content:center}
-  .car-nav-prev,.car-nav-next,.tour-nav-prev,.tour-nav-next{display:none}
-  .tf-grid{grid-template-columns:1fr}
-  .airport-tabs{justify-content:center}
-  .transfer-section-head{flex-direction:column;text-align:center}
-  .story-philosophy{padding:1.5rem}
-  .story-timeline{padding:0}
-  .theme-pill .theme-pill-btn span{display:none} /* icon only on mobile */
-}
-@media(max-width:480px){
-  .extras-grid,.ins-toggle{grid-template-columns:1fr}
-  .hero-stage{height:200px}
-  .book-btn-row{grid-template-columns:1fr auto auto}
-  .tour-img-wrap{height:155px}
-}
-@media(max-width:680px){
-  .modal-overlay{padding:.6rem}
-  .modal-box{padding:1.1rem;border-radius:14px}
-  .cmp-scores{gap:.3rem}
-  .cmp-score-num{font-size:1.6rem}
-  .cmp-score-card{padding:.7rem .4rem}
-  .cmp-cta-row{flex-direction:column;align-items:stretch}
-  .cmp-cta-row>*{width:100%;justify-content:center}
-  .cmp-modal-scroll table{min-width:340px}
-  .cmp-table th,.cmp-table td{padding:.65rem .7rem;font-size:.72rem}
-}
+/* ── RESPONSIVE ── */
+@media(max-width:1200px){.deal-bento{grid-template-columns:1fr}.deal-studio{position:static}.feat-grid{grid-template-columns:repeat(2,1fr)}.trans-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}.hubs-grid{grid-template-columns:1fr}.story-pillars{grid-template-columns:1fr 1fr}.airport-bento{grid-template-columns:1fr}}
+@media(max-width:900px){#hero{min-height:auto !important}.hero-inner{grid-template-columns:1fr;text-align:center;padding:0 1.5rem 60px}.hero-desc,.hero-ctas,.hero-pills-row{margin-left:auto;margin-right:auto;justify-content:center}.hero-right{order:-1}.hero-stage{max-width:300px;height:210px}.hero-h1{font-size:clamp(2.8rem,9vw,4rem);letter-spacing:-2px}.reviews-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.fg-3{grid-template-columns:repeat(2,minmax(0,1fr))}.hubs-grid{grid-template-columns:1fr}.story-tl-line{display:none}.story-tl-item{grid-template-columns:1fr !important;gap:.5rem}.story-tl-item .tl-empty{display:none}.story-tl-item .tl-dot-wrap{flex-direction:row;padding:0;justify-content:flex-start}.story-tl-item:nth-child(odd) .tl-card,.story-tl-item:nth-child(even) .tl-card{text-align:left;grid-column:1}.story-tl-item:nth-child(odd) .tl-dot-wrap,.story-tl-item:nth-child(even) .tl-dot-wrap{grid-column:1}.story-pillars{grid-template-columns:1fr}.tf-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links,.nav-wa,.nav-book{display:none}.hamburger{display:flex}#fab{display:none}#mob-bar{display:block}body{padding-bottom:68px}.feat-grid{grid-template-columns:1fr}.section-wrap,.deal-wrap,.footer-inner{padding:0 1rem}#main-nav{padding:.65rem 1rem}.hero-inner{padding:0 1rem 40px}.fg-3{grid-template-columns:minmax(0,1fr)}.fg-2{grid-template-columns:minmax(0,1fr)}.extras-grid{grid-template-columns:1fr 1fr}.book-btn-row{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.vs-table th,.vs-table td{padding:.6rem .7rem;font-size:.72rem}.footer-grid{grid-template-columns:1fr;gap:1.5rem}#cmp-bar{padding:.8rem 1rem}.tours-cta-strip{flex-direction:column;text-align:center}.tours-cta-strip .cta-right{justify-content:center}.car-nav-prev,.car-nav-next,.tour-nav-prev,.tour-nav-next{display:none}.tf-grid{grid-template-columns:1fr}.airport-tabs{justify-content:center}.transfer-section-head{flex-direction:column;text-align:center}.story-philosophy{padding:1.5rem}.theme-pill .theme-pill-btn span{display:none}}
+@media(max-width:480px){.extras-grid,.ins-toggle{grid-template-columns:1fr}.hero-stage{height:200px}.book-btn-row{grid-template-columns:1fr auto auto}.tour-img-wrap{height:155px}}
+@media(max-width:680px){.modal-overlay{padding:.6rem}.modal-box{padding:1.1rem;border-radius:14px}.cmp-scores{gap:.3rem}.cmp-score-num{font-size:1.6rem}.cmp-score-card{padding:.7rem .4rem}.cmp-cta-row{flex-direction:column;align-items:stretch}.cmp-cta-row>*{width:100%;justify-content:center}.cmp-modal-scroll table{min-width:340px}.cmp-table th,.cmp-table td{padding:.65rem .7rem;font-size:.72rem}}
 </style>
 </head>
-
 <body>
 <div id="pg-progress"></div>
 
@@ -882,24 +648,17 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
     <a href="#reviews-section">Reviews</a>
   </div>
   <div class="nav-right">
-    <!-- THEME TOGGLE — PILL STYLE, HIGHLY VISIBLE -->
-    <div class="theme-pill" title="Switch theme">
-      <button class="theme-pill-btn" id="theme-dark-btn" onclick="setTheme('dark')">
+    <div class="theme-pill">
+      <button class="theme-pill-btn t-active" id="btn-dark" onclick="setTheme('dark')">
         <i class="fa-solid fa-moon"></i><span>Dark</span>
       </button>
-      <button class="theme-pill-btn" id="theme-light-btn" onclick="setTheme('light')">
+      <button class="theme-pill-btn" id="btn-light" onclick="setTheme('light')">
         <i class="fa-solid fa-sun"></i><span>Light</span>
       </button>
     </div>
-    <a href="#contact-route" class="nav-wa" onclick="navContact(event,'wa')">
-      <i class="fa-brands fa-whatsapp"></i> WhatsApp
-    </a>
-    <button class="nav-book" onclick="scrollToDeal()">
-      <i class="fa-solid fa-calendar-check"></i> Book Now
-    </button>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="#contact-route" class="nav-wa" onclick="navContact(event,'wa')"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    <button class="nav-book" onclick="scrollToDeal()"><i class="fa-solid fa-calendar-check"></i> Book Now</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -918,30 +677,20 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
 
 <!-- FAB -->
 <div id="fab">
-  <button class="fab-collapse-btn" id="fab-collapse" onclick="toggleFab()" title="Collapse">
-    <i class="fa-solid fa-chevron-right"></i>
-  </button>
+  <button class="fab-collapse-btn" id="fab-collapse" onclick="toggleFab()" title="Collapse"><i class="fa-solid fa-chevron-right"></i></button>
   <div class="fab-actions">
-    <a href="#fleet-section" class="fab-action">
-      <span class="fab-ico fab-ico-fleet"><i class="fa-solid fa-car"></i></span>Browse Fleet
-    </a>
-    <a href="#deal-section" class="fab-action" onclick="event.preventDefault();scrollToDeal()">
-      <span class="fab-ico fab-ico-quote"><i class="fa-solid fa-calculator"></i></span>Get Quote
-    </a>
-    <a href="#contact-route" class="fab-action" onclick="navContact(event,'call')">
-      <span class="fab-ico fab-ico-call"><i class="fa-solid fa-phone"></i></span>Call Us
-    </a>
+    <a href="#fleet-section" class="fab-action"><span class="fab-ico fab-ico-fleet"><i class="fa-solid fa-car"></i></span>Browse Fleet</a>
+    <a href="#deal-section" class="fab-action" onclick="event.preventDefault();scrollToDeal()"><span class="fab-ico fab-ico-quote"><i class="fa-solid fa-calculator"></i></span>Get Quote</a>
+    <a href="#contact-route" class="fab-action" onclick="navContact(event,'call')"><span class="fab-ico fab-ico-call"><i class="fa-solid fa-phone"></i></span>Call Us</a>
   </div>
   <a href="#contact-route" class="fab-main" onclick="navContact(event,'wa')">
     <span class="fab-wa-ico"><i class="fa-brands fa-whatsapp"></i></span>
     <span class="fab-main-label">Chat 24/7 — WhatsApp</span>
   </a>
-  <button class="fab-top" id="fab-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
-    <i class="fa-solid fa-chevron-up"></i>
-  </button>
+  <button class="fab-top" id="fab-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Top"><i class="fa-solid fa-chevron-up"></i></button>
 </div>
 
-<!-- Mobile bottom bar -->
+<!-- Mobile bar -->
 <div id="mob-bar">
   <div class="mob-bar-row">
     <a href="#fleet-section" class="mob-btn"><i class="fa-solid fa-car"></i>Fleet</a>
@@ -960,15 +709,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   <div class="hero-inner">
     <div class="hero-left reveal">
       <div class="hero-badge"><i class="fa-solid fa-star"></i> Egypt's Most Trusted Car Rental Since 2007</div>
-      <h1 class="hero-h1">
-        <span class="outline">DRIVE</span>
-        <span class="solid">WITH CONFIDENCE.</span>
-      </h1>
-      <p class="hero-desc">
-        Premium car rental across <strong>Cairo, Hurghada &amp; Alexandria.</strong>
-        <strong>No credit card.</strong> Pay cash on arrival.
-        24/7 chauffeur delivery. Zero surprises.
-      </p>
+      <h1 class="hero-h1"><span class="outline">DRIVE</span><span class="solid">WITH CONFIDENCE.</span></h1>
+      <p class="hero-desc">Premium car rental across <strong>Cairo, Hurghada &amp; Alexandria.</strong> <strong>No credit card.</strong> Pay cash on arrival. 24/7 chauffeur delivery. Zero surprises.</p>
       <div class="hero-ctas">
         <button class="btn-p" onclick="scrollToDeal()"><i class="fa-solid fa-calendar-check"></i> Book Your Car</button>
         <a href="#contact-route" class="btn-wa" onclick="navContact(event,'wa')"><i class="fa-brands fa-whatsapp"></i> Chat Now</a>
@@ -1015,7 +757,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> Full Insurance Available</span>
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> 17 Premium Vehicles</span>
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> Since 2007 — Cairo · Hurghada · Alexandria · Rosetta</span>
-      <span class="tick-item"><i class="fa-solid fa-bolt"></i> Tours &amp; Airport Transfers</span>
+      <span class="tick-item"><i class="fa-solid fa-bolt"></i> Tours and Airport Transfers</span>
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> No Credit Card Required</span>
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> Pay Cash on Arrival</span>
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> Zero Hidden Fees</span>
@@ -1024,7 +766,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> Full Insurance Available</span>
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> 17 Premium Vehicles</span>
       <span class="tick-item"><i class="fa-solid fa-bolt"></i> Since 2007 — Cairo · Hurghada · Alexandria · Rosetta</span>
-      <span class="tick-item"><i class="fa-solid fa-bolt"></i> Tours &amp; Airport Transfers</span>
+      <span class="tick-item"><i class="fa-solid fa-bolt"></i> Tours and Airport Transfers</span>
     </div>
   </div>
 </div>
@@ -1033,7 +775,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
 <div class="pg-section surface">
   <div class="section-wrap">
     <div class="stats-grid reveal">
-      <div class="stat-card glow"><div class="stat-ico"><i class="fa-solid fa-users"></i></div><span class="stat-num" data-count="500">0</span><span class="stat-lbl">Brothers &amp; Sisters Served</span></div>
+      <div class="stat-card glow"><div class="stat-ico"><i class="fa-solid fa-users"></i></div><span class="stat-num" data-count="500">0</span><span class="stat-lbl">Brothers Served</span></div>
       <div class="stat-card glow"><div class="stat-ico"><i class="fa-solid fa-car"></i></div><span class="stat-num" data-count="17">0</span><span class="stat-lbl">Premium Vehicles</span></div>
       <div class="stat-card glow"><div class="stat-ico"><i class="fa-solid fa-location-dot"></i></div><span class="stat-num" data-count="4">0</span><span class="stat-lbl">City Hubs</span></div>
       <div class="stat-card glow"><div class="stat-ico"><i class="fa-solid fa-heart"></i></div><span class="stat-num">2007</span><span class="stat-lbl">Founded With Love</span></div>
@@ -1047,87 +789,37 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
     <span class="eyebrow reveal">Our Family Since 2007</span>
     <h2 class="heading reveal" style="transition-delay:.1s">NOT CLIENTS. <span>BROTHERS.</span></h2>
     <p class="subtext reveal" style="transition-delay:.15s">From a small office on Sherry Street in Hurghada to four cities across Egypt — every kilometre of this journey was built on trust, friendship, and the belief that travellers deserve a brother on the road.</p>
-
-    <!-- Philosophy pull-quote -->
     <div class="story-philosophy reveal" style="transition-delay:.2s">
-      <blockquote>
-        "We realized travellers aren't just looking for a car. They're looking for <strong>safety, advice, and a brother</strong> to ensure a happy trip.
-        We don't have clients — we grow our family. Every person who rides with us leaves as a friend for life."
-      </blockquote>
+      <blockquote>"We realized travellers are not just looking for a car. They are looking for <strong>safety, advice, and a brother</strong> to ensure a happy trip. We do not have clients — we grow our family. Every person who rides with us leaves as a friend for life."</blockquote>
       <cite><i class="fa-solid fa-users"></i> Brothers EGY — Founded 2007, Hurghada</cite>
     </div>
-
-    <!-- Timeline -->
     <div class="story-timeline reveal" style="transition-delay:.25s">
       <div class="story-tl-line"></div>
-
       <div class="story-tl-item">
-        <div class="tl-card">
-          <h4>The Beginning</h4>
-          <p>First branch opened on <strong>Sherry Street, Hurghada</strong>. Two brothers, two cars, one dream — that every tourist deserves a safe, honest, friendly ride.</p>
-        </div>
-        <div class="tl-dot-wrap">
-          <div class="tl-dot"></div>
-          <span class="tl-year">2007</span>
-        </div>
+        <div class="tl-card"><h4>The Beginning</h4><p>First branch opened on <strong>Sherry Street, Hurghada</strong>. Two brothers, two cars, one dream — every tourist deserves a safe, honest, friendly ride.</p></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div><span class="tl-year">2007</span></div>
         <div class="tl-empty"></div>
       </div>
-
       <div class="story-tl-item">
         <div class="tl-empty"></div>
-        <div class="tl-dot-wrap">
-          <div class="tl-dot"></div>
-          <span class="tl-year">2016</span>
-        </div>
-        <div class="tl-card">
-          <h4>Pearl of the Mediterranean</h4>
-          <p>Expanded to <strong>Alexandria</strong> — the city of poets, history, and the sea. The Brothers EGY family reached the Mediterranean coast.</p>
-        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div><span class="tl-year">2016</span></div>
+        <div class="tl-card"><h4>Pearl of the Mediterranean</h4><p>Expanded to <strong>Alexandria</strong> — the city of poets, history, and the sea. The Brothers EGY family reached the Mediterranean coast.</p></div>
       </div>
-
       <div class="story-tl-item">
-        <div class="tl-card">
-          <h4>The Capital Hub</h4>
-          <p>Established <strong>Cairo headquarters in Heliopolis (Sheraton)</strong> — Egypt's beating heart, serving the airport and the new Grand Egyptian Museum corridor.</p>
-        </div>
-        <div class="tl-dot-wrap">
-          <div class="tl-dot"></div>
-          <span class="tl-year">2022</span>
-        </div>
+        <div class="tl-card"><h4>The Capital Hub</h4><p>Established <strong>Cairo HQ in Heliopolis (Sheraton)</strong> — Egypt's beating heart, serving the airport and the Grand Egyptian Museum corridor.</p></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div><span class="tl-year">2022</span></div>
         <div class="tl-empty"></div>
       </div>
-
       <div class="story-tl-item">
         <div class="tl-empty"></div>
-        <div class="tl-dot-wrap">
-          <div class="tl-dot"></div>
-          <span class="tl-year">2025</span>
-        </div>
-        <div class="tl-card">
-          <h4>Legacy in Rosetta</h4>
-          <p>Reached the historic city of <strong>Rashid (Rosetta)</strong> — where the famous stone was discovered, and where our story of discovery continues.</p>
-        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div><span class="tl-year">2025</span></div>
+        <div class="tl-card"><h4>Legacy in Rosetta</h4><p>Reached the historic city of <strong>Rashid (Rosetta)</strong> — where the famous stone was discovered, and where our story of discovery continues.</p></div>
       </div>
-
     </div>
-
-    <!-- Brotherhood pillars -->
     <div class="story-pillars reveal" style="transition-delay:.3s">
-      <div class="sp-card glow">
-        <div class="sp-ico"><i class="fa-solid fa-handshake-heart"></i></div>
-        <h4>Friends First, Business Second</h4>
-        <p>Our foundation is friendship. We guide you through Egypt as a knowledgeable local friend — honest, available, and genuinely happy to help.</p>
-      </div>
-      <div class="sp-card glow">
-        <div class="sp-ico"><i class="fa-solid fa-shield-halved"></i></div>
-        <h4>Safety Is Personal</h4>
-        <p>Precision and safety are non-negotiable for our family. Every vehicle is serviced, every chauffeur is vetted, every route is planned.</p>
-      </div>
-      <div class="sp-card glow">
-        <div class="sp-ico"><i class="fa-solid fa-map-location-dot"></i></div>
-        <h4>15+ Years of Road Knowledge</h4>
-        <p>From Sinai to the Western Desert, we know every road, shortcut, and hidden gem in Egypt. This knowledge is yours — just ask.</p>
-      </div>
+      <div class="sp-card glow"><div class="sp-ico"><i class="fa-solid fa-handshake-heart"></i></div><h4>Friends First, Business Second</h4><p>Our foundation is friendship. We guide you through Egypt as a knowledgeable local friend — honest, available, and genuinely happy to help.</p></div>
+      <div class="sp-card glow"><div class="sp-ico"><i class="fa-solid fa-shield-halved"></i></div><h4>Safety Is Personal</h4><p>Every vehicle is serviced, every chauffeur is vetted, every route is planned. Precision and safety are non-negotiable for our family.</p></div>
+      <div class="sp-card glow"><div class="sp-ico"><i class="fa-solid fa-map-location-dot"></i></div><h4>15+ Years of Road Knowledge</h4><p>From Sinai to the Western Desert, we know every road, shortcut, and hidden gem in Egypt. This knowledge is yours — just ask.</p></div>
     </div>
   </div>
 </div>
@@ -1135,31 +827,26 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
 <!-- BUILD YOUR DEAL -->
 <div id="deal-section">
   <div class="deal-wrap">
-    <span class="eyebrow reveal">Configure &amp; Book</span>
+    <span class="eyebrow reveal">Configure and Book</span>
     <h2 class="heading reveal" style="transition-delay:.1s">BUILD YOUR <span>DEAL.</span></h2>
     <p class="subtext reveal" style="transition-delay:.15s">Choose a car, see it in the showroom, configure every detail, get live pricing, book in one tap.</p>
     <div class="deal-bento reveal" style="transition-delay:.2s">
-      <!-- Showroom -->
       <div class="deal-studio glow">
         <div class="stage-bg" id="stage-bg"></div>
         <div class="studio-header">
-          <div>
-            <span class="studio-cat" id="sc-cat">PREMIUM CROSSOVER</span>
-            <h3 class="studio-name" id="sc-name">KIA SPORTAGE</h3>
-          </div>
+          <div><span class="studio-cat" id="sc-cat">PREMIUM CROSSOVER</span><h3 class="studio-name" id="sc-name">KIA SPORTAGE</h3></div>
           <div class="studio-hud">
             <button class="hud-btn" id="hud-light" onclick="scLights()" title="Headlights"><i class="fa-solid fa-lightbulb"></i></button>
-            <button class="hud-btn" onclick="scStage()" title="Change stage"><i class="fa-solid fa-palette"></i></button>
+            <button class="hud-btn" onclick="scStage()" title="Stage"><i class="fa-solid fa-palette"></i></button>
           </div>
         </div>
         <div class="studio-vp" id="sc-vp">
           <div class="studio-shadow"></div>
           <img id="sc-img" src="https://brothersegy.com/wp-content/uploads/2026/01/Kia-Sportage.png" alt="Car" class="studio-car-img">
-          <div class="studio-angle">Drag to rotate · <em id="sc-angle">0°</em></div>
+          <div class="studio-angle">Drag to rotate <em id="sc-angle">0</em> degrees</div>
         </div>
         <div class="studio-specs" id="sc-specs"></div>
       </div>
-      <!-- Form -->
       <div class="deal-form glow">
         <div class="deal-form-head">
           <h3><i class="fa-solid fa-sliders"></i> Deal Builder</h3>
@@ -1195,12 +882,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
           </div>
         </div>
         <label class="field-label" style="display:block;margin-bottom:.5rem">Add-on Services</label>
-        <div class="extras-grid" style="grid-template-columns:1fr 1fr">
+        <div class="extras-grid">
           <div class="extra-card" id="ex-driver" onclick="bkEx('driver')"><span class="en">Additional Chauffeur</span><span class="ep">+500 EGP/day</span></div>
           <div class="extra-card" id="ex-seat" onclick="bkEx('seat')"><span class="en">Child Seat</span><span class="ep">+250 EGP/day</span></div>
         </div>
         <div class="field-group" style="margin-bottom:1.5rem">
-          <label class="field-label" style="display:block;margin-bottom:.5rem">KM Package <span style="color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0">(120 km/day standard)</span></label>
+          <label class="field-label" style="display:block;margin-bottom:.5rem">KM Package</label>
           <select class="field-input" id="bk-km" onchange="bkCalc()">
             <option value="0">Standard 120 km/day — Included</option>
             <option value="1400">500 km — 1,400 EGP</option>
@@ -1212,18 +899,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
             <option value="10000">Unlimited — 10,000 EGP</option>
           </select>
         </div>
-        <div class="fg-1" style="margin-bottom:1rem">
-          <div class="field-group"><label class="field-label">Flight No. / Hotel / Notes</label><input type="text" class="field-input" id="bk-notes" placeholder="e.g. MS787 arriving 14:30, Marriott Cairo"></div>
-        </div>
+        <div class="fg-1" style="margin-bottom:1rem"><div class="field-group"><label class="field-label">Flight / Hotel / Notes</label><input type="text" class="field-input" id="bk-notes" placeholder="e.g. MS787 arriving 14:30, Marriott Cairo"></div></div>
         <div style="background:var(--elevated);border:1px solid var(--border);border-radius:13px;padding:1.1rem 1.3rem;margin-bottom:.9rem">
           <div class="receipt">
-            <div class="r-row"><span>Daily Rate</span><span class="rv" id="r-daily">—</span></div>
+            <div class="r-row"><span>Daily Rate</span><span class="rv" id="r-daily">--</span></div>
             <div class="r-row"><span>Insurance</span><span class="rv" id="r-ins">Included</span></div>
-            <div class="r-row"><span>Extras &amp; Services</span><span class="rv" id="r-extras">—</span></div>
-            <div class="r-row"><span>Security Deposit</span><span id="r-dep" class="rv">—</span></div>
+            <div class="r-row"><span>Extras</span><span class="rv" id="r-extras">--</span></div>
+            <div class="r-row"><span>Security Deposit</span><span id="r-dep" class="rv">--</span></div>
             <div class="r-total">
               <div><span class="rl">Total</span><span class="ra" id="r-total">0</span></div>
-              <div class="r-split"><div class="rn" id="r-now">—<small>30% Due Now</small></div><div class="rl2" id="r-later">70% on Arrival</div></div>
+              <div class="r-split"><div class="rn" id="r-now">--<small>30% Due Now</small></div><div class="rl2" id="r-later">70% on Arrival</div></div>
             </div>
           </div>
         </div>
@@ -1242,22 +927,22 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   <div class="section-wrap">
     <span class="eyebrow reveal">Our Family Hubs</span>
     <h2 class="heading reveal" style="transition-delay:.1s">CAR RENTAL <span>BY CITY.</span></h2>
-    <p class="subtext reveal" style="transition-delay:.15s">Four hubs across Egypt — staffed 24/7 with chauffeur delivery to any address, any hour.</p>
+    <p class="subtext reveal" style="transition-delay:.15s">Four hubs across Egypt, staffed 24/7 with chauffeur delivery to any address.</p>
     <div class="hubs-grid reveal" style="transition-delay:.2s">
       <a href="https://brothersegy.com/car-rental-cairo/" class="hub-card glow" target="_blank">
         <div class="hub-bg" style="background-image:url('https://brothersegy.com/wp-content/uploads/2025/11/giza-pyramids-cairo-egypt-with-palm.jpg')"></div>
         <div class="hub-overlay"></div>
-        <div class="hub-body"><span class="hub-tag">CAI Hub · Since 2022</span><h3 class="hub-name">Cairo</h3><p class="hub-sub"><i class="fa-solid fa-plane-arrival"></i> Heliopolis · Airport · GEM</p><span class="hub-cta">Explore <i class="fa-solid fa-arrow-right"></i></span></div>
+        <div class="hub-body"><span class="hub-tag">CAI Hub Since 2022</span><h3 class="hub-name">Cairo</h3><p class="hub-sub"><i class="fa-solid fa-plane-arrival"></i> Heliopolis and Airport</p><span class="hub-cta">Explore <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
       <a href="https://brothersegy.com/car-rental-hurghada/" class="hub-card glow" target="_blank">
         <div class="hub-bg" style="background-image:url('https://brothersegy.com/wp-content/uploads/2025/11/hurghada-costal-destiantion-near-the-red-sea.jpg')"></div>
         <div class="hub-overlay"></div>
-        <div class="hub-body"><span class="hub-tag">HRG Hub · Since 2007</span><h3 class="hub-name">Hurghada</h3><p class="hub-sub"><i class="fa-solid fa-water"></i> Sherry St · Red Sea Coast</p><span class="hub-cta">Explore <i class="fa-solid fa-arrow-right"></i></span></div>
+        <div class="hub-body"><span class="hub-tag">HRG Hub Since 2007</span><h3 class="hub-name">Hurghada</h3><p class="hub-sub"><i class="fa-solid fa-water"></i> Sherry St and Red Sea</p><span class="hub-cta">Explore <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
       <a href="https://brothersegy.com/car-rental-alexandria/" class="hub-card glow" target="_blank">
         <div class="hub-bg" style="background-image:url('https://brothersegy.com/wp-content/uploads/2025/11/A-picture-from-above-of-the-city-of-Alexandria-in-Egypt.jpg')"></div>
         <div class="hub-overlay"></div>
-        <div class="hub-body"><span class="hub-tag">ALX Hub · Since 2016</span><h3 class="hub-name">Alexandria</h3><p class="hub-sub"><i class="fa-solid fa-city"></i> Mediterranean · Borg El Arab</p><span class="hub-cta">Explore <i class="fa-solid fa-arrow-right"></i></span></div>
+        <div class="hub-body"><span class="hub-tag">ALX Hub Since 2016</span><h3 class="hub-name">Alexandria</h3><p class="hub-sub"><i class="fa-solid fa-city"></i> Mediterranean Coast</p><span class="hub-cta">Explore <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
     </div>
   </div>
@@ -1268,7 +953,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   <div class="section-wrap">
     <span class="eyebrow reveal">17 Premium Vehicles</span>
     <h2 class="heading reveal" style="transition-delay:.1s">OUR <span>FLEET.</span></h2>
-    <p class="subtext reveal" style="transition-delay:.1s">Tap the sliders icon to configure any car in the Deal Builder. Browse by category — full fleet on our fleet page.</p>
+    <p class="subtext reveal" style="transition-delay:.1s">Tap the sliders icon to configure any car in the Deal Builder above.</p>
     <div class="hub-switcher reveal">
       <button class="hub-sw-btn active" data-hub="cairo" onclick="fleetHub('cairo')"><i class="fa-solid fa-plane-arrival"></i> Cairo</button>
       <button class="hub-sw-btn" data-hub="hurghada" onclick="fleetHub('hurghada')"><i class="fa-solid fa-water"></i> Hurghada</button>
@@ -1279,22 +964,20 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
       <button class="car-cat-tab" data-tier="crossover" onclick="showCarCat('crossover')"><i class="fa-solid fa-car-side"></i> Crossover <span class="cat-count" id="cnt-crossover">4</span></button>
       <button class="car-cat-tab" data-tier="sedan" onclick="showCarCat('sedan')"><i class="fa-solid fa-car"></i> Sedan <span class="cat-count" id="cnt-sedan">8</span></button>
     </div>
-    <div class="fleet-carousel-wrap reveal">
-      <button class="car-nav-btn car-nav-prev" onclick="scrollCarousel('fleet-carousel',-1)"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="carousel-outer reveal">
+      <button class="car-nav-btn car-nav-prev" onclick="carouselScroll('fleet-carousel',-1)"><i class="fa-solid fa-chevron-left"></i></button>
       <div class="fleet-carousel" id="fleet-carousel"></div>
-      <button class="car-nav-btn car-nav-next" onclick="scrollCarousel('fleet-carousel',1)"><i class="fa-solid fa-chevron-right"></i></button>
+      <button class="car-nav-btn car-nav-next" onclick="carouselScroll('fleet-carousel',1)"><i class="fa-solid fa-chevron-right"></i></button>
       <div class="carousel-dots" id="fleet-dots"></div>
     </div>
-    <div style="text-align:center;margin-top:.5rem">
+    <div style="text-align:center;margin-top:.8rem">
       <a href="https://brothersegy.com/car-rental-cairo/" target="_blank" class="btn-ghost" style="font-size:.78rem;padding:.7rem 1.4rem"><i class="fa-solid fa-grid-2"></i> View Full Fleet Page</a>
     </div>
-    <div style="text-align:center;margin-top:1rem;font-size:.68rem;color:var(--muted)">
-      <i class="fa-solid fa-code-compare" style="color:var(--accent)"></i> Tick "Compare" on two cars to compare side by side
-    </div>
+    <div style="text-align:center;margin-top:1rem;font-size:.68rem;color:var(--muted)"><i class="fa-solid fa-code-compare" style="color:var(--accent)"></i> Tick Compare on two cars to compare side by side</div>
   </div>
 </div>
 
-<!-- Compare sticky bar -->
+<!-- Compare bar -->
 <div id="cmp-bar">
   <div class="cmp-bar-left">
     <span class="cmp-tag"><i class="fa-solid fa-code-compare"></i> Compare:</span>
@@ -1311,9 +994,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
 <div class="modal-overlay" id="cmp-modal" onclick="closeCmpOutside(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeCmpModal()"><i class="fa-solid fa-xmark"></i></button>
-    <h2 style="font-size:1.3rem;font-weight:950;text-transform:uppercase;letter-spacing:-1px;margin-bottom:1.4rem;color:var(--text)">
-      <i class="fa-solid fa-code-compare" style="color:var(--accent)"></i> Side-by-Side <span style="color:var(--accent)">Comparison</span>
-    </h2>
+    <h2 style="font-size:1.3rem;font-weight:950;text-transform:uppercase;letter-spacing:-1px;margin-bottom:1.4rem;color:var(--text)"><i class="fa-solid fa-code-compare" style="color:var(--accent)"></i> Side-by-Side <span style="color:var(--accent)">Comparison</span></h2>
     <div id="cmp-content"></div>
   </div>
 </div>
@@ -1325,13 +1006,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
     <h2 class="heading reveal" style="transition-delay:.1s">WE DO THINGS <span>DIFFERENTLY.</span></h2>
     <p class="subtext reveal" style="transition-delay:.15s">Egypt's most transparent car rental — zero hidden fees, zero surprises, chauffeur-grade service.</p>
     <div class="feat-grid reveal" style="transition-delay:.2s">
-      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-headset"></i></div><h3>24/7 Chauffeur Delivery</h3><p>Our chauffeurs come to you day or night — any terminal, hotel, or GPS pin.</p></div>
+      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-headset"></i></div><h3>24/7 Chauffeur Delivery</h3><p>Our chauffeurs come to you day or night at any terminal, hotel, or GPS pin.</p></div>
       <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-eye-slash"></i></div><h3>Zero Hidden Fees</h3><p>No airport surcharges, no fuel tricks. The price you configure is exactly what you pay.</p></div>
       <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-money-bill-wave"></i></div><h3>Pay Cash on Arrival</h3><p>No credit card required. 30% to confirm, 70% in cash when your car arrives.</p></div>
-      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-shield-halved"></i></div><h3>Full Protection — Zero Deposit</h3><p>Upgrade and deposit becomes ZERO. We take full liability. Complete peace of mind.</p></div>
-      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-rotate-left"></i></div><h3>12-Hour Free Cancellation</h3><p>Plans change. Cancel within 12 hours for a full refund — no questions asked.</p></div>
-      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-id-card"></i></div><h3>EU &amp; International Licences</h3><p>All valid international licences accepted — no IDP required for most countries.</p></div>
-      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-car-side"></i></div><h3>17 Modern Vehicles</h3><p>All 2024–2026 models, fully serviced, clean, ready for any road in Egypt.</p></div>
+      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-shield-halved"></i></div><h3>Full Protection Zero Deposit</h3><p>Upgrade and deposit becomes ZERO. We take full liability. Complete peace of mind.</p></div>
+      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-rotate-left"></i></div><h3>12-Hour Free Cancellation</h3><p>Plans change. Cancel within 12 hours for a full refund, no questions asked.</p></div>
+      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-id-card"></i></div><h3>EU and International Licences</h3><p>All valid international licences accepted, no IDP required for most countries.</p></div>
+      <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-car-side"></i></div><h3>17 Modern Vehicles</h3><p>All 2024 to 2026 models, fully serviced, clean, ready for any road in Egypt.</p></div>
       <div class="feat-card glow"><div class="feat-ico"><i class="fa-solid fa-route"></i></div><h3>Cross-City Travel</h3><p>Pick up in Cairo, return in Hurghada. Transparent cross-city surcharges, always.</p></div>
     </div>
   </div>
@@ -1342,21 +1023,15 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   <div class="section-wrap">
     <span class="eyebrow reveal">The Honest Truth</span>
     <h2 class="heading reveal" style="transition-delay:.1s">US <span>VS THEM.</span></h2>
-    <p class="subtext reveal" style="transition-delay:.15s">Most Egypt rentals hide fees in fine print. We don't. Ever.</p>
+    <p class="subtext reveal" style="transition-delay:.15s">Most Egypt rentals hide fees in fine print. We do not. Ever.</p>
     <div class="vs-wrap reveal glow" style="transition-delay:.2s">
       <table class="vs-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th class="vs-us"><i class="fa-solid fa-shield-halved"></i> Brothers EGY</th>
-            <th class="vs-them"><i class="fa-solid fa-building"></i> Typical Egypt Rental</th>
-          </tr>
-        </thead>
+        <thead><tr><th></th><th class="vs-us"><i class="fa-solid fa-shield-halved"></i> Brothers EGY</th><th class="vs-them"><i class="fa-solid fa-building"></i> Typical Egypt Rental</th></tr></thead>
         <tbody>
           <tr><td>Credit Card Required</td><td class="vs-c1"><span class="b-good"><i class="fa-solid fa-xmark"></i> Not Required</span></td><td class="vs-c2"><span class="b-bad"><i class="fa-solid fa-check"></i> Mandatory</span></td></tr>
-          <tr><td>Deposit (Full Cover)</td><td class="vs-c1"><span class="b-good">ZERO ✓</span></td><td class="vs-c2"><span class="b-bad">5,000–15,000 EGP</span></td></tr>
+          <tr><td>Deposit (Full Cover)</td><td class="vs-c1"><span class="b-good">ZERO</span></td><td class="vs-c2"><span class="b-bad">5,000 to 15,000 EGP</span></td></tr>
           <tr><td>Chauffeur Delivery</td><td class="vs-c1"><span class="b-good"><i class="fa-solid fa-bolt"></i> 24/7 any hour</span></td><td class="vs-c2"><span class="b-bad">Office hours only</span></td></tr>
-          <tr><td>Hidden Airport Surcharge</td><td class="vs-c1"><span class="b-good"><i class="fa-solid fa-xmark"></i> None. Ever.</span></td><td class="vs-c2"><span class="b-bad">+15–25% at counter</span></td></tr>
+          <tr><td>Hidden Airport Surcharge</td><td class="vs-c1"><span class="b-good"><i class="fa-solid fa-xmark"></i> None. Ever.</span></td><td class="vs-c2"><span class="b-bad">+15 to 25% at counter</span></td></tr>
           <tr><td>EU / Intl Licence</td><td class="vs-c1"><span class="b-good"><i class="fa-solid fa-check"></i> Accepted</span></td><td class="vs-c2"><span class="b-bad">Often rejected</span></td></tr>
           <tr><td>Cancellation</td><td class="vs-c1"><span class="b-good">Free within 12h</span></td><td class="vs-c2"><span class="b-bad">Non-refundable</span></td></tr>
           <tr><td>Contract Language</td><td class="vs-c1"><span class="b-good">English + Arabic</span></td><td class="vs-c2"><span class="b-bad">Arabic only</span></td></tr>
@@ -1367,106 +1042,96 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   </div>
 </div>
 
-<!-- TOURS & TRANSFERS -->
+<!-- TOURS -->
 <div class="pg-section surface" id="tours-section">
   <div class="section-wrap">
     <span class="eyebrow reveal">Beyond Car Rental</span>
-    <h2 class="heading reveal" style="transition-delay:.1s">TOURS, TRIPS <span>&amp; EXPERIENCES.</span></h2>
-    <p class="subtext reveal" style="transition-delay:.15s">Private A/C vehicles, expert chauffeurs, and tailor-made itineraries — from the Pyramids to the White Desert. Your brothers handle every mile.</p>
+    <h2 class="heading reveal" style="transition-delay:.1s">TOURS, TRIPS <span>AND EXPERIENCES.</span></h2>
+    <p class="subtext reveal" style="transition-delay:.15s">Private A/C vehicles, expert chauffeurs, and tailor-made itineraries. From the Pyramids to the White Desert. Your brothers handle every mile.</p>
 
-    <!-- SHARED ENQUIRY FORM (applies to all tours) -->
+    <!-- Shared enquiry form -->
     <div class="tour-form-panel reveal glow" style="transition-delay:.2s" id="tour-form-panel">
       <h3>
         <i class="fa-solid fa-map-location-dot"></i>
         Plan Your Trip
-        <span class="tf-selected-tour" id="tf-selected-label" style="display:none"></span>
+        <span class="tf-selected-label" id="tf-selected-label" style="display:none"></span>
       </h3>
       <div class="tf-grid">
         <div class="tf-group"><label>Full Name</label><input type="text" id="tf-name" placeholder="John Doe"></div>
         <div class="tf-group"><label>Travel Date</label><input type="date" id="tf-date"></div>
-        <div class="tf-group">
-          <label>Group Size</label>
+        <div class="tf-group"><label>Group Size</label>
           <select id="tf-pax">
-            <option value="1">Solo (1 person)</option>
-            <option value="2">Couple (2 people)</option>
-            <option value="3-4" selected>Small Group (3–4)</option>
-            <option value="5-7">Group (5–7)</option>
-            <option value="8-14">Large Group (8–14)</option>
-            <option value="15+">Bus Group (15+)</option>
+            <option value="Solo (1 person)">Solo (1 person)</option>
+            <option value="Couple (2 people)">Couple (2 people)</option>
+            <option value="Small Group (3-4)" selected>Small Group (3-4)</option>
+            <option value="Group (5-7)">Group (5-7)</option>
+            <option value="Large Group (8-14)">Large Group (8-14)</option>
+            <option value="Bus Group (15+)">Bus Group (15+)</option>
           </select>
         </div>
-        <div class="tf-group">
-          <label>Vehicle Preference</label>
+        <div class="tf-group"><label>Vehicle Preference</label>
           <select id="tf-vehicle">
             <option value="Best Available">Best Available</option>
             <option value="Economy Sedan">Economy Sedan</option>
             <option value="Premium Sedan">Premium Sedan</option>
             <option value="Compact SUV">Compact SUV</option>
-            <option value="Premium SUV">Premium SUV (7-seater)</option>
-            <option value="Minivan">Minivan (up to 8)</option>
-            <option value="Minibus">Minibus (up to 14)</option>
-            <option value="4x4 Jeep">4x4 Jeep (desert)</option>
+            <option value="Premium SUV (7-seater)">Premium SUV (7-seater)</option>
+            <option value="Minivan (up to 8)">Minivan (up to 8)</option>
+            <option value="Minibus (up to 14)">Minibus (up to 14)</option>
+            <option value="4x4 Jeep (desert)">4x4 Jeep (desert)</option>
           </select>
         </div>
-        <div class="tf-group">
-          <label>Budget Range</label>
+        <div class="tf-group"><label>Budget</label>
           <select id="tf-budget">
             <option value="Flexible">Flexible</option>
-            <option value="Economy">Economy (shared-cost priority)</option>
+            <option value="Economy">Economy</option>
             <option value="Standard">Standard</option>
             <option value="Premium">Premium</option>
             <option value="Luxury VIP">Luxury VIP</option>
           </select>
         </div>
-        <div class="tf-group">
-          <label>Special Requests</label>
-          <input type="text" id="tf-requests" placeholder="English-speaking chauffeur, wheelchair, etc.">
-        </div>
+        <div class="tf-group"><label>Special Requests</label><input type="text" id="tf-requests" placeholder="English chauffeur, wheelchair, etc."></div>
       </div>
-      <div class="tf-group" style="margin-bottom:.9rem">
-        <label>Destinations &amp; Interests</label>
-        <textarea id="tf-desc" placeholder="Where would you like to go? What would you like to see? (Cairo, Luxor, Aswan, White Desert, snorkelling, history…)"></textarea>
-      </div>
+      <div class="tf-group" style="margin-bottom:.9rem"><label>Destinations and Interests</label><textarea id="tf-desc" placeholder="Where would you like to go? What would you like to see?"></textarea></div>
       <div class="tf-actions">
         <button class="tf-btn-ms" onclick="submitTourInquiry('ms')"><i class="fa-brands fa-facebook-messenger"></i> Messenger</button>
         <button class="tf-btn-wa" onclick="submitTourInquiry('wa')"><i class="fa-brands fa-whatsapp"></i> Send via WhatsApp</button>
       </div>
     </div>
 
-    <!-- Tour category tabs -->
+    <!-- Tour tabs -->
     <div class="tour-cat-tabs reveal">
       <button class="tour-cat-tab active" data-tcat="egypt" onclick="showTourCat('egypt')"><i class="fa-solid fa-monument"></i> Egypt Classics</button>
-      <button class="tour-cat-tab" data-tcat="desert" onclick="showTourCat('desert')"><i class="fa-solid fa-sun"></i> Desert &amp; Adventure</button>
-      <button class="tour-cat-tab" data-tcat="sea" onclick="showTourCat('sea')"><i class="fa-solid fa-water"></i> Red Sea &amp; Coast</button>
+      <button class="tour-cat-tab" data-tcat="desert" onclick="showTourCat('desert')"><i class="fa-solid fa-sun"></i> Desert and Adventure</button>
+      <button class="tour-cat-tab" data-tcat="sea" onclick="showTourCat('sea')"><i class="fa-solid fa-water"></i> Red Sea and Coast</button>
     </div>
 
     <!-- Tour carousel -->
     <div class="tour-carousel-wrap reveal" id="tour-carousel-wrap">
-      <button class="tour-nav-btn tour-nav-prev" onclick="scrollCarousel('tour-carousel',-1)"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="tour-nav-btn tour-nav-prev" onclick="carouselScroll('tour-carousel',-1)"><i class="fa-solid fa-chevron-left"></i></button>
       <div class="tour-carousel" id="tour-carousel"></div>
-      <button class="tour-nav-btn tour-nav-next" onclick="scrollCarousel('tour-carousel',1)"><i class="fa-solid fa-chevron-right"></i></button>
+      <button class="tour-nav-btn tour-nav-next" onclick="carouselScroll('tour-carousel',1)"><i class="fa-solid fa-chevron-right"></i></button>
       <div class="carousel-dots" id="tour-dots"></div>
     </div>
 
-    <!-- AIRPORT TRANSFERS — FANCY -->
+    <!-- Airport Transfers -->
     <div class="transfer-section">
       <div class="transfer-section-head">
         <h3>AIRPORT <span>TRANSFERS</span></h3>
         <div class="airport-tabs">
-          <button class="airport-tab active" data-airport="cairo" onclick="showAirport('cairo')"><i class="fa-solid fa-plane-arrival"></i> Cairo (CAI)</button>
-          <button class="airport-tab" data-airport="hurghada" onclick="showAirport('hurghada')"><i class="fa-solid fa-water"></i> Hurghada (HRG)</button>
-          <button class="airport-tab" data-airport="alex" onclick="showAirport('alex')"><i class="fa-solid fa-city"></i> Alexandria (ALX)</button>
+          <button class="airport-tab active" data-airport="cairo" onclick="showAirport('cairo')"><i class="fa-solid fa-plane-arrival"></i> Cairo CAI</button>
+          <button class="airport-tab" data-airport="hurghada" onclick="showAirport('hurghada')"><i class="fa-solid fa-water"></i> Hurghada HRG</button>
+          <button class="airport-tab" data-airport="alex" onclick="showAirport('alex')"><i class="fa-solid fa-city"></i> Alexandria ALX</button>
         </div>
       </div>
 
-      <!-- CAIRO AIRPORT -->
       <div class="airport-panel active" id="ap-cairo">
         <div class="airport-bento">
           <div class="airport-info-card glow">
-            <h4><i class="fa-solid fa-plane-arrival" style="color:var(--accent);margin-right:6px"></i> Cairo International Airport (CAI)</h4>
-            <p>Your chauffeur meets you at the arrivals gate holding a name board. Direct transfer to any Cairo hotel, Heliopolis, Nasr City, New Cairo, or the Pyramids area. We track your flight live — no waiting for you if it's delayed.</p>
+            <h4><i class="fa-solid fa-plane-arrival" style="color:var(--accent);margin-right:6px"></i> Cairo International Airport CAI</h4>
+            <p>Your chauffeur meets you at arrivals with a name board. Direct transfer to any Cairo hotel, Heliopolis, Nasr City, New Cairo, or the Pyramids area. We track your flight live.</p>
             <div class="airport-tags">
-              <span class="atag"><i class="fa-solid fa-bolt"></i> 24/7 Available</span>
+              <span class="atag"><i class="fa-solid fa-bolt"></i> 24/7</span>
               <span class="atag"><i class="fa-solid fa-clock"></i> Flight Tracked</span>
               <span class="atag"><i class="fa-solid fa-id-badge"></i> Name Board</span>
               <span class="atag"><i class="fa-solid fa-suitcase-rolling"></i> All Luggage</span>
@@ -1474,11 +1139,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
               <span class="atag"><i class="fa-solid fa-rotate"></i> Return Trips</span>
             </div>
             <div class="airport-price-strip">
-              <div class="aps-item"><span class="aps-lbl">Sedan (1–3 pax)</span><span class="aps-val">350 EGP</span><span class="aps-sub">within Cairo</span></div>
+              <div class="aps-item"><span class="aps-lbl">Sedan 1-3 pax</span><span class="aps-val">350 EGP</span><span class="aps-sub">within Cairo</span></div>
               <div class="airport-divider"></div>
-              <div class="aps-item"><span class="aps-lbl">SUV (1–5 pax)</span><span class="aps-val">550 EGP</span><span class="aps-sub">within Cairo</span></div>
+              <div class="aps-item"><span class="aps-lbl">SUV 1-5 pax</span><span class="aps-val">550 EGP</span><span class="aps-sub">within Cairo</span></div>
               <div class="airport-divider"></div>
-              <div class="aps-item"><span class="aps-lbl">Minivan (up to 8)</span><span class="aps-val">750 EGP</span><span class="aps-sub">within Cairo</span></div>
+              <div class="aps-item"><span class="aps-lbl">Minivan up to 8</span><span class="aps-val">750 EGP</span><span class="aps-sub">within Cairo</span></div>
             </div>
           </div>
           <div class="transfer-form glow">
@@ -1490,33 +1155,29 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
             <div class="tf-grid" style="grid-template-columns:1fr 1fr">
               <div class="tf-group"><label>Flight Number</label><input type="text" id="ap-cairo-flight" placeholder="e.g. MS787"></div>
               <div class="tf-group"><label>Date</label><input type="date" id="ap-cairo-date"></div>
-              <div class="tf-group"><label>Arrival / Departure Time</label><input type="time" id="ap-cairo-time" value="09:00"></div>
-              <div class="tf-group">
-                <label>Vehicle Type</label>
+              <div class="tf-group"><label>Time</label><input type="time" id="ap-cairo-time" value="09:00"></div>
+              <div class="tf-group"><label>Vehicle</label>
                 <select id="ap-cairo-veh">
-                  <option value="Sedan (1–3 pax) — 350 EGP">Sedan 1–3 pax — 350 EGP</option>
-                  <option value="SUV (1–5 pax) — 550 EGP">SUV 1–5 pax — 550 EGP</option>
-                  <option value="Minivan (up to 8) — 750 EGP">Minivan up to 8 — 750 EGP</option>
-                  <option value="Minibus (up to 14) — 1,100 EGP">Minibus up to 14 — 1,100 EGP</option>
+                  <option value="Sedan (1-3 pax) — 350 EGP">Sedan 1-3 pax 350 EGP</option>
+                  <option value="SUV (1-5 pax) — 550 EGP">SUV 1-5 pax 550 EGP</option>
+                  <option value="Minivan (up to 8) — 750 EGP">Minivan up to 8 750 EGP</option>
+                  <option value="Minibus (up to 14) — 1,100 EGP">Minibus up to 14 1100 EGP</option>
                 </select>
               </div>
             </div>
-            <div class="tf-group" style="margin-bottom:.9rem"><label>Hotel / Destination Address</label><input type="text" id="ap-cairo-dest" placeholder="e.g. Marriott Cairo Hotel, Zamalek"></div>
-            <div class="tf-actions">
-              <button class="tf-btn-wa" onclick="bookTransfer('cairo')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button>
-            </div>
+            <div class="tf-group" style="margin-bottom:.9rem"><label>Hotel or Destination</label><input type="text" id="ap-cairo-dest" placeholder="e.g. Marriott Cairo Hotel, Zamalek"></div>
+            <div class="tf-actions"><button class="tf-btn-wa" onclick="bookTransfer('cairo')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button></div>
           </div>
         </div>
       </div>
 
-      <!-- HURGHADA AIRPORT -->
       <div class="airport-panel" id="ap-hurghada">
         <div class="airport-bento">
           <div class="airport-info-card glow">
-            <h4><i class="fa-solid fa-water" style="color:var(--accent);margin-right:6px"></i> Hurghada International Airport (HRG)</h4>
-            <p>Our Red Sea chauffeurs cover all Hurghada resorts, El Gouna, Sahl Hasheesh, Makadi Bay, Soma Bay, and Marsa Alam. Group vehicles available for parties up to 14. Your chauffeur is always at the gate.</p>
+            <h4><i class="fa-solid fa-water" style="color:var(--accent);margin-right:6px"></i> Hurghada International Airport HRG</h4>
+            <p>Red Sea chauffeurs covering all Hurghada resorts, El Gouna, Sahl Hasheesh, Makadi Bay, Soma Bay, and Marsa Alam. Group vehicles available for parties up to 14.</p>
             <div class="airport-tags">
-              <span class="atag"><i class="fa-solid fa-bolt"></i> 24/7 Available</span>
+              <span class="atag"><i class="fa-solid fa-bolt"></i> 24/7</span>
               <span class="atag"><i class="fa-solid fa-clock"></i> Flight Tracked</span>
               <span class="atag"><i class="fa-solid fa-hotel"></i> Any Resort</span>
               <span class="atag"><i class="fa-solid fa-users"></i> Up to 14 Pax</span>
@@ -1541,43 +1202,39 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
               <div class="tf-group"><label>Flight Number</label><input type="text" id="ap-hrg-flight" placeholder="e.g. EK773"></div>
               <div class="tf-group"><label>Date</label><input type="date" id="ap-hrg-date"></div>
               <div class="tf-group"><label>Time</label><input type="time" id="ap-hrg-time" value="14:00"></div>
-              <div class="tf-group">
-                <label>Vehicle</label>
+              <div class="tf-group"><label>Vehicle</label>
                 <select id="ap-hrg-veh">
-                  <option value="Sedan (1–3 pax)">Sedan 1–3 pax</option>
-                  <option value="SUV (1–5 pax)">SUV 1–5 pax</option>
+                  <option value="Sedan (1-3 pax)">Sedan 1-3 pax</option>
+                  <option value="SUV (1-5 pax)">SUV 1-5 pax</option>
                   <option value="Minivan (up to 8)">Minivan up to 8</option>
                   <option value="Minibus (up to 14)">Minibus up to 14</option>
                 </select>
               </div>
             </div>
-            <div class="tf-group" style="margin-bottom:.9rem"><label>Resort / Destination</label><input type="text" id="ap-hrg-dest" placeholder="e.g. Steigenberger Aqua Magic, El Gouna"></div>
-            <div class="tf-actions">
-              <button class="tf-btn-wa" onclick="bookTransfer('hurghada')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button>
-            </div>
+            <div class="tf-group" style="margin-bottom:.9rem"><label>Resort or Destination</label><input type="text" id="ap-hrg-dest" placeholder="e.g. Steigenberger Aqua Magic, El Gouna"></div>
+            <div class="tf-actions"><button class="tf-btn-wa" onclick="bookTransfer('hurghada')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button></div>
           </div>
         </div>
       </div>
 
-      <!-- ALEXANDRIA AIRPORT -->
       <div class="airport-panel" id="ap-alex">
         <div class="airport-bento">
           <div class="airport-info-card glow">
-            <h4><i class="fa-solid fa-city" style="color:var(--accent);margin-right:6px"></i> Alexandria Airports (ALX &amp; HBE)</h4>
-            <p>Transfers from both Borg El Arab International (HBE) and El Nouzha (ALX). Full city coverage — Smouha, Miami, Montaza, Stanley, Sidi Bishr, and Agami. We also cover the Alexandria-Cairo corridor.</p>
+            <h4><i class="fa-solid fa-city" style="color:var(--accent);margin-right:6px"></i> Alexandria Airports ALX and HBE</h4>
+            <p>Transfers from Borg El Arab (HBE) and El Nouzha (ALX). Full city coverage including Smouha, Miami, Montaza, Stanley, and Agami. Cairo-Alexandria corridor covered.</p>
             <div class="airport-tags">
-              <span class="atag"><i class="fa-solid fa-bolt"></i> 24/7 Available</span>
+              <span class="atag"><i class="fa-solid fa-bolt"></i> 24/7</span>
               <span class="atag"><i class="fa-solid fa-clock"></i> Flight Tracked</span>
               <span class="atag"><i class="fa-solid fa-map-pin"></i> City Wide</span>
               <span class="atag"><i class="fa-solid fa-suitcase-rolling"></i> All Luggage</span>
-              <span class="atag"><i class="fa-solid fa-rotate"></i> Cairo–Alex Route</span>
+              <span class="atag"><i class="fa-solid fa-rotate"></i> Cairo-Alex Route</span>
             </div>
             <div class="airport-price-strip">
               <div class="aps-item"><span class="aps-lbl">City Centre</span><span class="aps-val">300 EGP</span><span class="aps-sub">sedan</span></div>
               <div class="airport-divider"></div>
               <div class="aps-item"><span class="aps-lbl">Montaza / Miami</span><span class="aps-val">400 EGP</span><span class="aps-sub">sedan</span></div>
               <div class="airport-divider"></div>
-              <div class="aps-item"><span class="aps-lbl">Cairo → Alex</span><span class="aps-val">2,200 EGP</span><span class="aps-sub">private</span></div>
+              <div class="aps-item"><span class="aps-lbl">Cairo to Alex</span><span class="aps-val">2,200 EGP</span><span class="aps-sub">private</span></div>
             </div>
           </div>
           <div class="transfer-form glow">
@@ -1590,36 +1247,28 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
               <div class="tf-group"><label>Flight Number</label><input type="text" id="ap-alx-flight" placeholder="e.g. MS301"></div>
               <div class="tf-group"><label>Date</label><input type="date" id="ap-alx-date"></div>
               <div class="tf-group"><label>Time</label><input type="time" id="ap-alx-time" value="11:00"></div>
-              <div class="tf-group">
-                <label>Airport</label>
+              <div class="tf-group"><label>Airport</label>
                 <select id="ap-alx-ap">
-                  <option value="Borg El Arab (HBE)">Borg El Arab (HBE)</option>
-                  <option value="El Nouzha (ALX)">El Nouzha (ALX)</option>
+                  <option value="Borg El Arab (HBE)">Borg El Arab HBE</option>
+                  <option value="El Nouzha (ALX)">El Nouzha ALX</option>
                 </select>
               </div>
             </div>
-            <div class="tf-group" style="margin-bottom:.9rem"><label>Hotel / Destination</label><input type="text" id="ap-alx-dest" placeholder="e.g. Hilton Alexandria Corniche"></div>
-            <div class="tf-actions">
-              <button class="tf-btn-wa" onclick="bookTransfer('alex')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button>
-            </div>
+            <div class="tf-group" style="margin-bottom:.9rem"><label>Hotel or Destination</label><input type="text" id="ap-alx-dest" placeholder="e.g. Hilton Alexandria Corniche"></div>
+            <div class="tf-actions"><button class="tf-btn-wa" onclick="bookTransfer('alex')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button></div>
           </div>
         </div>
       </div>
 
-    </div><!-- /transfer-section -->
+    </div>
 
-    <!-- CTA strip -->
     <div class="tours-cta-strip reveal">
-      <div>
-        <h3>Your Brothers Are Ready</h3>
-        <p>All tours and transfers are private, confirmed via WhatsApp in under 5 minutes. Cash on arrival. No surprises.</p>
-      </div>
+      <div><h3>Your Brothers Are Ready</h3><p>All tours and transfers are private, confirmed via WhatsApp in under 5 minutes. Cash on arrival. No surprises.</p></div>
       <div class="cta-right">
         <a href="#contact-route" class="btn-wa" onclick="navContact(event,'wa')"><i class="fa-brands fa-whatsapp"></i> Plan My Trip</a>
         <a href="#contact-route" class="btn-ghost" onclick="navContact(event,'ms')"><i class="fa-brands fa-facebook-messenger"></i> Messenger</a>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -1629,21 +1278,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
     <span class="eyebrow reveal">Verified Reviews</span>
     <h2 class="heading reveal" style="transition-delay:.1s">OUR FAMILY <span>SPEAKS.</span></h2>
     <div class="reviews-grid reveal" style="transition-delay:.2s">
-      <div class="rev-card glow">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"Very good service, accepted EU driving licence, took full insurance and no deposit. Extending for further days was just one call. Stunning roadtrip!"</p>
-        <div class="rev-author"><div class="rev-avatar"><img src="https://lh3.googleusercontent.com/a/ACg8ocK55XJAm-CeGXVHI_xVCARbgttaFzGEN8I0yb0Jterh8QPXiw=w40-h40-c-rp-mo-br100" alt="Gert"></div><div class="rev-info"><h5>Gert Halop</h5><span>Verified Google Review</span></div></div>
-      </div>
-      <div class="rev-card glow">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"Great service. They always have a car for you. Excellent team response — confirmed in minutes, car was exactly as described."</p>
-        <div class="rev-author"><div class="rev-avatar"><img src="https://lh3.googleusercontent.com/a/ACg8ocK7rjyqXmcqwLeeh48rqH4ZNdR6xOzg6iGVf8jd0Vu3BHTL5Q=w40-h40-c-rp-mo-br100" alt="Dzianis"></div><div class="rev-info"><h5>Dzianis Pomazau</h5><span>Verified Google Review</span></div></div>
-      </div>
-      <div class="rev-card glow">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"Fantastic. Mr. Hussam came in the middle of the night to deliver at Cairo International Airport. Service was truly exceptional — highly recommended."</p>
-        <div class="rev-author"><div class="rev-avatar"><img src="https://lh3.googleusercontent.com/a-/ALV-UjUm_fPTPUime2IEUVyhrKxqWEvm-1THxuOucC1K34l1vTGZ5NfG=w40-h40-c-rp-mo-ba2-br100" alt="Ahmad"></div><div class="rev-info"><h5>Ahmad El Awad</h5><span>Verified Google Review</span></div></div>
-      </div>
+      <div class="rev-card glow"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Very good service, accepted EU driving licence, took full insurance and no deposit. Extending for further days was just one call. Stunning roadtrip!"</p><div class="rev-author"><div class="rev-avatar"><img src="https://lh3.googleusercontent.com/a/ACg8ocK55XJAm-CeGXVHI_xVCARbgttaFzGEN8I0yb0Jterh8QPXiw=w40-h40-c-rp-mo-br100" alt="Gert"></div><div class="rev-info"><h5>Gert Halop</h5><span>Verified Google Review</span></div></div></div>
+      <div class="rev-card glow"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Great service. They always have a car for you. Excellent team response, confirmed in minutes, car was exactly as described."</p><div class="rev-author"><div class="rev-avatar"><img src="https://lh3.googleusercontent.com/a/ACg8ocK7rjyqXmcqwLeeh48rqH4ZNdR6xOzg6iGVf8jd0Vu3BHTL5Q=w40-h40-c-rp-mo-br100" alt="Dzianis"></div><div class="rev-info"><h5>Dzianis Pomazau</h5><span>Verified Google Review</span></div></div></div>
+      <div class="rev-card glow"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Fantastic. Mr. Hussam came in the middle of the night to deliver at Cairo International Airport. Service was truly exceptional, highly recommended."</p><div class="rev-author"><div class="rev-avatar"><img src="https://lh3.googleusercontent.com/a-/ALV-UjUm_fPTPUime2IEUVyhrKxqWEvm-1THxuOucC1K34l1vTGZ5NfG=w40-h40-c-rp-mo-ba2-br100" alt="Ahmad"></div><div class="rev-info"><h5>Ahmad El Awad</h5><span>Verified Google Review</span></div></div></div>
     </div>
   </div>
 </div>
@@ -1656,21 +1293,14 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
     <div class="trans-grid reveal" style="transition-delay:.2s">
       <div class="trans-card glow">
         <h3 style="font-size:1.1rem;font-weight:950;text-transform:uppercase;margin-bottom:1rem;color:var(--text)">How Insurance <span style="color:var(--accent)">Works</span></h3>
-        <p style="color:var(--muted);font-size:.8rem;line-height:1.7;margin-bottom:1rem"><strong>Basic Plan</strong> — Free. Deposit required. Damaged? <strong style="color:var(--danger)">You pay 100%</strong>.<br><br><strong style="color:var(--success)">Full Protection</strong> — Small daily fee. <strong>ZERO deposit</strong>. Damaged? <strong style="color:var(--success)">We pay 100%</strong>.</p>
-        <div class="dep-widget">
-          <div class="dep-row"><span>Insurance Surcharge</span><span class="dv" id="tw-ins">0 EGP</span></div>
-          <div class="dep-row"><span>Security Deposit</span><span class="dv" id="tw-dep">40,000 EGP</span></div>
-          <div class="dep-total"><span>Due on Arrival</span><span id="tw-total">40,000 EGP</span></div>
-        </div>
+        <p style="color:var(--muted);font-size:.8rem;line-height:1.7;margin-bottom:1rem"><strong>Basic Plan</strong> Free. Deposit required. Damaged? <strong style="color:var(--danger)">You pay 100%</strong>.<br><br><strong style="color:var(--success)">Full Protection</strong> Small daily fee. ZERO deposit. Damaged? <strong style="color:var(--success)">We pay 100%</strong>.</p>
+        <div class="dep-widget"><div class="dep-row"><span>Insurance Surcharge</span><span class="dv" id="tw-ins">0 EGP</span></div><div class="dep-row"><span>Security Deposit</span><span class="dv" id="tw-dep">40,000 EGP</span></div><div class="dep-total"><span>Due on Arrival</span><span id="tw-total">40,000 EGP</span></div></div>
       </div>
       <div class="trans-card glow">
         <h3 style="font-size:1.1rem;font-weight:950;text-transform:uppercase;margin-bottom:1rem;color:var(--text)">The <span style="color:var(--accent)">Void Rule</span></h3>
         <p style="color:var(--muted);font-size:.8rem;line-height:1.7;margin-bottom:1rem">No airport surcharges, no fuel tricks, no upsells at the counter. What you configure here is what you pay.</p>
-        <div class="void-alert">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <div><p><strong style="color:var(--danger)">MANDATORY:</strong> A police report is required for any insurance claim. <strong>NO POLICE REPORT = NO COVERAGE.</strong></p></div>
-        </div>
-        <p style="color:var(--muted);font-size:.7rem;margin-top:1rem">📜 <a href="https://brothersegy.com/terms-conditions/" target="_blank" style="color:var(--accent);text-decoration:underline">Full Liability Terms</a></p>
+        <div class="void-alert"><i class="fa-solid fa-triangle-exclamation"></i><div><p><strong style="color:var(--danger)">MANDATORY:</strong> A police report is required for any insurance claim. NO POLICE REPORT MEANS NO COVERAGE.</p></div></div>
+        <p style="color:var(--muted);font-size:.7rem;margin-top:1rem"><a href="https://brothersegy.com/terms-conditions/" target="_blank" style="color:var(--accent);text-decoration:underline">Full Liability Terms</a></p>
       </div>
     </div>
   </div>
@@ -1681,7 +1311,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   <div class="section-wrap">
     <div class="cta-banner reveal glow">
       <h2>JOIN THE <span>BROTHERS EGY FAMILY.</span></h2>
-      <p>Car rental, tours, transfers — handled by brothers who care. Configure, confirm, and go. We are always one message away.</p>
+      <p>Car rental, tours, transfers handled by brothers who care. Configure, confirm, and go. We are always one message away.</p>
       <div class="cta-acts">
         <button class="btn-p" onclick="scrollToDeal()"><i class="fa-solid fa-calendar-check"></i> Book Online</button>
         <a href="#contact-route" class="btn-wa" onclick="navContact(event,'wa')"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
@@ -1703,29 +1333,29 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
     <div class="footer-grid">
       <div class="footer-brand">
         <h2><img src="https://brothersegy.com/wp-content/uploads/2026/02/Logo.png" alt="Logo"> BROTHERS<span>EGY</span></h2>
-        <p>Premium car rental, guided tours, and chauffeur transfers across Cairo, Hurghada, Alexandria &amp; Rosetta. Since 2007. No credit card. Pay cash. 24/7.</p>
+        <p>Premium car rental, guided tours, and chauffeur transfers across Cairo, Hurghada, Alexandria and Rosetta. Since 2007. No credit card. Pay cash. 24/7.</p>
         <button class="btn-p" onclick="scrollToDeal()" style="font-size:.75rem;padding:.65rem 1.2rem"><i class="fa-solid fa-calendar-check"></i> Book Now</button>
       </div>
       <div class="footer-col"><h4>Fleet</h4><ul>
         <li><a href="https://brothersegy.com/car-rental-cairo/" target="_blank">Cairo Fleet</a></li>
         <li><a href="https://brothersegy.com/car-rental-hurghada/" target="_blank">Hurghada Fleet</a></li>
         <li><a href="https://brothersegy.com/car-rental-alexandria/" target="_blank">Alexandria Fleet</a></li>
-        <li><a href="#tours-section">Tours &amp; Transfers</a></li>
+        <li><a href="#tours-section">Tours and Transfers</a></li>
       </ul></div>
       <div class="footer-col"><h4>Company</h4><ul>
         <li><a href="https://brothersegy.com/about-us/" target="_blank">About Us</a></li>
         <li><a href="https://brothersegy.com/contact-us/" target="_blank">Contact</a></li>
         <li><a href="https://brothersegy.com/success-partners/" target="_blank">Partners</a></li>
-        <li><a href="https://brothersegy.com/erp/" target="_blank" style="color:var(--accent)">🔒 Staff ERP</a></li>
+        <li><a href="https://brothersegy.com/erp/" target="_blank" style="color:var(--accent)">Staff ERP</a></li>
       </ul></div>
       <div class="footer-col"><h4>Legal</h4><ul>
-        <li><a href="https://brothersegy.com/terms-conditions/" target="_blank">Terms &amp; Conditions</a></li>
+        <li><a href="https://brothersegy.com/terms-conditions/" target="_blank">Terms and Conditions</a></li>
         <li><a href="https://brothersegy.com/privacy-policy/" target="_blank">Privacy Policy</a></li>
         <li><a href="https://brothersegy.com/contact-us/" target="_blank">Contact Us</a></li>
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <div>&copy; 2026 Brothers EGY Car Rental. Family Since 2007. All rights reserved.</div>
+      <div>2026 Brothers EGY Car Rental. Family Since 2007. All rights reserved.</div>
       <div class="footer-socials">
         <a href="#"><i class="fa-brands fa-instagram"></i></a>
         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -1735,51 +1365,51 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   </div>
 </footer>
 
-<!-- JAVASCRIPT -->
 <script>
-/* ════ CONFIG ════ */
+/* ════ ALL JS — runs after DOM is ready ════ */
+(function(){
+
+/* ── CONFIG ── */
 var _W=atob('MjAxNTU0NDQ2NzQ0');
 var _M='BrothersEGY';
 var _WEB='https://brothersegy.com/contact-us/';
 
-/* ════ THEME — PILL STYLE ════ */
-(function(){
-  var saved=localStorage.getItem('begy-theme')||'dark';
-  applyTheme(saved);
-})();
-
+/* ── THEME — runs after DOM exists ── */
 function applyTheme(t){
   document.documentElement.setAttribute('data-theme',t);
   localStorage.setItem('begy-theme',t);
-  var db=document.getElementById('theme-dark-btn');
-  var lb=document.getElementById('theme-light-btn');
-  if(db&&lb){
-    db.classList.toggle('active',t==='dark');
-    lb.classList.toggle('active',t==='light');
-  }
+  var db=document.getElementById('btn-dark');
+  var lb=document.getElementById('btn-light');
+  if(db)db.classList.toggle('t-active',t==='dark');
+  if(lb)lb.classList.toggle('t-active',t==='light');
 }
-function setTheme(t){applyTheme(t)}
+window.setTheme=function(t){applyTheme(t)};
+applyTheme(localStorage.getItem('begy-theme')||'dark');
 
-/* ════ FAB COLLAPSE ════ */
-(function(){
-  var saved=localStorage.getItem('begy-fab')||'open';
-  if(saved==='collapsed')document.getElementById('fab').classList.add('collapsed');
-})();
-function toggleFab(){
+/* ── FAB ── */
+function applyFab(state){
   var fab=document.getElementById('fab');
+  if(!fab)return;
+  if(state==='collapsed')fab.classList.add('collapsed');
+  else fab.classList.remove('collapsed');
+}
+window.toggleFab=function(){
+  var fab=document.getElementById('fab');
+  if(!fab)return;
   fab.classList.toggle('collapsed');
   localStorage.setItem('begy-fab',fab.classList.contains('collapsed')?'collapsed':'open');
-}
+};
+applyFab(localStorage.getItem('begy-fab')||'open');
 
-/* ════ CONTACT ════ */
-function navContact(e,type){
+/* ── CONTACT ── */
+window.navContact=function(e,type){
   if(e)e.preventDefault();
-  if(type==='wa')window.open('https://wa.me/'+_W+'?text='+encodeURIComponent('Hi, I\'d like to rent a car in Egypt 🚗'),'_blank');
+  if(type==='wa')window.open('https://wa.me/'+_W+'?text='+encodeURIComponent('Hi, I would like to rent a car in Egypt'),'_blank');
   else if(type==='call')window.location.href=_WEB+'#call';
   else if(type==='ms')window.open('https://m.me/'+_M,'_blank');
-}
+};
 
-/* ════ FLEET DATA ════ */
+/* ── FLEET DATA ── */
 var FLEET={
   jetour_x90_plus:{name:"JETOUR X90 PLUS",cat:"FLAGSHIP 7-SEATER",tier:"premium",year:"2026",seats:7,bags:4,pMin:2200,pMax:2200,old:2800,dep:50000,fc:2200,ribbon:"Flagship",rc:"r-pop",img:"https://brothersegy.com/wp-content/uploads/2026/06/Jetour-X90-Plus-scaled.png",slug:"jetour-x90-plus"},
   soueast_s09:{name:"SOUEAST S09",cat:"PREMIUM SUV",tier:"premium",year:"2026",seats:7,bags:4,pMin:2000,pMax:2000,old:2600,dep:45000,fc:2000,ribbon:"New 2026",rc:"r-hot",img:"https://brothersegy.com/wp-content/uploads/2026/06/Soueast-S09-scaled.png",slug:"soueast-s09"},
@@ -1801,28 +1431,28 @@ var FLEET={
 };
 var FK=Object.keys(FLEET);
 
-/* ════ TOUR DATA ════ */
+/* ── TOUR DATA — no apostrophes in strings to prevent onclick breakage ── */
 var TOURS={
   egypt:[
-    {id:'pyramids',title:'Cairo Pyramids & Sphinx',badge:'Full Day',badgeCls:'cyan',img:'https://images.unsplash.com/photo-1539768942893-daf53e448371?auto=format&fit=crop&q=80&w=800',desc:'Giza Pyramids, Sphinx, Egyptian Museum, Khan el-Khalili bazaar. Private chauffeur, A/C vehicle, flexible pace.',chips:['8–10 Hours','1–7 Pax','A/C Vehicle','English Chauffeur'],groupPrice:'2,500',privatePrice:'3,800'},
-    {id:'luxor',title:'Luxor & Valley of Kings',badge:'Historical',badgeCls:'purple',img:'https://images.unsplash.com/photo-1648139210431-f5a62bc3f126?auto=format&fit=crop&q=80&w=800',desc:'Karnak Temple, Luxor Temple, Valley of the Kings, Hatshepsut. The world\'s greatest open-air museum.',chips:['1–2 Days','1–7 Pax','Guided','Overnight Option'],groupPrice:'3,800',privatePrice:'5,500'},
-    {id:'aswan',title:'Aswan & Abu Simbel',badge:'Nile Magic',badgeCls:'blue',img:'https://images.unsplash.com/photo-1731027613851-704b4375fb29?auto=format&fit=crop&q=80&w=800',desc:'Felucca on the Nile, High Dam, Philae Temple, and the magnificent Abu Simbel temples.',chips:['2 Days','Felucca Ride','A/C Vehicle','Abu Simbel'],groupPrice:'4,200',privatePrice:'6,500'},
-    {id:'alex_tour',title:'Alexandria City Experience',badge:'Coastal',badgeCls:'green',img:'https://images.unsplash.com/photo-1594808815295-52034d585f56?auto=format&fit=crop&q=80&w=800',desc:'Qaitbay Citadel, Bibliotheca Alexandrina, Montaza Palace. Private chauffeur from Cairo or local.',chips:['Full Day (10h)','1–5 Pax','Photo Stops','Mediterranean'],groupPrice:'3,000',privatePrice:'4,500'}
+    {id:'pyramids',title:'Cairo Pyramids and Sphinx',badge:'Full Day',badgeCls:'cyan',img:'https://images.unsplash.com/photo-1539768942893-daf53e448371?auto=format&fit=crop&q=80&w=800',desc:'Giza Pyramids, Sphinx, Egyptian Museum, Khan el-Khalili bazaar. Private chauffeur, A/C vehicle, flexible pace.',chips:['8 to 10 Hours','1 to 7 Pax','A/C Vehicle','English Chauffeur'],groupPrice:'2,500',privatePrice:'3,800'},
+    {id:'luxor',title:'Luxor and Valley of Kings',badge:'Historical',badgeCls:'purple',img:'https://images.unsplash.com/photo-1648139210431-f5a62bc3f126?auto=format&fit=crop&q=80&w=800',desc:'Karnak Temple, Luxor Temple, Valley of the Kings, Hatshepsut. The greatest open-air museum in the world.',chips:['1 to 2 Days','1 to 7 Pax','Guided','Overnight Option'],groupPrice:'3,800',privatePrice:'5,500'},
+    {id:'aswan',title:'Aswan and Abu Simbel',badge:'Nile Magic',badgeCls:'blue',img:'https://images.unsplash.com/photo-1731027613851-704b4375fb29?auto=format&fit=crop&q=80&w=800',desc:'Felucca on the Nile, High Dam, Philae Temple, and the magnificent Abu Simbel temples.',chips:['2 Days','Felucca Ride','A/C Vehicle','Abu Simbel'],groupPrice:'4,200',privatePrice:'6,500'},
+    {id:'alex_tour',title:'Alexandria City Experience',badge:'Coastal',badgeCls:'green',img:'https://images.unsplash.com/photo-1594808815295-52034d585f56?auto=format&fit=crop&q=80&w=800',desc:'Qaitbay Citadel, Bibliotheca Alexandrina, Montaza Palace. Private chauffeur from Cairo or local departure.',chips:['Full Day 10h','1 to 5 Pax','Photo Stops','Mediterranean'],groupPrice:'3,000',privatePrice:'4,500'}
   ],
   desert:[
-    {id:'white',title:'White Desert Safari',badge:'Adventure',badgeCls:'orange',img:'https://images.unsplash.com/photo-1643236312558-2725e111238b?auto=format&fit=crop&q=80&w=800',desc:'4x4 expedition through alien rock formations, Crystal Mountain, and sleeping under a billion stars.',chips:['2 Days / 1 Night','4x4 Jeep','Camping','Crystal Mountain'],groupPrice:'5,500',privatePrice:'8,000'},
-    {id:'siwa',title:'Siwa Oasis Escape',badge:'Hidden Gem',badgeCls:'orange',img:'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&q=80&w=800',desc:'The legendary Siwa Oasis — Oracle Temple, salt lakes, and the most spectacular desert sunsets in Egypt.',chips:['3 Days','4x4 Vehicle','Off-Road','Salt Lakes'],groupPrice:'7,500',privatePrice:'11,000'},
-    {id:'bahariya',title:'Bahariya & Black Desert',badge:'Half Day',badgeCls:'cyan',img:'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&q=80&w=800',desc:'Black Desert volcanic hills, El-Aqabat Valley, and the fossil-rich golden sand dunes. A day you\'ll never forget.',chips:['Full Day','4x4 Jeep','Hot Springs','Fossils'],groupPrice:'3,500',privatePrice:'5,200'}
+    {id:'white',title:'White Desert Safari',badge:'Adventure',badgeCls:'orange',img:'https://images.unsplash.com/photo-1643236312558-2725e111238b?auto=format&fit=crop&q=80&w=800',desc:'4x4 expedition through alien rock formations, Crystal Mountain, and sleeping under a billion stars.',chips:['2 Days 1 Night','4x4 Jeep','Camping','Crystal Mountain'],groupPrice:'5,500',privatePrice:'8,000'},
+    {id:'siwa',title:'Siwa Oasis Escape',badge:'Hidden Gem',badgeCls:'orange',img:'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&q=80&w=800',desc:'The legendary Siwa Oasis, Oracle Temple, salt lakes, and the most spectacular desert sunsets in Egypt.',chips:['3 Days','4x4 Vehicle','Off-Road','Salt Lakes'],groupPrice:'7,500',privatePrice:'11,000'},
+    {id:'bahariya',title:'Bahariya and Black Desert',badge:'Half Day',badgeCls:'cyan',img:'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&q=80&w=800',desc:'Black Desert volcanic hills, El-Aqabat Valley, and fossil-rich golden sand dunes.',chips:['Full Day','4x4 Jeep','Hot Springs','Fossils'],groupPrice:'3,500',privatePrice:'5,200'}
   ],
   sea:[
-    {id:'redsea',title:'Red Sea Snorkel & Relax',badge:'Red Sea',badgeCls:'cyan',img:'https://images.unsplash.com/photo-1691774786304-0df6994d61bd?auto=format&fit=crop&q=80&w=800',desc:'Private chauffeur to Hurghada or Sharm. Boat trips, pristine coral reefs, luxury resort relaxation.',chips:['Multi-day','Boat Trip','Snorkel','Resort Access'],groupPrice:'850 pp',privatePrice:'4,500'},
-    {id:'dahab',title:'Dahab & Blue Hole',badge:'Diving',badgeCls:'blue',img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=800',desc:'The legendary Blue Hole dive site, the lagoon for wind sports, and the relaxed beach town of Dahab.',chips:['2 Days','Snorkel/Dive','Beach','Bedouin Dinner'],groupPrice:'1,100 pp',privatePrice:'6,200'},
-    {id:'sinai',title:'Sinai & Mount Moses',badge:'Spiritual',badgeCls:'orange',img:'https://images.unsplash.com/photo-1560830889-96262b95c7e7?auto=format&fit=crop&q=80&w=800',desc:'Climb Mount Moses at dawn, visit St. Catherine\'s Monastery, and drive the breathtaking Sinai landscape.',chips:['2 Days','Dawn Hike','St. Catherine','4x4'],groupPrice:'2,200 pp',privatePrice:'9,500'}
+    {id:'redsea',title:'Red Sea Snorkel and Relax',badge:'Red Sea',badgeCls:'cyan',img:'https://images.unsplash.com/photo-1691774786304-0df6994d61bd?auto=format&fit=crop&q=80&w=800',desc:'Private chauffeur to Hurghada or Sharm. Boat trips, pristine coral reefs, luxury resort relaxation.',chips:['Multi-day','Boat Trip','Snorkel','Resort Access'],groupPrice:'850 pp',privatePrice:'4,500'},
+    {id:'dahab',title:'Dahab and Blue Hole',badge:'Diving',badgeCls:'blue',img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=800',desc:'The legendary Blue Hole dive site, the lagoon for wind sports, and the relaxed beach town of Dahab.',chips:['2 Days','Snorkel and Dive','Beach','Bedouin Dinner'],groupPrice:'1,100 pp',privatePrice:'6,200'},
+    {id:'sinai',title:'Sinai and Mount Moses',badge:'Spiritual',badgeCls:'orange',img:'https://images.unsplash.com/photo-1560830889-96262b95c7e7?auto=format&fit=crop&q=80&w=800',desc:'Climb Mount Moses at dawn, visit St. Catherine Monastery, and drive the breathtaking Sinai landscape.',chips:['2 Days','Dawn Hike','St. Catherine','4x4'],groupPrice:'2,200 pp',privatePrice:'9,500'}
   ]
 };
 var activeTourCat='egypt';
 
-/* ════ UTILS ════ */
+/* ── UTILS ── */
 function fmt(n){return Math.round(n).toLocaleString('en-US')}
 var RATES={EGP:1,USD:0.020,EUR:0.018};
 var SYMS={EGP:'EGP ',USD:'$',EUR:'€'};
@@ -1831,10 +1461,10 @@ function fC(n){return SYMS[activeCurr]+(activeCurr!=='EGP'?' ':'')+fmt(n*RATES[a
 function calcRate(c,days){if(days<=3)return c.pMax;if(days>=15)return c.pMin;return Math.round(c.pMax-((days-3)/12)*(c.pMax-c.pMin))}
 function productUrl(slug,hub){return 'https://brothersegy.com/product/rent-'+slug+'-'+hub+'/'}
 
-/* ════ NAV / SCROLL ════ */
-function scrollToDeal(){document.getElementById('deal-section').scrollIntoView({behavior:'smooth'})}
-function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open')}
-function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')}
+/* ── NAV / SCROLL ── */
+window.scrollToDeal=function(){document.getElementById('deal-section').scrollIntoView({behavior:'smooth'})};
+window.toggleMenu=function(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open')};
+window.closeMenu=function(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open')};
 window.addEventListener('scroll',function(){
   var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
   document.getElementById('pg-progress').style.width=pct+'%';
@@ -1842,105 +1472,128 @@ window.addEventListener('scroll',function(){
   var ft=document.getElementById('fab-top-btn');if(ft)ft.classList.toggle('show',window.scrollY>500);
 },{passive:true});
 
-/* ════ HERO SLIDESHOW ════ */
-(function(){
-  var CARS=FK.map(function(id){return{name:FLEET[id].name,cat:FLEET[id].cat,img:FLEET[id].img}});
-  var cur=0,paused=false,INTERVAL=5500,spinning=false;
-  var imgEl=document.getElementById('hero-car-img');
-  var nameEl=document.getElementById('hero-car-name');
-  var catEl=document.getElementById('hero-car-cat');
-  var curEl=document.getElementById('hero-cur');
-  var totEl=document.getElementById('hero-tot');
-  var timerEl=document.getElementById('hero-timer');
-  var dotsEl=document.getElementById('hero-dots');
-  var timerRaf=null,timerStart=null;
-  totEl.textContent=CARS.length;
-  CARS.forEach(function(_,i){var d=document.createElement('div');d.className='hero-dot'+(i===0?' active':'');d.onclick=function(){if(!spinning)goTo(i)};dotsEl.appendChild(d)});
-  function updateUI(){dotsEl.querySelectorAll('.hero-dot').forEach(function(d,i){d.classList.toggle('active',i===cur)});curEl.textContent=cur+1}
-  function startTimer(){
-    cancelAnimationFrame(timerRaf);timerEl.style.transition='none';timerEl.style.width='0%';
-    timerEl.getBoundingClientRect();timerStart=performance.now();
-    function tick(now){if(paused){timerRaf=requestAnimationFrame(tick);return}var pct=Math.min((now-timerStart)/INTERVAL*100,100);timerEl.style.width=pct+'%';if(pct<100)timerRaf=requestAnimationFrame(tick)}
-    timerRaf=requestAnimationFrame(tick);
-  }
-  function goTo(idx){
-    if(spinning||idx===cur)return;spinning=true;var target=(idx+CARS.length)%CARS.length;
-    imgEl.classList.remove('floating','spinning-in');
+/* ── HERO SLIDESHOW ── */
+var CARS=FK.map(function(id){return{name:FLEET[id].name,cat:FLEET[id].cat,img:FLEET[id].img}});
+var heroCur=0,heroPaused=false,HERO_INTERVAL=5500,heroSpinning=false;
+var heroImg=document.getElementById('hero-car-img');
+var heroName=document.getElementById('hero-car-name');
+var heroCat=document.getElementById('hero-car-cat');
+var heroCurEl=document.getElementById('hero-cur');
+var heroTotEl=document.getElementById('hero-tot');
+var heroTimerEl=document.getElementById('hero-timer');
+var heroDotsEl=document.getElementById('hero-dots');
+var heroTimerRaf=null,heroTimerStart=null;
+
+heroTotEl.textContent=CARS.length;
+CARS.forEach(function(_,i){
+  var d=document.createElement('div');
+  d.className='hero-dot'+(i===0?' active':'');
+  d.onclick=function(){if(!heroSpinning)heroGoTo(i)};
+  heroDotsEl.appendChild(d);
+});
+
+function heroUpdateUI(){heroDotsEl.querySelectorAll('.hero-dot').forEach(function(d,i){d.classList.toggle('active',i===heroCur)});heroCurEl.textContent=heroCur+1}
+function heroStartTimer(){
+  cancelAnimationFrame(heroTimerRaf);
+  heroTimerEl.style.transition='none';heroTimerEl.style.width='0%';
+  heroTimerEl.getBoundingClientRect();
+  heroTimerStart=performance.now();
+  (function tick(now){
+    if(heroPaused){heroTimerRaf=requestAnimationFrame(tick);return}
+    var pct=Math.min((now-heroTimerStart)/HERO_INTERVAL*100,100);
+    heroTimerEl.style.width=pct+'%';
+    if(pct<100)heroTimerRaf=requestAnimationFrame(tick);
+  })(heroTimerStart);
+}
+function heroGoTo(idx){
+  if(heroSpinning||idx===heroCur)return;
+  heroSpinning=true;var target=(idx+CARS.length)%CARS.length;
+  heroImg.classList.remove('floating','spinning-in');
+  setTimeout(function(){
+    heroImg.classList.add('spinning-out');
     setTimeout(function(){
-      imgEl.classList.add('spinning-out');
-      setTimeout(function(){
-        cur=target;imgEl.src=CARS[cur].img;imgEl.alt=CARS[cur].name;
-        imgEl.classList.remove('spinning-out');void imgEl.offsetHeight;imgEl.classList.add('spinning-in');
-        nameEl.style.opacity='0';catEl.style.opacity='0';
-        setTimeout(function(){nameEl.textContent=CARS[cur].name;catEl.textContent=CARS[cur].cat;nameEl.style.transition='opacity .3s';catEl.style.transition='opacity .3s';nameEl.style.opacity='1';catEl.style.opacity='1'},80);
-        updateUI();
-        setTimeout(function(){imgEl.classList.remove('spinning-in');requestAnimationFrame(function(){requestAnimationFrame(function(){imgEl.classList.add('floating');spinning=false})})},720);
-      },650);
-    },0);
-    startTimer();
-  }
-  function next(){if(!paused&&!spinning)goTo((cur+1)%CARS.length)}
-  setInterval(next,INTERVAL);
-  imgEl.addEventListener('mouseenter',function(){paused=true});
-  imgEl.addEventListener('mouseleave',function(){paused=false});
-  var touchX=0,slot=document.getElementById('hero-slot');
-  slot.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX},{passive:true});
-  slot.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>40){dx<0?goTo((cur+1)%CARS.length):goTo((cur-1+CARS.length)%CARS.length)}},{passive:true});
-  startTimer();
-})();
+      heroCur=target;heroImg.src=CARS[heroCur].img;heroImg.alt=CARS[heroCur].name;
+      heroImg.classList.remove('spinning-out');void heroImg.offsetHeight;heroImg.classList.add('spinning-in');
+      heroName.style.opacity='0';heroCat.style.opacity='0';
+      setTimeout(function(){heroName.textContent=CARS[heroCur].name;heroCat.textContent=CARS[heroCur].cat;heroName.style.transition='opacity .3s';heroCat.style.transition='opacity .3s';heroName.style.opacity='1';heroCat.style.opacity='1'},80);
+      heroUpdateUI();
+      setTimeout(function(){heroImg.classList.remove('spinning-in');requestAnimationFrame(function(){requestAnimationFrame(function(){heroImg.classList.add('floating');heroSpinning=false})})},720);
+    },650);
+  },0);
+  heroStartTimer();
+}
+setInterval(function(){if(!heroPaused&&!heroSpinning)heroGoTo((heroCur+1)%CARS.length)},HERO_INTERVAL);
+heroImg.addEventListener('mouseenter',function(){heroPaused=true});
+heroImg.addEventListener('mouseleave',function(){heroPaused=false});
+var heroTouchX=0,heroSlot=document.getElementById('hero-slot');
+heroSlot.addEventListener('touchstart',function(e){heroTouchX=e.touches[0].clientX},{passive:true});
+heroSlot.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-heroTouchX;if(Math.abs(dx)>40){dx<0?heroGoTo((heroCur+1)%CARS.length):heroGoTo((heroCur-1+CARS.length)%CARS.length)}},{passive:true});
+heroStartTimer();
 
-/* ════ STATS COUNTER ════ */
-(function(){var done=false;new IntersectionObserver(function(entries){if(done||!entries[0].isIntersecting)return;done=true;document.querySelectorAll('[data-count]').forEach(function(el){var t=parseInt(el.dataset.count),n=0,step=Math.max(1,Math.floor(t/60));var iv=setInterval(function(){n+=step;if(n>=t){n=t;clearInterval(iv)}el.textContent=n+(t>=100?'+':'')},30)})},{threshold:.3}).observe(document.querySelector('.stats-grid'))})();
+/* ── STATS ── */
+var statsDone=false;
+new IntersectionObserver(function(entries){
+  if(statsDone||!entries[0].isIntersecting)return;statsDone=true;
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var t=parseInt(el.dataset.count),n=0,step=Math.max(1,Math.floor(t/60));
+    var iv=setInterval(function(){n+=step;if(n>=t){n=t;clearInterval(iv)}el.textContent=n+(t>=100?'+':'')},30);
+  });
+},{threshold:.3}).observe(document.querySelector('.stats-grid'));
 
-/* ════ SCROLL REVEAL ════ */
+/* ── SCROLL REVEAL ── */
 var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:.07,rootMargin:'0px 0px -35px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
 
-/* ════ GLOW MOUSE ════ */
+/* ── GLOW ── */
 function attachGlow(el){el.addEventListener('mousemove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')})}
 document.querySelectorAll('.glow').forEach(attachGlow);
 
-/* ════ BOOKING STATE ════ */
+/* ── BOOKING ── */
 var bkCar='kia_sportage',bkDays=7,bkFullIns=false,bkExDriver=false,bkExSeat=false;
 
 function populateBkCar(){
   var sel=document.getElementById('bk-car');sel.innerHTML='';
   var groups={premium:[],crossover:[],sedan:[]};
   FK.forEach(function(id){groups[FLEET[id].tier].push(id)});
-  var labels={premium:'── Premium & Large SUVs ──',crossover:'── Compact Crossovers ──',sedan:'── Economy Sedans ──'};
+  var labels={premium:'Premium and Large SUVs',crossover:'Compact Crossovers',sedan:'Economy Sedans'};
   Object.keys(groups).forEach(function(tier){
-    if(!groups[tier].length)return;var og=document.createElement('optgroup');og.label=labels[tier];
+    if(!groups[tier].length)return;
+    var og=document.createElement('optgroup');og.label=labels[tier];
     groups[tier].forEach(function(id){var c=FLEET[id];var o=document.createElement('option');o.value=id;o.textContent=c.name+' (from '+fmt(c.pMin)+' EGP)';og.appendChild(o)});
     sel.appendChild(og);
   });
   sel.value=bkCar;
 }
-function bkCarChange(id){bkCar=id;scLoadCar(id);bkCalc()}
+
+window.bkCarChange=function(id){bkCar=id;scLoadCar(id);bkCalc()};
 
 (function(){
-  var today=new Date();var f=new Date(today);f.setDate(f.getDate()+2);
+  var today=new Date(),f=new Date(today);f.setDate(f.getDate()+2);
   var t2=new Date(f);t2.setDate(t2.getDate()+7);
   var fmt2=function(d){return d.toISOString().split('T')[0]};
   var fEl=document.getElementById('bk-from'),tEl=document.getElementById('bk-to');
-  if(fEl){fEl.value=fmt2(f);fEl.min=fmt2(today)}if(tEl){tEl.value=fmt2(t2);tEl.min=fmt2(f)}
-  document.getElementById('bk-days').value=7;document.getElementById('bk-slider').value=7;document.getElementById('bk-days-lbl').textContent=7;
+  if(fEl){fEl.value=fmt2(f);fEl.min=fmt2(today)}
+  if(tEl){tEl.value=fmt2(t2);tEl.min=fmt2(f)}
+  document.getElementById('bk-days').value=7;
+  document.getElementById('bk-slider').value=7;
+  document.getElementById('bk-days-lbl').textContent=7;
 })();
 
-function bkDateSync(){
+window.bkDateSync=function(){
   var f=document.getElementById('bk-from').value,t=document.getElementById('bk-to').value,tEl=document.getElementById('bk-to');
   if(tEl&&f)tEl.min=f;
   if(f&&t){var diff=Math.round((new Date(t)-new Date(f))/(864e5));if(diff>0){bkDays=diff;document.getElementById('bk-days').value=diff;document.getElementById('bk-slider').value=Math.min(diff,60);document.getElementById('bk-days-lbl').textContent=diff;bkCalc()}}
-}
-function bkDateSync2(){bkDateSync()}
-function bkSliderChange(v){
+};
+window.bkDateSync2=function(){window.bkDateSync()};
+window.bkSliderChange=function(v){
   bkDays=parseInt(v);document.getElementById('bk-days').value=v;document.getElementById('bk-days-lbl').textContent=v;
   var fEl=document.getElementById('bk-from'),tEl=document.getElementById('bk-to');
   if(fEl&&fEl.value){var d=new Date(fEl.value);d.setDate(d.getDate()+bkDays);tEl.value=d.toISOString().split('T')[0]}
   bkCalc();
-}
-function bkIns(full){bkFullIns=full;document.getElementById('ins-basic-btn').classList.toggle('active',!full);document.getElementById('ins-full-btn').classList.toggle('active',full);bkCalc()}
-function bkEx(t){if(t==='driver'){bkExDriver=!bkExDriver;document.getElementById('ex-driver').classList.toggle('on')}if(t==='seat'){bkExSeat=!bkExSeat;document.getElementById('ex-seat').classList.toggle('on')}bkCalc()}
-function setCurr(c){activeCurr=c;document.querySelectorAll('.curr-btn').forEach(function(b){b.classList.toggle('active',b.textContent===c)});bkCalc()}
+};
+window.bkIns=function(full){bkFullIns=full;document.getElementById('ins-basic-btn').classList.toggle('active',!full);document.getElementById('ins-full-btn').classList.toggle('active',full);bkCalc()};
+window.bkEx=function(t){if(t==='driver'){bkExDriver=!bkExDriver;document.getElementById('ex-driver').classList.toggle('on')}if(t==='seat'){bkExSeat=!bkExSeat;document.getElementById('ex-seat').classList.toggle('on')}bkCalc()};
+window.setCurr=function(c){activeCurr=c;document.querySelectorAll('.curr-btn').forEach(function(b){b.classList.toggle('active',b.textContent===c)});bkCalc()};
 
 function bkCalc(){
   var c=FLEET[bkCar];if(!c)return;
@@ -1948,55 +1601,56 @@ function bkCalc(){
   document.getElementById('bk-days-lbl').textContent=days;document.getElementById('bk-slider').value=Math.min(days,60);
   var dr=calcRate(c,days),dep=bkFullIns?0:c.dep,ins=bkFullIns?c.fc*days:0;
   var ext=(bkExDriver?500*days:0)+(bkExSeat?250*days:0);
-  var vip=0;
   var kmElem=document.getElementById('bk-km'),km=kmElem?parseFloat(kmElem.value)||0:0;
-  var total=dr*days+ins+ext+km+vip,now=Math.round(total*.3);
+  var total=dr*days+ins+ext+km,now2=Math.round(total*.3);
   document.getElementById('r-daily').textContent=fC(dr)+'/day';
   document.getElementById('r-ins').textContent=bkFullIns?fC(ins):'Included';
-  document.getElementById('r-extras').textContent=(ext+km)>0?fC(ext+km):'—';
-  var depEl=document.getElementById('r-dep');depEl.textContent=dep>0?fC(dep)+' (Refundable)':'ZERO ✓';depEl.className=dep>0?'rv':'rv-g';
+  document.getElementById('r-extras').textContent=(ext+km)>0?fC(ext+km):'--';
+  var depEl=document.getElementById('r-dep');depEl.textContent=dep>0?fC(dep)+' (Refundable)':'ZERO';depEl.className=dep>0?'rv':'rv-g';
   document.getElementById('r-total').textContent=fC(total);
-  document.getElementById('r-now').innerHTML=fC(now)+'<small>30% Due Now</small>';
-  document.getElementById('r-later').textContent='70% Arrival: '+fC(total-now);
+  document.getElementById('r-now').innerHTML=fC(now2)+'<small>30% Due Now</small>';
+  document.getElementById('r-later').textContent='70% Arrival: '+fC(total-now2);
   var ti=document.getElementById('tw-ins'),td=document.getElementById('tw-dep'),tt=document.getElementById('tw-total');
   if(ti)ti.textContent=bkFullIns?fC(ins):'INCLUDED';
-  if(td){td.textContent=dep>0?fC(dep):'ZERO — No Hold';td.style.color=dep>0?'':'var(--success)'}
+  if(td){td.textContent=dep>0?fC(dep):'ZERO';td.style.color=dep>0?'':'var(--success)'}
   if(tt)tt.textContent=fC(dep+ins);
-  var hub=document.getElementById('bk-hub').value,linkEl=document.getElementById('bk-online-btn');
-  if(linkEl)linkEl.href=productUrl(c.slug,hub);
+  var hub=document.getElementById('bk-hub').value;
+  var linkEl=document.getElementById('bk-online-btn');if(linkEl)linkEl.href=productUrl(c.slug,hub);
   refreshCmpModal();updateCmpBar();
 }
 
-function bkWhatsApp(){
+window.bkWhatsApp=function(){
   var c=FLEET[bkCar];
   var hub=document.getElementById('bk-hub').value,hubDrop=document.getElementById('bk-hub-drop').value;
-  var from=document.getElementById('bk-from').value||'TBD',to=document.getElementById('bk-to').value||'TBD';
-  var tf=document.getElementById('bk-time-from').value,tt2=document.getElementById('bk-time-to').value;
+  var from=document.getElementById('bk-from').value||'TBD',to2=document.getElementById('bk-to').value||'TBD';
+  var tf=document.getElementById('bk-time-from').value,tt3=document.getElementById('bk-time-to').value;
   var notes=document.getElementById('bk-notes').value,days=bkDays;
   var dr=calcRate(c,days),ins=bkFullIns?c.fc*days:0;
   var ext=(bkExDriver?500*days:0)+(bkExSeat?250*days:0);
   var kmElem=document.getElementById('bk-km'),km=kmElem?parseFloat(kmElem.value)||0:0;
   var kmTxt=kmElem&&kmElem.options[kmElem.selectedIndex]?kmElem.options[kmElem.selectedIndex].text:'';
-  var total=dr*days+ins+ext+km,now=Math.round(total*.3);
-  var msg='🚗 BROTHERS EGY — BOOKING\n\n'+'📍 Pickup: '+hub.toUpperCase()+' @ '+tf+' | '+from+'\n'+'📍 Dropoff: '+hubDrop.toUpperCase()+' @ '+tt2+' | '+to+'\n'+'🚘 Vehicle: '+c.name+'\n'+'📅 Duration: '+days+' days\n'+'💰 Daily: '+fmt(dr)+' EGP\n'+'🛡️ Insurance: '+(bkFullIns?'Full Protection':'Basic Cover')+'\n'+'💳 Deposit: '+(bkFullIns?'ZERO':fmt(c.dep)+' EGP')+'\n'+(bkExDriver?'👤 Add. Chauffeur: +500 EGP/d\n':'')+(bkExSeat?'🧸 Child Seat: +250 EGP/d\n':'')+(km>0?'🛣️ '+kmTxt+'\n':'')+'\n💵 TOTAL: '+fmt(total)+' EGP\n'+'├ 30% Now: '+fmt(now)+' EGP\n'+'└ 70% Arrival: '+fmt(total-now)+' EGP'+(notes?'\n📝 '+notes:'')+'\n\nPlease confirm 🙏';
+  var total=dr*days+ins+ext+km,now2=Math.round(total*.3);
+  var msg='BROTHERS EGY BOOKING\n\nPickup: '+hub.toUpperCase()+' at '+tf+' on '+from+'\nDropoff: '+hubDrop.toUpperCase()+' at '+tt3+' on '+to2+'\nVehicle: '+c.name+'\nDuration: '+days+' days\nDaily: '+fmt(dr)+' EGP\nInsurance: '+(bkFullIns?'Full Protection':'Basic Cover')+'\nDeposit: '+(bkFullIns?'ZERO':fmt(c.dep)+' EGP')+(bkExDriver?'\nChauffeur extra: +500 EGP/d':'')+(bkExSeat?'\nChild Seat: +250 EGP/d':'')+(km>0?'\nKM Package: '+kmTxt:'')+'\n\nTOTAL: '+fmt(total)+' EGP\n30% Now: '+fmt(now2)+' EGP\n70% Arrival: '+fmt(total-now2)+' EGP'+(notes?'\nNotes: '+notes:'')+'\n\nPlease confirm';
   window.open('https://wa.me/'+_W+'?text='+encodeURIComponent(msg),'_blank');
-}
-function bkMessenger(){window.open('https://m.me/'+_M,'_blank')}
+};
+window.bkMessenger=function(){window.open('https://m.me/'+_M,'_blank')};
 
-/* ════ SHOWROOM ════ */
+/* ── SHOWROOM ── */
 var scCur='kia_sportage',scLightsOn=false,scStageIdx=0;
 var scRot=0,scDrag=false,scLastX=0,scVel=0,scRaf=null;
 var SC_STAGES=['radial-gradient(circle at 50% 80%,rgba(0,240,255,.06),transparent 65%)','radial-gradient(circle at 50% 80%,rgba(217,119,6,.06),transparent 65%)','radial-gradient(circle at 50% 80%,rgba(124,58,237,.06),transparent 65%)'];
 
 function scLoadCar(id){
-  if(!FLEET[id])return;scCur=id;var c=FLEET[id];
-  document.getElementById('sc-cat').textContent=c.cat;document.getElementById('sc-name').textContent=c.name;
+  if(!FLEET[id])return;
+  scCur=id;var c=FLEET[id];
+  document.getElementById('sc-cat').textContent=c.cat;
+  document.getElementById('sc-name').textContent=c.name;
   var img=document.getElementById('sc-img');
-  img.classList.remove('spin-in','spin-out');void img.offsetHeight;img.classList.add('spin-out');
+  img.classList.remove('spin-in','spin-out');
+  img.style.filter='';img.style.transform='translateZ(0)';
+  void img.offsetHeight;img.classList.add('spin-out');
   setTimeout(function(){
-    img.src=c.img;img.alt=c.name;
-    /* FIX: reset to base filter, not drop-shadow which conflicts with GPU layer on mobile */
-    img.style.filter='';
+    img.src=c.img;img.alt=c.name;img.style.filter='';
     img.classList.remove('spin-out');void img.offsetHeight;img.classList.add('spin-in');
     setTimeout(function(){img.classList.remove('spin-in');img.style.filter='drop-shadow(0 14px 26px rgba(0,0,0,.95))'},580);
   },380);
@@ -2008,7 +1662,7 @@ function scUpdateRot(){
   var norm=((scRot%360)+360)%360,rad=(norm*Math.PI)/180;
   var skew=Math.sin(rad)*9,scl=0.93+Math.abs(Math.cos(rad))*.07;
   img.style.transform='perspective(800px) rotateY('+skew+'deg) scaleX('+(Math.cos(rad)<0?-scl:scl)+') translateZ(0)';
-  document.getElementById('sc-angle').textContent=Math.round(norm)+'°';
+  document.getElementById('sc-angle').textContent=Math.round(norm)+'';
 }
 function scInertia(){cancelAnimationFrame(scRaf);(function loop(){if(Math.abs(scVel)<0.12)return;scRot+=scVel;scVel*=0.94;scUpdateRot();scRaf=requestAnimationFrame(loop)})()}
 (function(){
@@ -2020,203 +1674,226 @@ function scInertia(){cancelAnimationFrame(scRaf);(function loop(){if(Math.abs(sc
   vp.addEventListener('touchmove',function(e){if(!scDrag)return;var dx=e.touches[0].clientX-scLastX;scVel=dx*.5;scRot+=dx*.5;scLastX=e.touches[0].clientX;scUpdateRot()},{passive:true});
   vp.addEventListener('touchend',function(){if(scDrag){scDrag=false;scInertia()}});
 })();
-window.scLights=function(){scLightsOn=!scLightsOn;document.getElementById('hud-light').classList.toggle('lit',scLightsOn);var img=document.getElementById('sc-img');if(scLightsOn)img.style.filter='drop-shadow(0 14px 26px rgba(0,0,0,.95)) drop-shadow(0 0 28px rgba(0,240,255,.5))';else img.style.filter='drop-shadow(0 14px 26px rgba(0,0,0,.95))'};
+window.scLights=function(){
+  scLightsOn=!scLightsOn;
+  document.getElementById('hud-light').classList.toggle('lit',scLightsOn);
+  var img=document.getElementById('sc-img');
+  img.style.filter=scLightsOn?'drop-shadow(0 14px 26px rgba(0,0,0,.95)) drop-shadow(0 0 28px rgba(0,240,255,.5))':'drop-shadow(0 14px 26px rgba(0,0,0,.95))';
+};
 window.scStage=function(){scStageIdx=(scStageIdx+1)%SC_STAGES.length;document.getElementById('stage-bg').style.background=SC_STAGES[scStageIdx]};
 
-/* ════ FLEET CAROUSEL ════ */
+/* ── CAROUSEL HELPER ── */
+window.carouselScroll=function(id,dir){
+  var el=document.getElementById(id);if(!el)return;
+  var card=el.querySelector('.fc')||el.querySelector('.tour-card');
+  var w=card?(card.offsetWidth+12):300;
+  el.scrollBy({left:dir*w*2,behavior:'smooth'});
+};
+
+/* ── FLEET CAROUSEL ── */
 var activeHub='cairo',activeCarTier='premium';
 var cmpList=[],cmpModalOpen=false,cmpMode='normal';
 
-function scrollCarousel(id,dir){
-  var el=document.getElementById(id);
-  if(!el)return;
-  var cardW=el.querySelector('.fc,.tour-card');
-  var w=cardW?(cardW.offsetWidth+12):300;
-  el.scrollBy({left:dir*w*2,behavior:'smooth'});
-}
-
-function showCarCat(tier){
+window.showCarCat=function(tier){
   activeCarTier=tier;
   document.querySelectorAll('.car-cat-tab').forEach(function(b){b.classList.toggle('active',b.dataset.tier===tier)});
   renderFleetCarousel();
-}
-
-function fleetHub(hub){
+};
+window.fleetHub=function(hub){
   activeHub=hub;
   document.querySelectorAll('.hub-sw-btn').forEach(function(b){b.classList.toggle('active',b.dataset.hub===hub)});
   bkCalc();renderFleetCarousel();
-}
+};
 
 function renderFleetCarousel(){
   var carousel=document.getElementById('fleet-carousel');
+  if(!carousel)return;
   carousel.innerHTML='';
   var cats={premium:0,crossover:0,sedan:0};
-  FK.forEach(function(id){cats[FLEET[id].tier]++});
-  ['premium','crossover','sedan'].forEach(function(t){
-    var el=document.getElementById('cnt-'+t);if(el)el.textContent=cats[t];
-  });
+  FK.forEach(function(id){if(cats[FLEET[id].tier]!==undefined)cats[FLEET[id].tier]++});
+  ['premium','crossover','sedan'].forEach(function(t){var el=document.getElementById('cnt-'+t);if(el)el.textContent=cats[t]});
   var shown=FK.filter(function(id){return FLEET[id].tier===activeCarTier});
   shown.forEach(function(id){
     var c=FLEET[id];
     var url=productUrl(c.slug,activeHub);
-    var prStr=c.pMin===c.pMax?fmt(c.pMin):fmt(c.pMin)+'–'+fmt(c.pMax);
+    var prStr=c.pMin===c.pMax?fmt(c.pMin):fmt(c.pMin)+' to '+fmt(c.pMax);
     var isCmp=cmpList.indexOf(id)>-1;
     var el=document.createElement('article');el.className='fc glow';el.dataset.id=id;
+    /* SAFE innerHTML — no apostrophes in data, onclick uses double-quote wrapper */
     el.innerHTML=(c.ribbon?'<span class="fc-ribbon '+c.rc+'">'+c.ribbon+'</span>':'')
       +'<h3 class="fc-name">'+c.name+'</h3>'
       +'<div class="fc-chips"><span class="chip"><i class="fa-solid fa-gears"></i> Auto</span><span class="chip"><i class="fa-solid fa-user-group"></i> '+c.seats+' Seats</span><span class="chip"><i class="fa-solid fa-suitcase-rolling"></i> '+c.bags+' Bags</span><span class="chip">'+c.year+'</span></div>'
       +'<div class="fc-img-wrap"><img src="'+c.img+'" alt="'+c.name+'" loading="lazy"></div>'
-      +'<div class="fc-ins"><div class="fc-ins-box basic"><span class="ih">Basic</span><span class="iv">Free</span><span class="id">Dep: '+fmt(c.dep)+' EGP</span></div><div class="fc-ins-box full"><span class="ih">Full Cover</span><span class="iv">'+fmt(c.fc)+' EGP/d</span><span class="id">Dep: ZERO ✓</span></div></div>'
+      +'<div class="fc-ins"><div class="fc-ins-box basic"><span class="ih">Basic</span><span class="iv">Free</span><span class="id">Dep: '+fmt(c.dep)+' EGP</span></div><div class="fc-ins-box full"><span class="ih">Full Cover</span><span class="iv">'+fmt(c.fc)+' EGP/d</span><span class="id">Dep: ZERO</span></div></div>'
       +'<div class="fc-footer"><div class="fc-price"><span class="old">'+fmt(c.old)+' EGP</span><span class="range">'+prStr+'</span><span class="unit"> EGP/day</span></div>'
-      +'<div class="fc-btns"><button class="fc-cfg" onclick="loadFromFleet(\''+id+'\')" title="Configure"><i class="fa-solid fa-sliders"></i></button>'
-      +'<a href="'+url+'" target="_blank" rel="noopener" class="fc-book" data-id="'+id+'"><i class="fa-solid fa-calendar-check"></i> Book</a></div></div>'
-      +'<div class="fc-cmp-row"><input type="checkbox" class="fc-cmp-cb" id="cmpcb-'+id+'"'+(isCmp?' checked':'')+' onchange="toggleCmp(\''+id+'\',this.checked)"><label class="fc-cmp-lbl" for="cmpcb-'+id+'">Compare</label></div>';
+      +'<div class="fc-btns">'
+      +'<button class="fc-cfg" onclick="loadFromFleet(this)" data-id="'+id+'" title="Configure"><i class="fa-solid fa-sliders"></i></button>'
+      +'<a href="'+url+'" target="_blank" rel="noopener" class="fc-book"><i class="fa-solid fa-calendar-check"></i> Book</a>'
+      +'</div></div>'
+      +'<div class="fc-cmp-row"><input type="checkbox" class="fc-cmp-cb" id="cmpcb-'+id+'"'+(isCmp?' checked':'')+' data-id="'+id+'" onchange="cmpCheck(this)"><label class="fc-cmp-lbl" for="cmpcb-'+id+'">Compare</label></div>';
     carousel.appendChild(el);attachGlow(el);
   });
-  /* carousel dot indicators */
-  var dotsEl=document.getElementById('fleet-dots');dotsEl.innerHTML='';
-  var pages=Math.ceil(shown.length/2);
-  for(var i=0;i<pages;i++){var d=document.createElement('div');d.className='cdot'+(i===0?' active':'');(function(idx){d.onclick=function(){var el2=document.getElementById('fleet-carousel');var cardEl=el2.querySelector('.fc');var w=cardEl?(cardEl.offsetWidth+12):300;el2.scrollTo({left:idx*w*2,behavior:'smooth'})}})(i);dotsEl.appendChild(d)}
-  carousel.addEventListener('scroll',function(){
-    var cardEl=carousel.querySelector('.fc');if(!cardEl)return;
-    var w=cardEl.offsetWidth+12;var page=Math.round(carousel.scrollLeft/w/2);
-    dotsEl.querySelectorAll('.cdot').forEach(function(d,i){d.classList.toggle('active',i===page)});
-  },{passive:true});
+  buildCarouselDots('fleet-carousel','fleet-dots','.fc');
 }
 
-window.loadFromFleet=function(id){
+/* Use data-id on buttons/checkboxes to avoid onclick string escaping */
+window.loadFromFleet=function(btn){
+  var id=btn.dataset.id;if(!id||!FLEET[id])return;
   bkCar=id;var sel=document.getElementById('bk-car');if(sel)sel.value=id;
-  /* FIX mobile blur: clear any existing filter before scLoadCar sets new one */
   var img=document.getElementById('sc-img');
   if(img){img.style.filter='';img.style.transform='translateZ(0)'}
   scLoadCar(id);bkCalc();
   document.getElementById('deal-section').scrollIntoView({behavior:'smooth'});
 };
+window.cmpCheck=function(cb){toggleCmp(cb.dataset.id,cb.checked)};
 
-/* ════ TOUR CAROUSEL ════ */
-function showTourCat(cat){
+function buildCarouselDots(carouselId,dotsId,cardSel){
+  var carousel=document.getElementById(carouselId);
+  var dotsEl=document.getElementById(dotsId);
+  if(!carousel||!dotsEl)return;
+  dotsEl.innerHTML='';
+  var cards=carousel.querySelectorAll(cardSel);
+  if(!cards.length)return;
+  var pages=Math.ceil(cards.length/2);
+  for(var i=0;i<pages;i++){
+    var d=document.createElement('div');
+    d.className='cdot'+(i===0?' active':'');
+    (function(pg){
+      d.onclick=function(){
+        var c=carousel.querySelector(cardSel);
+        if(!c)return;
+        var w=c.offsetWidth+12;
+        carousel.scrollTo({left:pg*w*2,behavior:'smooth'});
+      };
+    })(i);
+    dotsEl.appendChild(d);
+  }
+  carousel.addEventListener('scroll',function(){
+    var c=carousel.querySelector(cardSel);if(!c)return;
+    var w=c.offsetWidth+12;
+    var pg=Math.round(carousel.scrollLeft/(w*2));
+    dotsEl.querySelectorAll('.cdot').forEach(function(dot,i){dot.classList.toggle('active',i===pg)});
+  },{passive:true});
+}
+
+/* ── TOUR CAROUSEL ── */
+window.showTourCat=function(cat){
   activeTourCat=cat;
   document.querySelectorAll('.tour-cat-tab').forEach(function(b){b.classList.toggle('active',b.dataset.tcat===cat)});
   renderTourCarousel();
-  /* reset selected tour label */
   var lbl=document.getElementById('tf-selected-label');if(lbl)lbl.style.display='none';
-}
+};
 
 function renderTourCarousel(){
-  var carousel=document.getElementById('tour-carousel');carousel.innerHTML='';
+  var carousel=document.getElementById('tour-carousel');if(!carousel)return;
+  carousel.innerHTML='';
   var tours=TOURS[activeTourCat]||[];
   tours.forEach(function(t){
     var el=document.createElement('div');el.className='tour-card glow';
+    var chipsHtml=t.chips.map(function(c){return'<span class="tour-chip"><i class="fa-solid fa-check"></i> '+c+'</span>'}).join('');
+    /* onclick uses data-id to avoid string escaping entirely */
     el.innerHTML='<div class="tour-img-wrap"><img class="tour-img" src="'+t.img+'" alt="'+t.title+'" loading="lazy"><span class="tour-badge '+t.badgeCls+'">'+t.badge+'</span></div>'
       +'<div class="tour-body">'
       +'<h3 class="tour-title">'+t.title+'</h3>'
       +'<p class="tour-desc">'+t.desc+'</p>'
-      +'<div class="tour-meta">'+t.chips.map(function(c){return'<span class="tour-chip"><i class="fa-solid fa-check"></i>'+c+'</span>'}).join('')+'</div>'
+      +'<div class="tour-meta">'+chipsHtml+'</div>'
       +'<div class="tour-footer">'
       +'<div class="tour-price-row">'
-      +'<div class="tour-price-box"><span class="tpb-lbl">Group (min 3)</span><span class="tpb-price">'+t.groupPrice+' EGP</span><span class="tpb-sub">per person</span></div>'
+      +'<div class="tour-price-box"><span class="tpb-lbl">Group min 3</span><span class="tpb-price">'+t.groupPrice+' EGP</span><span class="tpb-sub">per person</span></div>'
       +'<div class="tour-price-box highlight"><span class="tpb-lbl">Private</span><span class="tpb-price">'+t.privatePrice+' EGP</span><span class="tpb-sub">full group</span></div>'
       +'</div>'
-      +'<button class="tour-enquire-btn" onclick="selectTour(\''+t.id+'\',\''+t.title.replace(/'/g,'\\'')+'\')">'
-      +'<i class="fa-brands fa-whatsapp"></i> Enquire / Book This Tour'
+      +'<button class="tour-enquire-btn" data-id="'+t.id+'" data-title="'+t.title+'" onclick="selectTour(this)">'
+      +'<i class="fa-brands fa-whatsapp"></i> Enquire and Book'
       +'</button>'
       +'</div></div>';
     carousel.appendChild(el);attachGlow(el);
   });
-  /* dots */
-  var dotsEl=document.getElementById('tour-dots');dotsEl.innerHTML='';
-  var pages=Math.ceil(tours.length/1);
-  for(var i=0;i<pages;i++){var d=document.createElement('div');d.className='cdot'+(i===0?' active':'');(function(idx){d.onclick=function(){var el2=document.getElementById('tour-carousel');var cardEl=el2.querySelector('.tour-card');var w=cardEl?(cardEl.offsetWidth+13):320;el2.scrollTo({left:idx*w,behavior:'smooth'})}})(i);dotsEl.appendChild(d)}
-  carousel.addEventListener('scroll',function(){
-    var cardEl=carousel.querySelector('.tour-card');if(!cardEl)return;
-    var w=cardEl.offsetWidth+13;var page=Math.round(carousel.scrollLeft/w);
-    dotsEl.querySelectorAll('.cdot').forEach(function(d,i){d.classList.toggle('active',i===page)});
-  },{passive:true});
+  buildCarouselDots('tour-carousel','tour-dots','.tour-card');
 }
 
-/* Select a tour — pre-fills the shared form and scrolls to it */
-function selectTour(id,name){
+window.selectTour=function(btn){
+  var title=btn.dataset.title;
   var lbl=document.getElementById('tf-selected-label');
-  if(lbl){lbl.textContent=name;lbl.style.display='inline-flex'}
-  /* Pre-fill destination field */
+  if(lbl){lbl.textContent=title;lbl.style.display='inline-flex'}
   var desc=document.getElementById('tf-desc');
-  if(desc&&!desc.value)desc.value='I\'m interested in: '+name;
+  if(desc&&!desc.value)desc.value='I am interested in: '+title;
   document.getElementById('tour-form-panel').scrollIntoView({behavior:'smooth',block:'start'});
-}
+};
 
-function submitTourInquiry(channel){
-  var name=document.getElementById('tf-name').value||'Guest';
+window.submitTourInquiry=function(channel){
+  var name=(document.getElementById('tf-name')||{}).value||'Guest';
   var date=(document.getElementById('tf-date')||{}).value||'TBD';
   var pax=(document.getElementById('tf-pax')||{}).value||'TBD';
   var vehicle=(document.getElementById('tf-vehicle')||{}).value||'Best Available';
   var budget=(document.getElementById('tf-budget')||{}).value||'Flexible';
   var requests=(document.getElementById('tf-requests')||{}).value||'';
   var desc=(document.getElementById('tf-desc')||{}).value||'No details provided';
-  var selected=document.getElementById('tf-selected-label');
-  var tourName=selected&&selected.style.display!=='none'?selected.textContent:'';
-  var msg='🗺️ BROTHERS EGY — TOUR / TRIP ENQUIRY\n\n'
-    +'👤 Name: '+name+'\n'
-    +'📅 Date: '+date+'\n'
-    +'👥 Group Size: '+pax+'\n'
-    +'🚗 Vehicle: '+vehicle+'\n'
-    +'💰 Budget: '+budget+'\n'
-    +(tourName?'🏛️ Tour Selected: '+tourName+'\n':'')
-    +(requests?'✨ Special Requests: '+requests+'\n':'')
-    +'\n📝 Itinerary:\n'+desc
-    +'\n\nPlease send a proposal 🙏';
+  var lbl=document.getElementById('tf-selected-label');
+  var tourName=lbl&&lbl.style.display!=='none'?lbl.textContent:'';
+  var msg='BROTHERS EGY TOUR ENQUIRY\n\nName: '+name+'\nDate: '+date+'\nGroup: '+pax+'\nVehicle: '+vehicle+'\nBudget: '+budget+(tourName?'\nTour: '+tourName:'')+(requests?'\nRequests: '+requests:'')+'\n\nItinerary:\n'+desc+'\n\nPlease send a proposal';
   if(channel==='ms')window.open('https://m.me/'+_M,'_blank');
   else window.open('https://wa.me/'+_W+'?text='+encodeURIComponent(msg),'_blank');
-}
+};
 
-/* Airport transfer booking */
+/* ── AIRPORT TRANSFERS ── */
 var apTypes={cairo:'arr',hurghada:'arr',alex:'arr'};
-function setApType(airport,type){
+window.setApType=function(airport,type){
   apTypes[airport]=type;
   document.getElementById('ap-'+airport+'-arr').classList.toggle('active',type==='arr');
   document.getElementById('ap-'+airport+'-dep').classList.toggle('active',type==='dep');
-}
-function showAirport(ap){
+};
+window.showAirport=function(ap){
   document.querySelectorAll('.airport-panel').forEach(function(p){p.classList.remove('active')});
   document.getElementById('ap-'+ap).classList.add('active');
   document.querySelectorAll('.airport-tab').forEach(function(b){b.classList.toggle('active',b.dataset.airport===ap)});
-}
-function bookTransfer(airport){
+};
+window.bookTransfer=function(airport){
   var type=apTypes[airport]||'arr';
-  var typeStr=type==='arr'?'Arrival':'Departure';
   var data={
-    cairo:{flight:document.getElementById('ap-cairo-flight'),date:document.getElementById('ap-cairo-date'),time:document.getElementById('ap-cairo-time'),veh:document.getElementById('ap-cairo-veh'),dest:document.getElementById('ap-cairo-dest'),name:'Cairo International (CAI)'},
-    hurghada:{flight:document.getElementById('ap-hrg-flight'),date:document.getElementById('ap-hrg-date'),time:document.getElementById('ap-hrg-time'),veh:document.getElementById('ap-hrg-veh'),dest:document.getElementById('ap-hrg-dest'),name:'Hurghada International (HRG)'},
-    alex:{flight:document.getElementById('ap-alx-flight'),date:document.getElementById('ap-alx-date'),time:document.getElementById('ap-alx-time'),veh:document.getElementById('ap-alx-ap'),dest:document.getElementById('ap-alx-dest'),name:'Alexandria Airport'}
+    cairo:{flight:'ap-cairo-flight',date:'ap-cairo-date',time:'ap-cairo-time',veh:'ap-cairo-veh',dest:'ap-cairo-dest',name:'Cairo International CAI'},
+    hurghada:{flight:'ap-hrg-flight',date:'ap-hrg-date',time:'ap-hrg-time',veh:'ap-hrg-veh',dest:'ap-hrg-dest',name:'Hurghada International HRG'},
+    alex:{flight:'ap-alx-flight',date:'ap-alx-date',time:'ap-alx-time',veh:'ap-alx-ap',dest:'ap-alx-dest',name:'Alexandria Airport'}
   };
   var d=data[airport];
-  var msg='✈️ BROTHERS EGY — AIRPORT TRANSFER\n\n'
-    +'🏢 Airport: '+d.name+'\n'
-    +'📋 Type: '+typeStr+'\n'
-    +'✈️ Flight: '+(d.flight.value||'TBD')+'\n'
-    +'📅 Date: '+(d.date.value||'TBD')+'\n'
-    +'🕐 Time: '+(d.time.value||'TBD')+'\n'
-    +'🚘 Vehicle: '+(d.veh.value||'TBD')+'\n'
-    +'📍 Destination: '+(d.dest.value||'TBD')
-    +'\n\nPlease confirm and send price 🙏';
+  function gv(id){var el=document.getElementById(id);return el?el.value:'TBD'}
+  var msg='BROTHERS EGY AIRPORT TRANSFER\n\nAirport: '+d.name+'\nType: '+(type==='arr'?'Arrival':'Departure')+'\nFlight: '+gv(d.flight)+'\nDate: '+gv(d.date)+'\nTime: '+gv(d.time)+'\nVehicle: '+gv(d.veh)+'\nDestination: '+gv(d.dest)+'\n\nPlease confirm price';
   window.open('https://wa.me/'+_W+'?text='+encodeURIComponent(msg),'_blank');
-}
+};
 
-/* ════ COMPARE ════ */
+/* ── COMPARE ── */
 function toggleCmp(id,checked){
-  if(checked){if(cmpList.indexOf(id)===-1){if(cmpList.length>=2){var removed=cmpList.shift();var oldCb=document.getElementById('cmpcb-'+removed);if(oldCb)oldCb.checked=false}cmpList.push(id)}}
-  else{var idx=cmpList.indexOf(id);if(idx>-1)cmpList.splice(idx,1)}
+  if(checked){
+    if(cmpList.indexOf(id)===-1){
+      if(cmpList.length>=2){var removed=cmpList.shift();var oldCb=document.getElementById('cmpcb-'+removed);if(oldCb)oldCb.checked=false}
+      cmpList.push(id);
+    }
+  } else {
+    var idx=cmpList.indexOf(id);if(idx>-1)cmpList.splice(idx,1);
+  }
   updateCmpBar();
 }
 function updateCmpBar(){
   var bar=document.getElementById('cmp-bar'),row=document.getElementById('cmp-cars-row'),hint=document.getElementById('cmp-hint-txt'),goBtn=document.getElementById('cmp-go-btn');
+  if(!bar)return;
   if(cmpList.length===0){bar.classList.remove('show');return}
   bar.classList.add('show');row.innerHTML='';
-  cmpList.forEach(function(id){var c=FLEET[id];var dr=calcRate(c,bkDays||7);var div=document.createElement('div');div.className='cmp-car';div.innerHTML='<img src="'+c.img+'" alt="'+c.name+'"><div><span>'+c.name+'</span><span class="cmp-car-price">'+fC(dr)+'/d</span></div><span class="cmp-rm" onclick="removeCmp(\''+id+'\')" title="Remove"><i class="fa-solid fa-xmark"></i></span>';row.appendChild(div)});
+  cmpList.forEach(function(id){
+    var c=FLEET[id];var dr=calcRate(c,bkDays||7);
+    var div=document.createElement('div');div.className='cmp-car';
+    div.innerHTML='<img src="'+c.img+'" alt="'+c.name+'"><div><span>'+c.name+'</span><span class="cmp-car-price">'+fC(dr)+'/d</span></div>'
+      +'<span class="cmp-rm" data-id="'+id+'" onclick="doRemoveCmp(this)" title="Remove"><i class="fa-solid fa-xmark"></i></span>';
+    row.appendChild(div);
+  });
   if(cmpList.length===1){hint.textContent='Select another car';goBtn.innerHTML='<i class="fa-solid fa-code-compare"></i> Compare Coverages';goBtn.style.display='inline-flex';goBtn.onclick=function(){cmpMode='basic-vs-full';openCmpModal()}}
-  else{hint.textContent='Ready to compare!';goBtn.innerHTML='<i class="fa-solid fa-code-compare"></i> Compare Cars';goBtn.style.display='inline-flex';goBtn.onclick=function(){cmpMode='normal';openCmpModal()}}
+  else{hint.textContent='Ready to compare';goBtn.innerHTML='<i class="fa-solid fa-code-compare"></i> Compare Cars';goBtn.style.display='inline-flex';goBtn.onclick=function(){cmpMode='normal';openCmpModal()}}
 }
-function removeCmp(id){var idx=cmpList.indexOf(id);if(idx>-1)cmpList.splice(idx,1);var cb=document.getElementById('cmpcb-'+id);if(cb)cb.checked=false;updateCmpBar()}
-function clearCmp(){cmpList.forEach(function(id){var cb=document.getElementById('cmpcb-'+id);if(cb)cb.checked=false});cmpList=[];updateCmpBar()}
+window.doRemoveCmp=function(btn){
+  var id=btn.dataset.id;
+  var idx=cmpList.indexOf(id);if(idx>-1)cmpList.splice(idx,1);
+  var cb=document.getElementById('cmpcb-'+id);if(cb)cb.checked=false;
+  updateCmpBar();
+};
+window.clearCmp=function(){cmpList.forEach(function(id){var cb=document.getElementById('cmpcb-'+id);if(cb)cb.checked=false});cmpList=[];updateCmpBar()};
 
 function buildCmpHTML(){
   if(cmpList.length<1)return '';
@@ -2238,46 +1915,62 @@ function buildCmpHTML(){
   var sc1=Math.min(10,Math.round(s1/10*10)),sc2=Math.min(10,Math.round(s2/10*10));
   var win=sc1>sc2?0:sc2>sc1?1:-1;
   function wl(v1,v2,lo){if(v1===v2)return[0,0];return lo?(v1<v2?[1,-1]:[-1,1]):(v1>v2?[1,-1]:[-1,1])}
-  function cellPair(v1s,v2s,wlr){var i1=wlr[0]>0?'<span class="cmp-win-ico">✓</span>':wlr[0]<0?'<span class="cmp-lose-ico">✗</span>':'';var i2=wlr[1]>0?'<span class="cmp-win-ico">✓</span>':wlr[1]<0?'<span class="cmp-lose-ico">✗</span>':'';return'<td class="cmp-td-1'+(wlr[0]>0?' cmp-better':wlr[0]<0?' cmp-worse':'')+'">'+v1s+i1+'</td><td class="cmp-td-2'+(wlr[1]>0?' cmp-better':wlr[1]<0?' cmp-worse':'')+'">'+v2s+i2+'</td>'}
-  function barPair(v1,v2){var mx=Math.max(v1,v2)||1;var p1=Math.round(v1/mx*100),p2=Math.round(v2/mx*100);var wlr=wl(v1,v2,true);var i1=wlr[0]>0?'<span class="cmp-win-ico">✓</span>':wlr[0]<0?'<span class="cmp-lose-ico">✗</span>':'';var i2=wlr[1]>0?'<span class="cmp-win-ico">✓</span>':wlr[1]<0?'<span class="cmp-lose-ico">✗</span>':'';return'<td class="cmp-td-1'+(wlr[0]>0?' cmp-better':wlr[0]<0?' cmp-worse':'')+'"><div class="cmp-price-wrap">'+fC(v1)+i1+'<div class="cmp-price-bar-track"><div class="cmp-price-bar-fill" style="width:'+p1+'%"></div></div></div></td><td class="cmp-td-2'+(wlr[1]>0?' cmp-better':wlr[1]<0?' cmp-worse':'')+'"><div class="cmp-price-wrap">'+fC(v2)+i2+'<div class="cmp-price-bar-track"><div class="cmp-price-bar-fill" style="width:'+p2+'%"></div></div></div></td>'}
+  function cp(v1s,v2s,wlr){
+    var i1=wlr[0]>0?'<span class="cmp-win-ico">v</span>':wlr[0]<0?'<span class="cmp-lose-ico">x</span>':'';
+    var i2=wlr[1]>0?'<span class="cmp-win-ico">v</span>':wlr[1]<0?'<span class="cmp-lose-ico">x</span>':'';
+    return'<td class="cmp-td-1'+(wlr[0]>0?' cmp-better':wlr[0]<0?' cmp-worse':'')+'">'+v1s+i1+'</td><td class="cmp-td-2'+(wlr[1]>0?' cmp-better':wlr[1]<0?' cmp-worse':'')+'">'+v2s+i2+'</td>'
+  }
+  function bp(v1,v2){
+    var mx=Math.max(v1,v2)||1;var p1=Math.round(v1/mx*100),p2=Math.round(v2/mx*100);var wlr=wl(v1,v2,true);
+    var i1=wlr[0]>0?'<span class="cmp-win-ico">v</span>':wlr[0]<0?'<span class="cmp-lose-ico">x</span>':'';
+    var i2=wlr[1]>0?'<span class="cmp-win-ico">v</span>':wlr[1]<0?'<span class="cmp-lose-ico">x</span>':'';
+    return'<td class="cmp-td-1'+(wlr[0]>0?' cmp-better':wlr[0]<0?' cmp-worse':'')+'"><div class="cmp-price-wrap">'+fC(v1)+i1+'<div class="cmp-price-bar-track"><div class="cmp-price-bar-fill" style="width:'+p1+'%"></div></div></div></td><td class="cmp-td-2'+(wlr[1]>0?' cmp-better':wlr[1]<0?' cmp-worse':'')+'"><div class="cmp-price-wrap">'+fC(v2)+i2+'<div class="cmp-price-bar-track"><div class="cmp-price-bar-fill" style="width:'+p2+'%"></div></div></div></td>'
+  }
   var hub=(document.getElementById('bk-hub')||{}).value||'cairo';
   return'<div class="cmp-modal-hdr"><div class="cmp-modal-car"><img src="'+c1.img+'" alt="'+c1.name+'"><h3>'+c1.name+'</h3><small>'+c1.cat+'</small></div><div class="vs-divider">VS</div><div class="cmp-modal-car"><img src="'+c2.img+'" alt="'+c2.name+'"><h3>'+c2.name+'</h3><small>'+c2.cat+'</small></div></div>'
-    +'<div class="cmp-settings-bar"><span class="cmp-live-badge"><span class="cmp-live-dot"></span> Live</span><span class="cmp-set-item"><i class="fa-solid fa-calendar-days"></i>&nbsp;<strong>'+days+' days</strong></span><span class="cmp-set-item"><i class="fa-solid fa-shield-halved"></i>&nbsp;<strong>'+(bkFullIns?'Full Cover':'Basic Cover')+'</strong></span><span class="cmp-set-item"><i class="fa-solid fa-coins"></i>&nbsp;<strong>'+activeCurr+'</strong></span>'+(extraPerDay>0?'<span class="cmp-set-item"><i class="fa-solid fa-plus"></i>&nbsp;<strong>+'+fC(extraPerDay)+'/d extras</strong></span>':'')+'</div>'
+    +'<div class="cmp-settings-bar"><span class="cmp-live-badge"><span class="cmp-live-dot"></span> Live</span><span class="cmp-set-item"><i class="fa-solid fa-calendar-days"></i> <strong>'+days+' days</strong></span><span class="cmp-set-item"><i class="fa-solid fa-shield-halved"></i> <strong>'+(bkFullIns?'Full Cover':'Basic Cover')+'</strong></span></div>'
     +'<div class="cmp-scores"><div class="cmp-score-card'+(win===0?' winner':'')+'"><span class="cmp-score-num">'+sc1+'</span><span class="cmp-score-lbl">Value Score</span>'+(win===0?'<div class="cmp-best-badge"><i class="fa-solid fa-trophy"></i> Best Pick</div>':'')+'</div><div class="cmp-score-vs">VS</div><div class="cmp-score-card'+(win===1?' winner':'')+'"><span class="cmp-score-num">'+sc2+'</span><span class="cmp-score-lbl">Value Score</span>'+(win===1?'<div class="cmp-best-badge"><i class="fa-solid fa-trophy"></i> Best Pick</div>':'')+'</div></div>'
     +'<div class="cmp-modal-scroll"><table class="cmp-table"><thead><tr><th></th><th class="cmp-col-1">'+c1.name+'</th><th class="cmp-col-2">'+c2.name+'</th></tr></thead><tbody>'
-    +'<tr><td><i class="fa-solid fa-tag" style="color:var(--accent);margin-right:4px"></i>Category</td><td class="cmp-td-1">'+c1.cat+'</td><td class="cmp-td-2">'+c2.cat+'</td></tr>'
-    +'<tr><td><i class="fa-solid fa-calendar" style="color:var(--accent);margin-right:4px"></i>Year</td>'+cellPair(c1.year,c2.year,wl(parseInt(c1.year),parseInt(c2.year),false))+'</tr>'
-    +'<tr><td><i class="fa-solid fa-user-group" style="color:var(--accent);margin-right:4px"></i>Seats</td>'+cellPair(c1.seats+' seats',c2.seats+' seats',wl(c1.seats,c2.seats,false))+'</tr>'
-    +'<tr><td><i class="fa-solid fa-coins" style="color:var(--accent);margin-right:4px"></i>Daily Rate ('+days+'d)</td>'+barPair(dr1,dr2)+'</tr>'
-    +'<tr><td><i class="fa-solid fa-calculator" style="color:var(--accent);margin-right:4px"></i>Total '+days+' Days</td>'+barPair(tot1,tot2)+'</tr>'
-    +'<tr><td><i class="fa-solid fa-lock" style="color:var(--accent);margin-right:4px"></i>Deposit</td>'+barPair(dep1,dep2)+'</tr>'
-    +'<tr><td><i class="fa-solid fa-umbrella" style="color:var(--accent);margin-right:4px"></i>Full Cover/Day</td>'+cellPair(fmt(c1.fc)+' EGP',fmt(c2.fc)+' EGP',wl(c1.fc,c2.fc,true))+'</tr>'
+    +'<tr><td>Year</td>'+cp(c1.year,c2.year,wl(parseInt(c1.year),parseInt(c2.year),false))+'</tr>'
+    +'<tr><td>Seats</td>'+cp(c1.seats+' seats',c2.seats+' seats',wl(c1.seats,c2.seats,false))+'</tr>'
+    +'<tr><td>Daily Rate</td>'+bp(dr1,dr2)+'</tr>'
+    +'<tr><td>Total '+days+' Days</td>'+bp(tot1,tot2)+'</tr>'
+    +'<tr><td>Deposit</td>'+bp(dep1,dep2)+'</tr>'
+    +'<tr><td>Full Cover/Day</td>'+cp(fmt(c1.fc)+' EGP',fmt(c2.fc)+' EGP',wl(c1.fc,c2.fc,true))+'</tr>'
     +'</tbody></table></div>'
     +'<div class="cmp-cta-row">'
-    +'<button class="btn-p" style="font-size:.78rem;padding:.75rem 1.1rem" onclick="loadFromFleet(\''+id1+'\');closeCmpModal()"><i class="fa-solid fa-sliders"></i> Configure '+c1.name.split(' ')[0]+'</button>'
-    +'<a href="'+productUrl(c1.slug,hub)+'" target="_blank" rel="noopener" class="btn-wa" style="font-size:.78rem;padding:.75rem 1.1rem"><i class="fa-solid fa-calendar-check"></i> Book '+c1.name.split(' ')[0]+'</a>'
-    +'<button style="background:rgba(168,85,247,.12);border:1px solid var(--purple);color:var(--purple);padding:.75rem 1.1rem;border-radius:12px;font-size:.78rem;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;font-family:\'Outfit\',sans-serif" onclick="loadFromFleet(\''+id2+'\');closeCmpModal()"><i class="fa-solid fa-sliders"></i> Configure '+c2.name.split(' ')[0]+'</button>'
-    +'<a href="'+productUrl(c2.slug,hub)+'" target="_blank" rel="noopener" style="background:rgba(168,85,247,.12);border:1px solid var(--purple);color:var(--purple);padding:.75rem 1.1rem;border-radius:12px;font-size:.78rem;font-weight:900;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none"><i class="fa-solid fa-calendar-check"></i> Book '+c2.name.split(' ')[0]+'</a>'
+    +'<button class="btn-p" style="font-size:.78rem;padding:.75rem 1.1rem" data-id="'+id1+'" onclick="loadFromFleet(this);closeCmpModal()"><i class="fa-solid fa-sliders"></i> Configure '+c1.name.split(' ')[0]+'</button>'
+    +'<a href="'+productUrl(c1.slug,hub)+'" target="_blank" class="btn-wa" style="font-size:.78rem;padding:.75rem 1.1rem"><i class="fa-solid fa-calendar-check"></i> Book '+c1.name.split(' ')[0]+'</a>'
     +'</div>';
 }
-function openCmpModal(){if(cmpList.length<1)return;cmpModalOpen=true;document.getElementById('cmp-content').innerHTML=buildCmpHTML();document.getElementById('cmp-modal').classList.add('open');document.body.style.overflow='hidden'}
-function refreshCmpModal(){if(!cmpModalOpen||cmpList.length<2)return;document.getElementById('cmp-content').innerHTML=buildCmpHTML()}
-function closeCmpModal(){cmpModalOpen=false;document.getElementById('cmp-modal').classList.remove('open');document.body.style.overflow=''}
-function closeCmpOutside(e){if(e.target===document.getElementById('cmp-modal'))closeCmpModal()}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCmpModal()});
 
-/* ════ INIT ════ */
+window.openCmpModal=function(){
+  if(cmpList.length<1)return;
+  cmpModalOpen=true;
+  document.getElementById('cmp-content').innerHTML=buildCmpHTML();
+  document.getElementById('cmp-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+};
+function refreshCmpModal(){if(!cmpModalOpen||cmpList.length<2)return;document.getElementById('cmp-content').innerHTML=buildCmpHTML()}
+window.closeCmpModal=function(){cmpModalOpen=false;document.getElementById('cmp-modal').classList.remove('open');document.body.style.overflow=''};
+window.closeCmpOutside=function(e){if(e.target===document.getElementById('cmp-modal'))window.closeCmpModal()};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')window.closeCmpModal()});
+
+/* ── INIT — safe order ── */
 populateBkCar();
 renderFleetCarousel();
 renderTourCarousel();
 scLoadCar('kia_sportage');
 bkCalc();
-/* Set default airport form dates */
-(function(){
-  var today=new Date();var fmt2=function(d){return d.toISOString().split('T')[0]};
-  ['ap-cairo-date','ap-hrg-date','ap-alx-date'].forEach(function(id){var el=document.getElementById(id);if(el){el.value=fmt2(today);el.min=fmt2(today)}});
-  var tfDate=document.getElementById('tf-date');if(tfDate){var f=new Date(today);f.setDate(f.getDate()+7);tfDate.value=fmt2(f);tfDate.min=fmt2(today)}
-})();
+
+/* Set default dates for airport forms */
+var today2=new Date();
+var fmt3=function(d){return d.toISOString().split('T')[0]};
+['ap-cairo-date','ap-hrg-date','ap-alx-date'].forEach(function(id){var el=document.getElementById(id);if(el){el.value=fmt3(today2);el.min=fmt3(today2)}});
+var tfDate=document.getElementById('tf-date');
+if(tfDate){var td2=new Date(today2);td2.setDate(td2.getDate()+7);tfDate.value=fmt3(td2);tfDate.min=fmt3(today2)}
+
+})(); /* end IIFE */
 </script>
 </body>
 </html>
