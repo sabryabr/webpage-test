@@ -20,30 +20,30 @@
   --border:rgba(255,255,255,.08);--glass:rgba(13,17,23,.92);--r:18px;
 }
 [data-theme="light"]{
-  --bg:#f0f4f8;--surface:#ffffff;--elevated:#e8edf3;
-  --accent:#0099bb;--accent-glow:rgba(0,153,187,.22);
-  --purple:#7c3aed;--green:#18a349;--success:#18a349;
-  --danger:#c0392b;--warning:#b8860b;
-  --text:#0d1117;--muted:#556070;
-  --border:rgba(0,0,0,.09);--glass:rgba(240,244,248,.96);
+  --bg:#f5f7fa;--surface:#fafbfc;--elevated:#edf0f4;
+  --accent:#0088aa;--accent-glow:rgba(0,136,170,.18);
+  --purple:#6d28d9;--green:#16a34a;--success:#16a34a;
+  --danger:#b91c1c;--warning:#a16207;
+  --text:#1a202c;--muted:#64748b;
+  --border:rgba(0,0,0,.07);--glass:rgba(245,247,250,.96);
 }
-[data-theme="light"] ::-webkit-scrollbar-track{background:#e8edf3}
+[data-theme="light"] ::-webkit-scrollbar-track{background:#edf0f4}
 [data-theme="light"] ::-webkit-scrollbar-thumb{background:#b0bac8}
-[data-theme="light"] .hero-bg{opacity:.13;filter:grayscale(20%)}
-[data-theme="light"] .hero-overlay{background:linear-gradient(180deg,rgba(240,244,248,.65) 0%,rgba(240,244,248,.15) 40%,var(--bg) 95%)}
+[data-theme="light"] .hero-bg{opacity:.10;filter:grayscale(30%)}
+[data-theme="light"] .hero-overlay{background:linear-gradient(180deg,rgba(245,247,250,.7) 0%,rgba(245,247,250,.2) 40%,var(--bg) 95%)}
 [data-theme="light"] .hero-h1 .outline{-webkit-text-stroke:2px rgba(0,0,0,.18)}
-[data-theme="light"] .hero-h1 .solid{background:linear-gradient(160deg,#0d1117 0%,#2d3748 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-[data-theme="light"] .hero-car-slot img{filter:drop-shadow(0 20px 40px rgba(0,0,0,.2))}
-[data-theme="light"] .field-input,[data-theme="light"] .field-select{background:var(--surface);color:var(--text);border-color:rgba(0,0,0,.12)}
+[data-theme="light"] .hero-h1 .solid{background:linear-gradient(160deg,#1a202c 0%,#2d3748 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="light"] .hero-car-slot img{filter:drop-shadow(0 20px 40px rgba(0,0,0,.15))}
+[data-theme="light"] .field-input,[data-theme="light"] .field-select{background:var(--surface);color:var(--text);border-color:rgba(0,0,0,.1)}
 [data-theme="light"] .field-select{background-color:var(--surface)}
 [data-theme="light"] .field-select option{background:var(--surface);color:var(--text)}
 [data-theme="light"] input[type="date"].field-input{color-scheme:light}
-[data-theme="light"] .studio-car-img{filter:drop-shadow(0 14px 26px rgba(0,0,0,.22))}
+[data-theme="light"] .studio-car-img{filter:drop-shadow(0 14px 26px rgba(0,0,0,.18))}
 [data-theme="light"] .fab-action{background:rgba(255,255,255,.95);color:var(--text)}
 [data-theme="light"] .fab-collapse-btn{background:rgba(255,255,255,.95)}
-[data-theme="light"] #mob-bar{background:rgba(255,255,255,.98)}
-[data-theme="light"] .modal-overlay{background:rgba(240,244,248,.97)}
-[data-theme="light"] .tf-group input,[data-theme="light"] .tf-group select,[data-theme="light"] .tf-group textarea{background:var(--surface);color:var(--text);border-color:rgba(0,0,0,.12)}
+[data-theme="light"] #mob-bar{background:rgba(245,247,250,.98)}
+[data-theme="light"] .tf-group input,[data-theme="light"] .tf-group select,[data-theme="light"] .tf-group textarea{background:var(--surface);color:var(--text);border-color:rgba(0,0,0,.1)}
+[data-theme="light"] .stat-card,[data-theme="light"] .feat-card,[data-theme="light"] .fc,[data-theme="light"] .rev-card,[data-theme="light"] .trans-card,[data-theme="light"] .deal-form,[data-theme="light"] .deal-studio,[data-theme="light"] .tour-card,[data-theme="light"] .airport-info-card,[data-theme="light"] .transfer-form{box-shadow:0 1px 6px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.04)}
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden;background:var(--bg)}
@@ -60,9 +60,15 @@ button,select,input,textarea{font-family:'Outfit',sans-serif}
 
 #pg-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--accent),var(--purple),var(--accent));background-size:200%;animation:pgAnimate 3s linear infinite;z-index:999999;pointer-events:none}
 @keyframes pgAnimate{to{background-position:-200% 0}}
-.studio-car-img.loaded{
-  filter:drop-shadow(0 14px 26px rgba(0,0,0,.95));
+
+.studio-car-img.loaded{filter:drop-shadow(0 14px 26px rgba(0,0,0,.95))}
+
+/* ── DATE+TIME MERGED ── */
+.dt-row{
+  display:grid;grid-template-columns:1.6fr 1fr;
+  gap:.45rem;align-items:end;
 }
+.dt-row .field-group{margin-bottom:0}
 
 /* ── THEME PILL ── */
 .theme-pill{display:flex;align-items:center;background:var(--elevated);border:1px solid var(--border);border-radius:50px;padding:3px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.2)}
@@ -163,6 +169,8 @@ button,select,input,textarea{font-family:'Outfit',sans-serif}
 .field-select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%2300f0ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85rem center;background-color:var(--bg);padding-right:2.4rem}
 .field-select option{background:var(--surface);color:var(--text)}
 input[type="date"].field-input{color-scheme:dark}
+input[type="time"].field-input{color-scheme:dark}
+[data-theme="light"] input[type="time"].field-input{color-scheme:light}
 
 /* ── HERO ── */
 #hero{position:relative;min-height:860px;min-height:min(100vh,860px);width:100%;padding:110px 0 0;overflow:hidden;background:var(--bg)}
@@ -227,52 +235,15 @@ input[type="date"].field-input{color-scheme:dark}
 .story-philosophy blockquote{font-size:1.05rem;font-style:italic;color:var(--muted);line-height:1.8;margin:0}
 .story-philosophy blockquote strong{color:var(--text);font-style:normal}
 .story-philosophy cite{display:block;margin-top:.8rem;font-size:.72rem;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-style:normal}
-.story-timeline{
-  position:relative;     /* must be explicit for the absolute line child */
-  max-width:860px;
-  margin:0 auto 3.5rem;
-  padding:0 2rem;        /* increased from 1rem to clear the absolute line */
-}
-.story-tl-line{
-  position:absolute;
-  left:50%;
-  top:20px;              /* start below first dot, not at very top */
-  bottom:20px;           /* end above last dot */
-  width:2px;
-  background:linear-gradient(to bottom,transparent,var(--accent) 8%,var(--accent) 92%,transparent);
-  transform:translateX(-50%);
-  pointer-events:none;
-  /* CRITICAL: z-index below cards so it doesn't overlay text */
-  z-index:0;
-}
-/* Ensure cards sit above the line */
-.tl-card{
-  position:relative;
-  z-index:1;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:1.3rem 1.5rem;
-  transition:.3s;
-}
-.tl-dot-wrap{
-  position:relative;
-  z-index:2;  /* dots must be above the line */
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:.3rem;
-  padding:0 1.2rem;
-}
-
-.story-tl-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,var(--accent) 15%,var(--accent) 85%,transparent);transform:translateX(-50%);pointer-events:none}
+.story-timeline{position:relative;max-width:860px;margin:0 auto 3.5rem;padding:0 2rem}
+.story-tl-line{position:absolute;left:50%;top:20px;bottom:20px;width:2px;background:linear-gradient(to bottom,transparent,var(--accent) 8%,var(--accent) 92%,transparent);transform:translateX(-50%);pointer-events:none;z-index:0}
 .story-tl-item{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;margin-bottom:2.5rem}
 .story-tl-item:last-child{margin-bottom:0}
-.tl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.5rem;transition:.3s}
+.tl-card{position:relative;z-index:1;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.5rem;transition:.3s}
 .tl-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,240,255,.08)}
 .tl-card h4{font-size:.85rem;font-weight:900;color:var(--text);margin-bottom:.25rem;text-transform:uppercase}
 .tl-card p{font-size:.76rem;color:var(--muted);line-height:1.6;margin:0}
-.tl-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:0 1.2rem}
+.tl-dot-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:0 1.2rem}
 .tl-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);box-shadow:0 0 10px var(--accent-glow);flex-shrink:0}
 .tl-year{font-size:1.1rem;font-weight:950;color:var(--accent);white-space:nowrap;line-height:1}
 .story-tl-item:nth-child(odd) .tl-card{text-align:right;grid-column:1}
@@ -445,13 +416,20 @@ input[type="date"].field-input{color-scheme:dark}
 .cmp-hint{font-size:.68rem;color:var(--muted)}
 .cmp-car-price{font-size:.56rem;color:var(--accent);font-weight:800;display:block;margin-top:2px}
 
-/* ── COMPARE MODAL ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(2,4,10,.96);backdrop-filter:blur(16px);z-index:999990;display:none;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto}
-.modal-overlay.open{display:flex}
-.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:22px;width:100%;max-width:860px;padding:2rem;position:relative;margin:auto;animation:mIn .25s ease}
-@keyframes mIn{from{transform:scale(.92) translateY(16px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
-.modal-close{position:absolute;top:.9rem;right:.9rem;background:var(--elevated);border:1px solid var(--border);color:var(--muted);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;transition:.3s}
-.modal-close:hover{background:rgba(248,81,73,.1);border-color:var(--danger);color:var(--danger)}
+/* ── INLINE COMPARE PANEL (replaces modal) ── */
+@keyframes mIn{from{transform:scale(.97) translateY(12px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+#cmp-panel-wrap{
+  display:none;margin-top:1.5rem;
+  background:var(--surface);border:1px solid var(--accent);
+  border-radius:20px;padding:1.6rem;
+  animation:mIn .25s ease;
+}
+#cmp-panel-wrap.open{display:block}
+.cmp-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;flex-wrap:wrap;gap:.6rem}
+.cmp-panel-head h3{font-size:1rem;font-weight:900;text-transform:uppercase;color:var(--text);display:flex;align-items:center;gap:8px;margin:0}
+.cmp-panel-head h3 i{color:var(--accent)}
+.cmp-close-inline{background:var(--elevated);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;transition:.3s}
+.cmp-close-inline:hover{background:rgba(248,81,73,.1);border-color:var(--danger);color:var(--danger)}
 .cmp-table{width:100%;border-collapse:collapse}
 .cmp-table th{padding:.85rem 1.2rem;font-size:.73rem;font-weight:900;text-transform:uppercase;letter-spacing:1px}
 .cmp-table th:first-child{text-align:left;color:var(--muted)}
@@ -666,9 +644,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
 /* ── RESPONSIVE ── */
 @media(max-width:1200px){.deal-bento{grid-template-columns:1fr}.deal-studio{position:static}.feat-grid{grid-template-columns:repeat(2,1fr)}.trans-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}.hubs-grid{grid-template-columns:1fr}.story-pillars{grid-template-columns:1fr 1fr}.airport-bento{grid-template-columns:1fr}}
 @media(max-width:900px){#hero{min-height:auto !important}.hero-inner{grid-template-columns:1fr;text-align:center;padding:0 1.5rem 60px}.hero-desc,.hero-ctas,.hero-pills-row{margin-left:auto;margin-right:auto;justify-content:center}.hero-right{order:-1}.hero-stage{max-width:300px;height:210px}.hero-h1{font-size:clamp(2.8rem,9vw,4rem);letter-spacing:-2px}.reviews-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.fg-3{grid-template-columns:repeat(2,minmax(0,1fr))}.hubs-grid{grid-template-columns:1fr}.story-tl-line{display:none}.story-tl-item{grid-template-columns:1fr !important;gap:.5rem}.story-tl-item .tl-empty{display:none}.story-tl-item .tl-dot-wrap{flex-direction:row;padding:0;justify-content:flex-start}.story-tl-item:nth-child(odd) .tl-card,.story-tl-item:nth-child(even) .tl-card{text-align:left;grid-column:1}.story-tl-item:nth-child(odd) .tl-dot-wrap,.story-tl-item:nth-child(even) .tl-dot-wrap{grid-column:1}.story-pillars{grid-template-columns:1fr}.tf-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){.nav-links,.nav-wa,.nav-book{display:none}.hamburger{display:flex}#fab{display:none}#mob-bar{display:block}body{padding-bottom:68px}.feat-grid{grid-template-columns:1fr}.section-wrap,.deal-wrap,.footer-inner{padding:0 1rem}#main-nav{padding:.65rem 1rem}.hero-inner{padding:0 1rem 40px}.fg-3{grid-template-columns:minmax(0,1fr)}.fg-2{grid-template-columns:minmax(0,1fr)}.extras-grid{grid-template-columns:1fr 1fr}.book-btn-row{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.vs-table th,.vs-table td{padding:.6rem .7rem;font-size:.72rem}.footer-grid{grid-template-columns:1fr;gap:1.5rem}#cmp-bar{padding:.8rem 1rem}.tours-cta-strip{flex-direction:column;text-align:center}.tours-cta-strip .cta-right{justify-content:center}.car-nav-prev,.car-nav-next,.tour-nav-prev,.tour-nav-next{display:none}.tf-grid{grid-template-columns:1fr}.airport-tabs{justify-content:center}.transfer-section-head{flex-direction:column;text-align:center}.story-philosophy{padding:1.5rem}.theme-pill .theme-pill-btn span{display:none}}
-@media(max-width:480px){.extras-grid,.ins-toggle{grid-template-columns:1fr}.hero-stage{height:200px}.book-btn-row{grid-template-columns:1fr auto auto}.tour-img-wrap{height:155px}}
-@media(max-width:680px){.modal-overlay{padding:.6rem}.modal-box{padding:1.1rem;border-radius:14px}.cmp-scores{gap:.3rem}.cmp-score-num{font-size:1.6rem}.cmp-score-card{padding:.7rem .4rem}.cmp-cta-row{flex-direction:column;align-items:stretch}.cmp-cta-row>*{width:100%;justify-content:center}.cmp-modal-scroll table{min-width:340px}.cmp-table th,.cmp-table td{padding:.65rem .7rem;font-size:.72rem}}
+@media(max-width:768px){.nav-links,.nav-wa,.nav-book{display:none}.hamburger{display:flex}#fab{display:none}#mob-bar{display:block}body{padding-bottom:68px}.feat-grid{grid-template-columns:1fr}.section-wrap,.deal-wrap,.footer-inner{padding:0 1rem}#main-nav{padding:.65rem 1rem}.hero-inner{padding:0 1rem 40px}.fg-3{grid-template-columns:minmax(0,1fr)}.fg-2{grid-template-columns:minmax(0,1fr)}.extras-grid{grid-template-columns:1fr 1fr}.book-btn-row{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.vs-table th,.vs-table td{padding:.6rem .7rem;font-size:.72rem}.footer-grid{grid-template-columns:1fr;gap:1.5rem}#cmp-bar{padding:.8rem 1rem}.tours-cta-strip{flex-direction:column;text-align:center}.tours-cta-strip .cta-right{justify-content:center}.car-nav-prev,.car-nav-next,.tour-nav-prev,.tour-nav-next{display:none}.tf-grid{grid-template-columns:1fr}.airport-tabs{justify-content:center}.transfer-section-head{flex-direction:column;text-align:center}.story-philosophy{padding:1.5rem}.theme-pill .theme-pill-btn span{display:none}.dt-row{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.extras-grid,.ins-toggle{grid-template-columns:1fr}.hero-stage{height:200px}.book-btn-row{grid-template-columns:1fr auto auto}.tour-img-wrap{height:155px}.dt-row{grid-template-columns:1.4fr 1fr}}
+@media(max-width:680px){.cmp-scores{gap:.3rem}.cmp-score-num{font-size:1.6rem}.cmp-score-card{padding:.7rem .4rem}.cmp-cta-row{flex-direction:column;align-items:stretch}.cmp-cta-row>*{width:100%;justify-content:center}.cmp-modal-scroll table{min-width:340px}.cmp-table th,.cmp-table td{padding:.65rem .7rem;font-size:.72rem}}
 </style>
 </head>
 <body>
@@ -689,12 +667,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   </div>
   <div class="nav-right">
     <div class="theme-pill">
-      <button class="theme-pill-btn t-active" id="btn-dark" onclick="setTheme('dark')">
-        <i class="fa-solid fa-moon"></i><span>Dark</span>
-      </button>
-      <button class="theme-pill-btn" id="btn-light" onclick="setTheme('light')">
-        <i class="fa-solid fa-sun"></i><span>Light</span>
-      </button>
+      <button class="theme-pill-btn t-active" id="btn-dark" onclick="setTheme('dark')"><i class="fa-solid fa-moon"></i><span>Dark</span></button>
+      <button class="theme-pill-btn" id="btn-light" onclick="setTheme('light')"><i class="fa-solid fa-sun"></i><span>Light</span></button>
     </div>
     <a href="#contact-route" class="nav-wa" onclick="navContact(event,'wa')"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
     <button class="nav-book" onclick="scrollToDeal()"><i class="fa-solid fa-calendar-check"></i> Book Now</button>
@@ -828,7 +802,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
   <div class="section-wrap">
     <span class="eyebrow reveal">Our Family Since 2007</span>
     <h2 class="heading reveal" style="transition-delay:.1s">NOT CLIENTS. <span>BROTHERS.</span></h2>
-    <p class="subtext reveal" style="transition-delay:.15s">From a small office on Sherry Street in Hurghada to four cities across Egypt — every kilometre of this journey was built on trust, friendship, and the belief that travellers deserve a brother on the road.</p>
+    <p class="subtext reveal" style="transition-delay:.15s">From a small office on Sherry Street in Hurghada to four cities across Egypt — every kilometre was built on trust, friendship, and the belief that travellers deserve a brother on the road.</p>
     <div class="story-philosophy reveal" style="transition-delay:.2s">
       <blockquote>"We realized travellers are not just looking for a car. They are looking for <strong>safety, advice, and a brother</strong> to ensure a happy trip. We do not have clients — we grow our family. Every person who rides with us leaves as a friend for life."</blockquote>
       <cite><i class="fa-solid fa-users"></i> Brothers EGY — Founded 2007, Hurghada</cite>
@@ -883,7 +857,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
         <div class="studio-vp" id="sc-vp">
           <div class="studio-shadow"></div>
           <img id="sc-img" src="https://brothersegy.com/wp-content/uploads/2026/01/Kia-Sportage.png" alt="Car" class="studio-car-img">
-          <div class="studio-angle">Drag to rotate <em id="sc-angle">0</em> degrees</div>
+          <div class="studio-angle">Drag to rotate <em id="sc-angle">0</em> deg</div>
         </div>
         <div class="studio-specs" id="sc-specs"></div>
       </div>
@@ -901,18 +875,29 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
           <div class="field-group"><label class="field-label">Pick-up City</label><select class="field-select" id="bk-hub" onchange="bkCalc()"><option value="cairo">Cairo Airport (CAI)</option><option value="hurghada">Hurghada (HRG)</option><option value="alexandria">Alexandria (ALX)</option></select></div>
           <div class="field-group"><label class="field-label">Drop-off City</label><select class="field-select" id="bk-hub-drop" onchange="bkCalc()"><option value="cairo">Cairo (same)</option><option value="hurghada">Hurghada (+cross-city)</option><option value="alexandria">Alexandria (+cross-city)</option></select></div>
         </div>
-        <div class="fg-3">
-          <div class="field-group"><label class="field-label">Pick-up Date</label><input type="date" class="field-input" id="bk-from" onchange="bkDateSync()"></div>
-          <div class="field-group"><label class="field-label">Pick-up Time</label><select class="field-select" id="bk-time-from"><option>00:00</option><option>01:00</option><option>02:00</option><option>03:00</option><option>04:00</option><option>05:00</option><option>06:00</option><option>07:00</option><option>08:00</option><option selected>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option><option>22:00</option><option>23:00</option></select></div>
-          <div class="field-group"><label class="field-label">Rental Days</label><input type="number" class="field-input" id="bk-days" value="7" min="1" max="90" oninput="bkCalc()"></div>
-        </div>
+        <!-- DATE + TIME MERGED — Pick-up and Drop-off each on one row -->
         <div class="fg-2">
-          <div class="field-group"><label class="field-label">Drop-off Date</label><input type="date" class="field-input" id="bk-to" onchange="bkDateSync2()"></div>
-          <div class="field-group"><label class="field-label">Drop-off Time</label><select class="field-select" id="bk-time-to"><option>00:00</option><option>01:00</option><option>02:00</option><option>03:00</option><option>04:00</option><option>05:00</option><option>06:00</option><option>07:00</option><option>08:00</option><option selected>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option><option>22:00</option><option>23:00</option></select></div>
+          <div class="field-group">
+            <label class="field-label">Pick-up Date &amp; Time</label>
+            <div class="dt-row">
+              <input type="date" class="field-input" id="bk-from" onchange="bkDateSync()">
+              <select class="field-select" id="bk-time-from"><option>00:00</option><option>01:00</option><option>02:00</option><option>03:00</option><option>04:00</option><option>05:00</option><option>06:00</option><option>07:00</option><option>08:00</option><option selected>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option><option>22:00</option><option>23:00</option></select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Drop-off Date &amp; Time</label>
+            <div class="dt-row">
+              <input type="date" class="field-input" id="bk-to" onchange="bkDateSync2()">
+              <select class="field-select" id="bk-time-to"><option>00:00</option><option>01:00</option><option>02:00</option><option>03:00</option><option>04:00</option><option>05:00</option><option>06:00</option><option>07:00</option><option>08:00</option><option selected>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option><option>22:00</option><option>23:00</option></select>
+            </div>
+          </div>
         </div>
         <div class="fg-1">
           <div class="range-header"><label>Duration</label><span><strong id="bk-days-lbl">7</strong> Days</span></div>
           <input type="range" min="1" max="60" value="7" class="range-input" id="bk-slider" oninput="bkSliderChange(this.value)">
+        </div>
+        <div class="fg-1">
+          <div class="field-group"><label class="field-label">Rental Days (manual override)</label><input type="number" class="field-input" id="bk-days" value="7" min="1" max="90" oninput="bkCalc()"></div>
         </div>
         <div class="fg-1">
           <label class="field-label" style="display:block;margin-bottom:.5rem">Insurance Tier</label>
@@ -1010,6 +995,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
       <button class="car-nav-btn car-nav-next" onclick="carouselScroll('fleet-carousel',1)"><i class="fa-solid fa-chevron-right"></i></button>
       <div class="carousel-dots" id="fleet-dots"></div>
     </div>
+
+    <!-- INLINE COMPARE PANEL -->
+    <div id="cmp-panel-wrap">
+      <div class="cmp-panel-head">
+        <h3><i class="fa-solid fa-code-compare"></i> Live <span style="color:var(--accent)">Comparison</span></h3>
+        <button class="cmp-close-inline" onclick="closeCmpModal()" title="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="cmp-content"></div>
+    </div>
+
     <div style="text-align:center;margin-top:.8rem">
       <a id="fleet-page-link" href="https://brothersegy.com/car-rental-cairo/" target="_blank" class="btn-ghost" style="font-size:.78rem;padding:.7rem 1.4rem"><i class="fa-solid fa-grid-2"></i> View Full Fleet Page</a>
     </div>
@@ -1027,15 +1022,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
     <span class="cmp-hint" id="cmp-hint-txt">Select one more car</span>
     <button class="btn-p" id="cmp-go-btn" style="display:none;padding:.7rem 1.3rem;font-size:.75rem" onclick="openCmpModal()"><i class="fa-solid fa-code-compare"></i> Compare Now</button>
     <button onclick="clearCmp()" style="background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.2);color:var(--danger);border-radius:9px;padding:.6rem .9rem;cursor:pointer;font-size:.72rem;font-weight:800;font-family:'Outfit',sans-serif">Clear</button>
-  </div>
-</div>
-
-<!-- Compare Modal -->
-<div class="modal-overlay" id="cmp-modal" onclick="closeCmpOutside(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeCmpModal()"><i class="fa-solid fa-xmark"></i></button>
-    <h2 style="font-size:1.3rem;font-weight:950;text-transform:uppercase;letter-spacing:-1px;margin-bottom:1.4rem;color:var(--text)"><i class="fa-solid fa-code-compare" style="color:var(--accent)"></i> Side-by-Side <span style="color:var(--accent)">Comparison</span></h2>
-    <div id="cmp-content"></div>
   </div>
 </div>
 
@@ -1089,13 +1075,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
     <h2 class="heading reveal" style="transition-delay:.1s">TOURS, TRIPS <span>AND EXPERIENCES.</span></h2>
     <p class="subtext reveal" style="transition-delay:.15s">Private A/C vehicles, expert chauffeurs, and tailor-made itineraries. From the Pyramids to the White Desert. Your brothers handle every mile.</p>
 
-    <!-- Shared enquiry form -->
     <div class="tour-form-panel reveal glow" style="transition-delay:.2s" id="tour-form-panel">
-      <h3>
-        <i class="fa-solid fa-map-location-dot"></i>
-        Plan Your Trip
-        <span class="tf-selected-label" id="tf-selected-label" style="display:none"></span>
-      </h3>
+      <h3><i class="fa-solid fa-map-location-dot"></i> Plan Your Trip <span class="tf-selected-label" id="tf-selected-label" style="display:none"></span></h3>
       <div class="tf-grid">
         <div class="tf-group"><label>Full Name</label><input type="text" id="tf-name" placeholder="John Doe"></div>
         <div class="tf-group"><label>Travel Date</label><input type="date" id="tf-date"></div>
@@ -1139,14 +1120,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
       </div>
     </div>
 
-    <!-- Tour tabs -->
     <div class="tour-cat-tabs reveal">
       <button class="tour-cat-tab active" data-tcat="egypt" onclick="showTourCat('egypt')"><i class="fa-solid fa-monument"></i> Egypt Classics</button>
       <button class="tour-cat-tab" data-tcat="desert" onclick="showTourCat('desert')"><i class="fa-solid fa-sun"></i> Desert and Adventure</button>
       <button class="tour-cat-tab" data-tcat="sea" onclick="showTourCat('sea')"><i class="fa-solid fa-water"></i> Red Sea and Coast</button>
     </div>
 
-    <!-- Tour carousel -->
     <div class="tour-carousel-wrap reveal" id="tour-carousel-wrap">
       <button class="tour-nav-btn tour-nav-prev" onclick="carouselScroll('tour-carousel',-1)"><i class="fa-solid fa-chevron-left"></i></button>
       <div class="tour-carousel" id="tour-carousel"></div>
@@ -1165,6 +1144,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
         </div>
       </div>
 
+      <!-- CAIRO -->
       <div class="airport-panel active" id="ap-cairo">
         <div class="airport-bento">
           <div class="airport-info-card glow">
@@ -1192,10 +1172,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
               <button class="tf-type-btn active" id="ap-cairo-arr" onclick="setApType('cairo','arr')"><i class="fa-solid fa-plane-arrival"></i> Arrival</button>
               <button class="tf-type-btn" id="ap-cairo-dep" onclick="setApType('cairo','dep')"><i class="fa-solid fa-plane-departure"></i> Departure</button>
             </div>
+            <!-- DATE + TIME MERGED for airport forms -->
             <div class="tf-grid" style="grid-template-columns:1fr 1fr">
               <div class="tf-group"><label>Flight Number</label><input type="text" id="ap-cairo-flight" placeholder="e.g. MS787"></div>
-              <div class="tf-group"><label>Date</label><input type="date" id="ap-cairo-date"></div>
-              <div class="tf-group"><label>Time</label><input type="time" id="ap-cairo-time" value="09:00"></div>
               <div class="tf-group"><label>Vehicle</label>
                 <select id="ap-cairo-veh">
                   <option value="Sedan (1-3 pax) — 350 EGP">Sedan 1-3 pax 350 EGP</option>
@@ -1205,12 +1184,20 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
                 </select>
               </div>
             </div>
+            <div class="tf-group" style="margin-bottom:.9rem">
+              <label>Date &amp; Time</label>
+              <div class="dt-row">
+                <input type="date" id="ap-cairo-date">
+                <input type="time" id="ap-cairo-time" value="09:00">
+              </div>
+            </div>
             <div class="tf-group" style="margin-bottom:.9rem"><label>Hotel or Destination</label><input type="text" id="ap-cairo-dest" placeholder="e.g. Marriott Cairo Hotel, Zamalek"></div>
             <div class="tf-actions"><button class="tf-btn-wa" onclick="bookTransfer('cairo')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button></div>
           </div>
         </div>
       </div>
 
+      <!-- HURGHADA -->
       <div class="airport-panel" id="ap-hurghada">
         <div class="airport-bento">
           <div class="airport-info-card glow">
@@ -1240,8 +1227,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
             </div>
             <div class="tf-grid" style="grid-template-columns:1fr 1fr">
               <div class="tf-group"><label>Flight Number</label><input type="text" id="ap-hrg-flight" placeholder="e.g. EK773"></div>
-              <div class="tf-group"><label>Date</label><input type="date" id="ap-hrg-date"></div>
-              <div class="tf-group"><label>Time</label><input type="time" id="ap-hrg-time" value="14:00"></div>
               <div class="tf-group"><label>Vehicle</label>
                 <select id="ap-hrg-veh">
                   <option value="Sedan (1-3 pax)">Sedan 1-3 pax</option>
@@ -1251,12 +1236,20 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
                 </select>
               </div>
             </div>
+            <div class="tf-group" style="margin-bottom:.9rem">
+              <label>Date &amp; Time</label>
+              <div class="dt-row">
+                <input type="date" id="ap-hrg-date">
+                <input type="time" id="ap-hrg-time" value="14:00">
+              </div>
+            </div>
             <div class="tf-group" style="margin-bottom:.9rem"><label>Resort or Destination</label><input type="text" id="ap-hrg-dest" placeholder="e.g. Steigenberger Aqua Magic, El Gouna"></div>
             <div class="tf-actions"><button class="tf-btn-wa" onclick="bookTransfer('hurghada')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button></div>
           </div>
         </div>
       </div>
 
+      <!-- ALEXANDRIA -->
       <div class="airport-panel" id="ap-alex">
         <div class="airport-bento">
           <div class="airport-info-card glow">
@@ -1285,8 +1278,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
             </div>
             <div class="tf-grid" style="grid-template-columns:1fr 1fr">
               <div class="tf-group"><label>Flight Number</label><input type="text" id="ap-alx-flight" placeholder="e.g. MS301"></div>
-              <div class="tf-group"><label>Date</label><input type="date" id="ap-alx-date"></div>
-              <div class="tf-group"><label>Time</label><input type="time" id="ap-alx-time" value="11:00"></div>
               <div class="tf-group"><label>Airport</label>
                 <select id="ap-alx-ap">
                   <option value="Borg El Arab (HBE)">Borg El Arab HBE</option>
@@ -1294,12 +1285,18 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
                 </select>
               </div>
             </div>
+            <div class="tf-group" style="margin-bottom:.9rem">
+              <label>Date &amp; Time</label>
+              <div class="dt-row">
+                <input type="date" id="ap-alx-date">
+                <input type="time" id="ap-alx-time" value="11:00">
+              </div>
+            </div>
             <div class="tf-group" style="margin-bottom:.9rem"><label>Hotel or Destination</label><input type="text" id="ap-alx-dest" placeholder="e.g. Hilton Alexandria Corniche"></div>
             <div class="tf-actions"><button class="tf-btn-wa" onclick="bookTransfer('alex')"><i class="fa-brands fa-whatsapp"></i> Book This Transfer</button></div>
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="tours-cta-strip reveal">
@@ -1406,20 +1403,17 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 0 2r
 </footer>
 
 <script>
-/* ════ ALL JS — runs after DOM is ready ════ */
 (function(){
 
-/* ── CONFIG ── */
 var _W=atob('MjAxNTU0NDQ2NzQ0');
 var _M='BrothersEGY';
 var _WEB='https://brothersegy.com/contact-us/';
 
-/* ── THEME — runs after DOM exists ── */
+/* ── THEME ── */
 function applyTheme(t){
   document.documentElement.setAttribute('data-theme',t);
   localStorage.setItem('begy-theme',t);
-  var db=document.getElementById('btn-dark');
-  var lb=document.getElementById('btn-light');
+  var db=document.getElementById('btn-dark'),lb=document.getElementById('btn-light');
   if(db)db.classList.toggle('t-active',t==='dark');
   if(lb)lb.classList.toggle('t-active',t==='light');
 }
@@ -1427,18 +1421,8 @@ window.setTheme=function(t){applyTheme(t)};
 applyTheme(localStorage.getItem('begy-theme')||'dark');
 
 /* ── FAB ── */
-function applyFab(state){
-  var fab=document.getElementById('fab');
-  if(!fab)return;
-  if(state==='collapsed')fab.classList.add('collapsed');
-  else fab.classList.remove('collapsed');
-}
-window.toggleFab=function(){
-  var fab=document.getElementById('fab');
-  if(!fab)return;
-  fab.classList.toggle('collapsed');
-  localStorage.setItem('begy-fab',fab.classList.contains('collapsed')?'collapsed':'open');
-};
+function applyFab(s){var f=document.getElementById('fab');if(!f)return;if(s==='collapsed')f.classList.add('collapsed');else f.classList.remove('collapsed')}
+window.toggleFab=function(){var f=document.getElementById('fab');if(!f)return;f.classList.toggle('collapsed');localStorage.setItem('begy-fab',f.classList.contains('collapsed')?'collapsed':'open')};
 applyFab(localStorage.getItem('begy-fab')||'open');
 
 /* ── CONTACT ── */
@@ -1471,7 +1455,7 @@ var FLEET={
 };
 var FK=Object.keys(FLEET);
 
-/* ── TOUR DATA — no apostrophes in strings to prevent onclick breakage ── */
+/* ── TOUR DATA ── */
 var TOURS={
   egypt:[
     {id:'pyramids',title:'Cairo Pyramids and Sphinx',badge:'Full Day',badgeCls:'cyan',img:'https://images.unsplash.com/photo-1539768942893-daf53e448371?auto=format&fit=crop&q=80&w=800',desc:'Giza Pyramids, Sphinx, Egyptian Museum, Khan el-Khalili bazaar. Private chauffeur, A/C vehicle, flexible pace.',chips:['8 to 10 Hours','1 to 7 Pax','A/C Vehicle','English Chauffeur'],groupPrice:'2,500',privatePrice:'3,800'},
@@ -1518,45 +1502,31 @@ var CARS=FK.map(function(id){return{name:FLEET[id].name,cat:FLEET[id].cat,img:FL
 var heroCur=0,heroPaused=false,HERO_INTERVAL=5500,heroSpinning=false;
 var heroImg=document.getElementById('hero-car-img');
 var heroName=document.getElementById('hero-car-name');
-var heroCat=document.getElementById('hero-car-cat');
+var heroCatEl=document.getElementById('hero-car-cat');
 var heroCurEl=document.getElementById('hero-cur');
 var heroTotEl=document.getElementById('hero-tot');
 var heroTimerEl=document.getElementById('hero-timer');
 var heroDotsEl=document.getElementById('hero-dots');
 var heroTimerRaf=null,heroTimerStart=null;
-
 heroTotEl.textContent=CARS.length;
-CARS.forEach(function(_,i){
-  var d=document.createElement('div');
-  d.className='hero-dot'+(i===0?' active':'');
-  d.onclick=function(){if(!heroSpinning)heroGoTo(i)};
-  heroDotsEl.appendChild(d);
-});
-
+CARS.forEach(function(_,i){var d=document.createElement('div');d.className='hero-dot'+(i===0?' active':'');d.onclick=function(){if(!heroSpinning)heroGoTo(i)};heroDotsEl.appendChild(d)});
 function heroUpdateUI(){heroDotsEl.querySelectorAll('.hero-dot').forEach(function(d,i){d.classList.toggle('active',i===heroCur)});heroCurEl.textContent=heroCur+1}
 function heroStartTimer(){
   cancelAnimationFrame(heroTimerRaf);
   heroTimerEl.style.transition='none';heroTimerEl.style.width='0%';
-  heroTimerEl.getBoundingClientRect();
-  heroTimerStart=performance.now();
-  (function tick(now){
-    if(heroPaused){heroTimerRaf=requestAnimationFrame(tick);return}
-    var pct=Math.min((now-heroTimerStart)/HERO_INTERVAL*100,100);
-    heroTimerEl.style.width=pct+'%';
-    if(pct<100)heroTimerRaf=requestAnimationFrame(tick);
-  })(heroTimerStart);
+  heroTimerEl.getBoundingClientRect();heroTimerStart=performance.now();
+  (function tick(now){if(heroPaused){heroTimerRaf=requestAnimationFrame(tick);return}var pct=Math.min((now-heroTimerStart)/HERO_INTERVAL*100,100);heroTimerEl.style.width=pct+'%';if(pct<100)heroTimerRaf=requestAnimationFrame(tick)})(heroTimerStart);
 }
 function heroGoTo(idx){
-  if(heroSpinning||idx===heroCur)return;
-  heroSpinning=true;var target=(idx+CARS.length)%CARS.length;
+  if(heroSpinning||idx===heroCur)return;heroSpinning=true;var target=(idx+CARS.length)%CARS.length;
   heroImg.classList.remove('floating','spinning-in');
   setTimeout(function(){
     heroImg.classList.add('spinning-out');
     setTimeout(function(){
       heroCur=target;heroImg.src=CARS[heroCur].img;heroImg.alt=CARS[heroCur].name;
       heroImg.classList.remove('spinning-out');void heroImg.offsetHeight;heroImg.classList.add('spinning-in');
-      heroName.style.opacity='0';heroCat.style.opacity='0';
-      setTimeout(function(){heroName.textContent=CARS[heroCur].name;heroCat.textContent=CARS[heroCur].cat;heroName.style.transition='opacity .3s';heroCat.style.transition='opacity .3s';heroName.style.opacity='1';heroCat.style.opacity='1'},80);
+      heroName.style.opacity='0';heroCatEl.style.opacity='0';
+      setTimeout(function(){heroName.textContent=CARS[heroCur].name;heroCatEl.textContent=CARS[heroCur].cat;heroName.style.transition='opacity .3s';heroCatEl.style.transition='opacity .3s';heroName.style.opacity='1';heroCatEl.style.opacity='1'},80);
       heroUpdateUI();
       setTimeout(function(){heroImg.classList.remove('spinning-in');requestAnimationFrame(function(){requestAnimationFrame(function(){heroImg.classList.add('floating');heroSpinning=false})})},720);
     },650);
@@ -1573,13 +1543,7 @@ heroStartTimer();
 
 /* ── STATS ── */
 var statsDone=false;
-new IntersectionObserver(function(entries){
-  if(statsDone||!entries[0].isIntersecting)return;statsDone=true;
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    var t=parseInt(el.dataset.count),n=0,step=Math.max(1,Math.floor(t/60));
-    var iv=setInterval(function(){n+=step;if(n>=t){n=t;clearInterval(iv)}el.textContent=n+(t>=100?'+':'')},30);
-  });
-},{threshold:.3}).observe(document.querySelector('.stats-grid'));
+new IntersectionObserver(function(entries){if(statsDone||!entries[0].isIntersecting)return;statsDone=true;document.querySelectorAll('[data-count]').forEach(function(el){var t=parseInt(el.dataset.count),n=0,step=Math.max(1,Math.floor(t/60));var iv=setInterval(function(){n+=step;if(n>=t){n=t;clearInterval(iv)}el.textContent=n+(t>=100?'+':'')},30)})},{threshold:.3}).observe(document.querySelector('.stats-grid'));
 
 /* ── SCROLL REVEAL ── */
 var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:.07,rootMargin:'0px 0px -35px 0px'});
@@ -1605,9 +1569,9 @@ function populateBkCar(){
   });
   sel.value=bkCar;
 }
-
 window.bkCarChange=function(id){bkCar=id;scLoadCar(id);bkCalc()};
 
+/* Set default dates */
 (function(){
   var today=new Date(),f=new Date(today);f.setDate(f.getDate()+2);
   var t2=new Date(f);t2.setDate(t2.getDate()+7);
@@ -1657,21 +1621,32 @@ function bkCalc(){
   if(tt)tt.textContent=fC(dep+ins);
   var hub=document.getElementById('bk-hub').value;
   var linkEl=document.getElementById('bk-online-btn');if(linkEl)linkEl.href=productUrl(c.slug,hub);
-  refreshCmpModal();updateCmpBar();
+  refreshCmpPanel();updateCmpBar();
 }
 
 window.bkWhatsApp=function(){
   var c=FLEET[bkCar];
   var hub=document.getElementById('bk-hub').value,hubDrop=document.getElementById('bk-hub-drop').value;
-  var from=document.getElementById('bk-from').value||'TBD',to2=document.getElementById('bk-to').value||'TBD';
-  var tf=document.getElementById('bk-time-from').value,tt3=document.getElementById('bk-time-to').value;
+  var fromDate=document.getElementById('bk-from').value||'TBD';
+  var toDate=document.getElementById('bk-to').value||'TBD';
+  var tf=document.getElementById('bk-time-from').value;
+  var tt2=document.getElementById('bk-time-to').value;
   var notes=document.getElementById('bk-notes').value,days=bkDays;
   var dr=calcRate(c,days),ins=bkFullIns?c.fc*days:0;
   var ext=(bkExDriver?500*days:0)+(bkExSeat?250*days:0);
   var kmElem=document.getElementById('bk-km'),km=kmElem?parseFloat(kmElem.value)||0:0;
   var kmTxt=kmElem&&kmElem.options[kmElem.selectedIndex]?kmElem.options[kmElem.selectedIndex].text:'';
   var total=dr*days+ins+ext+km,now2=Math.round(total*.3);
-  var msg='BROTHERS EGY BOOKING\n\nPickup: '+hub.toUpperCase()+' at '+tf+' on '+from+'\nDropoff: '+hubDrop.toUpperCase()+' at '+tt3+' on '+to2+'\nVehicle: '+c.name+'\nDuration: '+days+' days\nDaily: '+fmt(dr)+' EGP\nInsurance: '+(bkFullIns?'Full Protection':'Basic Cover')+'\nDeposit: '+(bkFullIns?'ZERO':fmt(c.dep)+' EGP')+(bkExDriver?'\nChauffeur extra: +500 EGP/d':'')+(bkExSeat?'\nChild Seat: +250 EGP/d':'')+(km>0?'\nKM Package: '+kmTxt:'')+'\n\nTOTAL: '+fmt(total)+' EGP\n30% Now: '+fmt(now2)+' EGP\n70% Arrival: '+fmt(total-now2)+' EGP'+(notes?'\nNotes: '+notes:'')+'\n\nPlease confirm';
+  var msg='BROTHERS EGY BOOKING\n\nPickup: '+hub.toUpperCase()+' on '+fromDate+' at '+tf
+    +'\nDropoff: '+hubDrop.toUpperCase()+' on '+toDate+' at '+tt2
+    +'\nVehicle: '+c.name+'\nDuration: '+days+' days\nDaily: '+fmt(dr)+' EGP'
+    +'\nInsurance: '+(bkFullIns?'Full Protection':'Basic Cover')
+    +'\nDeposit: '+(bkFullIns?'ZERO':fmt(c.dep)+' EGP')
+    +(bkExDriver?'\nChauffeur extra: +500 EGP/d':'')
+    +(bkExSeat?'\nChild Seat: +250 EGP/d':'')
+    +(km>0?'\nKM Package: '+kmTxt:'')
+    +'\n\nTOTAL: '+fmt(total)+' EGP\n30% Now: '+fmt(now2)+' EGP\n70% Arrival: '+fmt(total-now2)+' EGP'
+    +(notes?'\nNotes: '+notes:'')+'\n\nPlease confirm';
   window.open('https://wa.me/'+_W+'?text='+encodeURIComponent(msg),'_blank');
 };
 window.bkMessenger=function(){window.open('https://m.me/'+_M,'_blank')};
@@ -1682,49 +1657,21 @@ var scRot=0,scDrag=false,scLastX=0,scVel=0,scRaf=null;
 var SC_STAGES=['radial-gradient(circle at 50% 80%,rgba(0,240,255,.06),transparent 65%)','radial-gradient(circle at 50% 80%,rgba(217,119,6,.06),transparent 65%)','radial-gradient(circle at 50% 80%,rgba(124,58,237,.06),transparent 65%)'];
 
 function scLoadCar(id){
-  if(!FLEET[id])return;
-  scCur=id;var c=FLEET[id];
+  if(!FLEET[id])return;scCur=id;var c=FLEET[id];
   document.getElementById('sc-cat').textContent=c.cat;
   document.getElementById('sc-name').textContent=c.name;
   var img=document.getElementById('sc-img');
-
-  /* Remove all state cleanly */
   img.classList.remove('spin-in','spin-out','loaded');
-  img.style.filter='none';
-  img.style.transform='translateZ(0)';
-
-  /* Force a layout flush so removing classes takes effect before re-adding */
-  void img.offsetWidth;
-
-  img.classList.add('spin-out');
-
+  img.style.filter='none';img.style.transform='translateZ(0)';
+  void img.offsetWidth;img.classList.add('spin-out');
   setTimeout(function(){
-    img.src=c.img;
-    img.alt=c.name;
-
-    img.classList.remove('spin-out');
-    /* Second flush before spin-in */
-    void img.offsetWidth;
-    img.classList.add('spin-in');
-
-    setTimeout(function(){
-      img.classList.remove('spin-in');
-      /* Apply final state via class — browser composites this correctly on mobile */
-      img.classList.add('loaded');
-      /* Also set inline for browsers that need it */
-      img.style.filter='drop-shadow(0 14px 26px rgba(0,0,0,.95))';
-    },580);
-
+    img.src=c.img;img.alt=c.name;img.style.filter='';
+    img.classList.remove('spin-out');void img.offsetWidth;img.classList.add('spin-in');
+    setTimeout(function(){img.classList.remove('spin-in');img.classList.add('loaded');img.style.filter='drop-shadow(0 14px 26px rgba(0,0,0,.95))'},580);
   },380);
-
-  document.getElementById('sc-specs').innerHTML=
-    '<span class="chip">'+c.year+'</span>'
-    +'<span class="chip"><i class="fa-solid fa-user-group"></i> '+c.seats+' Seats</span>'
-    +'<span class="chip"><i class="fa-solid fa-suitcase-rolling"></i> '+c.bags+' Bags</span>'
-    +'<span class="chip"><i class="fa-solid fa-gears"></i> Auto</span>';
+  document.getElementById('sc-specs').innerHTML='<span class="chip">'+c.year+'</span><span class="chip"><i class="fa-solid fa-user-group"></i> '+c.seats+' Seats</span><span class="chip"><i class="fa-solid fa-suitcase-rolling"></i> '+c.bags+' Bags</span><span class="chip"><i class="fa-solid fa-gears"></i> Auto</span>';
   scRot=0;scUpdateRot();
 }
-
 function scUpdateRot(){
   var img=document.getElementById('sc-img');
   var norm=((scRot%360)+360)%360,rad=(norm*Math.PI)/180;
@@ -1742,25 +1689,15 @@ function scInertia(){cancelAnimationFrame(scRaf);(function loop(){if(Math.abs(sc
   vp.addEventListener('touchmove',function(e){if(!scDrag)return;var dx=e.touches[0].clientX-scLastX;scVel=dx*.5;scRot+=dx*.5;scLastX=e.touches[0].clientX;scUpdateRot()},{passive:true});
   vp.addEventListener('touchend',function(){if(scDrag){scDrag=false;scInertia()}});
 })();
-window.scLights=function(){
-  scLightsOn=!scLightsOn;
-  document.getElementById('hud-light').classList.toggle('lit',scLightsOn);
-  var img=document.getElementById('sc-img');
-  img.style.filter=scLightsOn?'drop-shadow(0 14px 26px rgba(0,0,0,.95)) drop-shadow(0 0 28px rgba(0,240,255,.5))':'drop-shadow(0 14px 26px rgba(0,0,0,.95))';
-};
+window.scLights=function(){scLightsOn=!scLightsOn;document.getElementById('hud-light').classList.toggle('lit',scLightsOn);var img=document.getElementById('sc-img');img.style.filter=scLightsOn?'drop-shadow(0 14px 26px rgba(0,0,0,.95)) drop-shadow(0 0 28px rgba(0,240,255,.5))':'drop-shadow(0 14px 26px rgba(0,0,0,.95))'};
 window.scStage=function(){scStageIdx=(scStageIdx+1)%SC_STAGES.length;document.getElementById('stage-bg').style.background=SC_STAGES[scStageIdx]};
 
 /* ── CAROUSEL HELPER ── */
-window.carouselScroll=function(id,dir){
-  var el=document.getElementById(id);if(!el)return;
-  var card=el.querySelector('.fc')||el.querySelector('.tour-card');
-  var w=card?(card.offsetWidth+12):300;
-  el.scrollBy({left:dir*w*2,behavior:'smooth'});
-};
+window.carouselScroll=function(id,dir){var el=document.getElementById(id);if(!el)return;var card=el.querySelector('.fc')||el.querySelector('.tour-card');var w=card?(card.offsetWidth+12):300;el.scrollBy({left:dir*w*2,behavior:'smooth'})};
 
 /* ── FLEET CAROUSEL ── */
 var activeHub='cairo',activeCarTier='premium';
-var cmpList=[],cmpModalOpen=false,cmpMode='normal';
+var cmpList=[],cmpPanelOpen=false,cmpMode='normal';
 
 window.showCarCat=function(tier){
   activeCarTier=tier;
@@ -1770,18 +1707,13 @@ window.showCarCat=function(tier){
 window.fleetHub=function(hub){
   activeHub=hub;
   document.querySelectorAll('.hub-sw-btn').forEach(function(b){b.classList.toggle('active',b.dataset.hub===hub)});
-  /* UPDATE the fleet page link to match selected hub */
-  var fleetLink=document.getElementById('fleet-page-link');
-  if(fleetLink){
-    var hubUrls={cairo:'https://brothersegy.com/car-rental-cairo/',hurghada:'https://brothersegy.com/car-rental-hurghada/',alexandria:'https://brothersegy.com/car-rental-alexandria/'};
-    fleetLink.href=hubUrls[hub]||hubUrls.cairo;
-  }
+  var fl=document.getElementById('fleet-page-link');
+  if(fl){var hu={cairo:'https://brothersegy.com/car-rental-cairo/',hurghada:'https://brothersegy.com/car-rental-hurghada/',alexandria:'https://brothersegy.com/car-rental-alexandria/'};fl.href=hu[hub]||hu.cairo}
   bkCalc();renderFleetCarousel();
 };
 
 function renderFleetCarousel(){
-  var carousel=document.getElementById('fleet-carousel');
-  if(!carousel)return;
+  var carousel=document.getElementById('fleet-carousel');if(!carousel)return;
   carousel.innerHTML='';
   var cats={premium:0,crossover:0,sedan:0};
   FK.forEach(function(id){if(cats[FLEET[id].tier]!==undefined)cats[FLEET[id].tier]++});
@@ -1793,69 +1725,37 @@ function renderFleetCarousel(){
     var prStr=c.pMin===c.pMax?fmt(c.pMin):fmt(c.pMin)+' to '+fmt(c.pMax);
     var isCmp=cmpList.indexOf(id)>-1;
     var el=document.createElement('article');el.className='fc glow';el.dataset.id=id;
-    /* SAFE innerHTML — no apostrophes in data, onclick uses double-quote wrapper */
     el.innerHTML=(c.ribbon?'<span class="fc-ribbon '+c.rc+'">'+c.ribbon+'</span>':'')
       +'<h3 class="fc-name">'+c.name+'</h3>'
       +'<div class="fc-chips"><span class="chip"><i class="fa-solid fa-gears"></i> Auto</span><span class="chip"><i class="fa-solid fa-user-group"></i> '+c.seats+' Seats</span><span class="chip"><i class="fa-solid fa-suitcase-rolling"></i> '+c.bags+' Bags</span><span class="chip">'+c.year+'</span></div>'
       +'<div class="fc-img-wrap"><img src="'+c.img+'" alt="'+c.name+'" loading="lazy"></div>'
       +'<div class="fc-ins"><div class="fc-ins-box basic"><span class="ih">Basic</span><span class="iv">Free</span><span class="id">Dep: '+fmt(c.dep)+' EGP</span></div><div class="fc-ins-box full"><span class="ih">Full Cover</span><span class="iv">'+fmt(c.fc)+' EGP/d</span><span class="id">Dep: ZERO</span></div></div>'
       +'<div class="fc-footer"><div class="fc-price"><span class="old">'+fmt(c.old)+' EGP</span><span class="range">'+prStr+'</span><span class="unit"> EGP/day</span></div>'
-      +'<div class="fc-btns">'
-      +'<button class="fc-cfg" onclick="loadFromFleet(this)" data-id="'+id+'" title="Configure"><i class="fa-solid fa-sliders"></i></button>'
-      +'<a href="'+url+'" target="_blank" rel="noopener" class="fc-book"><i class="fa-solid fa-calendar-check"></i> Book</a>'
-      +'</div></div>'
+      +'<div class="fc-btns"><button class="fc-cfg" onclick="loadFromFleet(this)" data-id="'+id+'" title="Configure"><i class="fa-solid fa-sliders"></i></button>'
+      +'<a href="'+url+'" target="_blank" rel="noopener" class="fc-book"><i class="fa-solid fa-calendar-check"></i> Book</a></div></div>'
       +'<div class="fc-cmp-row"><input type="checkbox" class="fc-cmp-cb" id="cmpcb-'+id+'"'+(isCmp?' checked':'')+' data-id="'+id+'" onchange="cmpCheck(this)"><label class="fc-cmp-lbl" for="cmpcb-'+id+'">Compare</label></div>';
     carousel.appendChild(el);attachGlow(el);
   });
   buildCarouselDots('fleet-carousel','fleet-dots','.fc');
 }
 
-/* Use data-id on buttons/checkboxes to avoid onclick string escaping */
 window.loadFromFleet=function(btn){
   var id=btn.dataset.id;if(!id||!FLEET[id])return;
-  bkCar=id;
-  var sel=document.getElementById('bk-car');if(sel)sel.value=id;
-  /* Reset image state before loading new car */
+  bkCar=id;var sel=document.getElementById('bk-car');if(sel)sel.value=id;
   var img=document.getElementById('sc-img');
-  if(img){
-    img.classList.remove('spin-in','spin-out','loaded');
-    img.style.filter='none';
-    img.style.transform='translateZ(0)';
-  }
-  scLoadCar(id);
-  bkCalc();
+  if(img){img.classList.remove('spin-in','spin-out','loaded');img.style.filter='none';img.style.transform='translateZ(0)'}
+  scLoadCar(id);bkCalc();
   document.getElementById('deal-section').scrollIntoView({behavior:'smooth'});
 };
-
 window.cmpCheck=function(cb){toggleCmp(cb.dataset.id,cb.checked)};
 
 function buildCarouselDots(carouselId,dotsId,cardSel){
-  var carousel=document.getElementById(carouselId);
-  var dotsEl=document.getElementById(dotsId);
-  if(!carousel||!dotsEl)return;
-  dotsEl.innerHTML='';
-  var cards=carousel.querySelectorAll(cardSel);
-  if(!cards.length)return;
+  var carousel=document.getElementById(carouselId),dotsEl=document.getElementById(dotsId);
+  if(!carousel||!dotsEl)return;dotsEl.innerHTML='';
+  var cards=carousel.querySelectorAll(cardSel);if(!cards.length)return;
   var pages=Math.ceil(cards.length/2);
-  for(var i=0;i<pages;i++){
-    var d=document.createElement('div');
-    d.className='cdot'+(i===0?' active':'');
-    (function(pg){
-      d.onclick=function(){
-        var c=carousel.querySelector(cardSel);
-        if(!c)return;
-        var w=c.offsetWidth+12;
-        carousel.scrollTo({left:pg*w*2,behavior:'smooth'});
-      };
-    })(i);
-    dotsEl.appendChild(d);
-  }
-  carousel.addEventListener('scroll',function(){
-    var c=carousel.querySelector(cardSel);if(!c)return;
-    var w=c.offsetWidth+12;
-    var pg=Math.round(carousel.scrollLeft/(w*2));
-    dotsEl.querySelectorAll('.cdot').forEach(function(dot,i){dot.classList.toggle('active',i===pg)});
-  },{passive:true});
+  for(var i=0;i<pages;i++){var d=document.createElement('div');d.className='cdot'+(i===0?' active':'');(function(pg){d.onclick=function(){var c=carousel.querySelector(cardSel);if(!c)return;var w=c.offsetWidth+12;carousel.scrollTo({left:pg*w*2,behavior:'smooth'})}})(i);dotsEl.appendChild(d)}
+  carousel.addEventListener('scroll',function(){var c=carousel.querySelector(cardSel);if(!c)return;var w=c.offsetWidth+12;var pg=Math.round(carousel.scrollLeft/(w*2));dotsEl.querySelectorAll('.cdot').forEach(function(dot,i){dot.classList.toggle('active',i===pg)})},{passive:true});
 }
 
 /* ── TOUR CAROUSEL ── */
@@ -1867,26 +1767,20 @@ window.showTourCat=function(cat){
 };
 
 function renderTourCarousel(){
-  var carousel=document.getElementById('tour-carousel');if(!carousel)return;
-  carousel.innerHTML='';
+  var carousel=document.getElementById('tour-carousel');if(!carousel)return;carousel.innerHTML='';
   var tours=TOURS[activeTourCat]||[];
   tours.forEach(function(t){
     var el=document.createElement('div');el.className='tour-card glow';
     var chipsHtml=t.chips.map(function(c){return'<span class="tour-chip"><i class="fa-solid fa-check"></i> '+c+'</span>'}).join('');
-    /* onclick uses data-id to avoid string escaping entirely */
     el.innerHTML='<div class="tour-img-wrap"><img class="tour-img" src="'+t.img+'" alt="'+t.title+'" loading="lazy"><span class="tour-badge '+t.badgeCls+'">'+t.badge+'</span></div>'
-      +'<div class="tour-body">'
-      +'<h3 class="tour-title">'+t.title+'</h3>'
-      +'<p class="tour-desc">'+t.desc+'</p>'
+      +'<div class="tour-body"><h3 class="tour-title">'+t.title+'</h3><p class="tour-desc">'+t.desc+'</p>'
       +'<div class="tour-meta">'+chipsHtml+'</div>'
       +'<div class="tour-footer">'
       +'<div class="tour-price-row">'
       +'<div class="tour-price-box"><span class="tpb-lbl">Group min 3</span><span class="tpb-price">'+t.groupPrice+' EGP</span><span class="tpb-sub">per person</span></div>'
       +'<div class="tour-price-box highlight"><span class="tpb-lbl">Private</span><span class="tpb-price">'+t.privatePrice+' EGP</span><span class="tpb-sub">full group</span></div>'
       +'</div>'
-      +'<button class="tour-enquire-btn" data-id="'+t.id+'" data-title="'+t.title+'" onclick="selectTour(this)">'
-      +'<i class="fa-brands fa-whatsapp"></i> Enquire and Book This Tour'
-      +'</button>'
+      +'<button class="tour-enquire-btn" data-id="'+t.id+'" data-title="'+t.title+'" onclick="selectTour(this)"><i class="fa-brands fa-whatsapp"></i> Enquire and Book This Tour</button>'
       +'</div></div>';
     carousel.appendChild(el);attachGlow(el);
   });
@@ -1894,30 +1788,14 @@ function renderTourCarousel(){
 }
 
 window.selectTour=function(btn){
-  var id=btn.dataset.id;
-  var title=btn.dataset.title;
-
-  /* Find the full tour object */
+  var id=btn.dataset.id,title=btn.dataset.title;
   var allTours=TOURS.egypt.concat(TOURS.desert).concat(TOURS.sea);
   selectedTourData=null;
-  for(var i=0;i<allTours.length;i++){
-    if(allTours[i].id===id){selectedTourData=allTours[i];break}
-  }
-
-  /* Update form header label */
+  for(var i=0;i<allTours.length;i++){if(allTours[i].id===id){selectedTourData=allTours[i];break}}
   var lbl=document.getElementById('tf-selected-label');
   if(lbl){lbl.textContent=title;lbl.style.display='inline-flex'}
-
-  /* Pre-fill description with tour details */
   var desc=document.getElementById('tf-desc');
-  if(desc){
-    desc.value='Tour: '+title
-      +'\nDuration: '+(selectedTourData?selectedTourData.chips.join(', '):'')
-      +'\nGroup price: '+(selectedTourData?selectedTourData.groupPrice+' EGP per person':'')
-      +'\nPrivate price: '+(selectedTourData?selectedTourData.privatePrice+' EGP full group':'');
-  }
-
-  /* Scroll to form */
+  if(desc){desc.value='Tour: '+title+(selectedTourData?'\nDuration: '+selectedTourData.chips.join(', ')+'\nGroup price: '+selectedTourData.groupPrice+' EGP per person\nPrivate price: '+selectedTourData.privatePrice+' EGP full group':'')}
   document.getElementById('tour-form-panel').scrollIntoView({behavior:'smooth',block:'start'});
 };
 
@@ -1931,45 +1809,17 @@ window.submitTourInquiry=function(channel){
   var desc=(document.getElementById('tf-desc')||{}).value||'No details provided';
   var lbl=document.getElementById('tf-selected-label');
   var tourName=lbl&&lbl.style.display!=='none'?lbl.textContent:'';
-
   var tourDetails='';
-  if(selectedTourData){
-    tourDetails='\n\nTour Details:'
-      +'\nName: '+selectedTourData.title
-      +'\nHighlights: '+selectedTourData.chips.join(' | ')
-      +'\nDescription: '+selectedTourData.desc
-      +'\nGroup price (min 3): '+selectedTourData.groupPrice+' EGP per person'
-      +'\nPrivate price (full group): '+selectedTourData.privatePrice+' EGP';
-  }
-
-  var msg='BROTHERS EGY TOUR ENQUIRY'
-    +'\n\nName: '+name
-    +'\nDate: '+date
-    +'\nGroup size: '+pax
-    +'\nVehicle preference: '+vehicle
-    +'\nBudget: '+budget
-    +(tourName?'\nTour selected: '+tourName:'')
-    +(requests?'\nSpecial requests: '+requests:'')
-    +tourDetails
-    +'\n\nCustom notes:\n'+desc
-    +'\n\nPlease send availability and pricing';
-
+  if(selectedTourData){tourDetails='\n\nTour Details:\nName: '+selectedTourData.title+'\nHighlights: '+selectedTourData.chips.join(' | ')+'\nDescription: '+selectedTourData.desc+'\nGroup price (min 3): '+selectedTourData.groupPrice+' EGP per person\nPrivate price (full group): '+selectedTourData.privatePrice+' EGP'}
+  var msg='BROTHERS EGY TOUR ENQUIRY\n\nName: '+name+'\nDate: '+date+'\nGroup size: '+pax+'\nVehicle preference: '+vehicle+'\nBudget: '+budget+(tourName?'\nTour selected: '+tourName:'')+(requests?'\nSpecial requests: '+requests:'')+tourDetails+'\n\nCustom notes:\n'+desc+'\n\nPlease send availability and pricing';
   if(channel==='ms')window.open('https://m.me/'+_M,'_blank');
   else window.open('https://wa.me/'+_W+'?text='+encodeURIComponent(msg),'_blank');
 };
 
 /* ── AIRPORT TRANSFERS ── */
 var apTypes={cairo:'arr',hurghada:'arr',alex:'arr'};
-window.setApType=function(airport,type){
-  apTypes[airport]=type;
-  document.getElementById('ap-'+airport+'-arr').classList.toggle('active',type==='arr');
-  document.getElementById('ap-'+airport+'-dep').classList.toggle('active',type==='dep');
-};
-window.showAirport=function(ap){
-  document.querySelectorAll('.airport-panel').forEach(function(p){p.classList.remove('active')});
-  document.getElementById('ap-'+ap).classList.add('active');
-  document.querySelectorAll('.airport-tab').forEach(function(b){b.classList.toggle('active',b.dataset.airport===ap)});
-};
+window.setApType=function(airport,type){apTypes[airport]=type;document.getElementById('ap-'+airport+'-arr').classList.toggle('active',type==='arr');document.getElementById('ap-'+airport+'-dep').classList.toggle('active',type==='dep')};
+window.showAirport=function(ap){document.querySelectorAll('.airport-panel').forEach(function(p){p.classList.remove('active')});document.getElementById('ap-'+ap).classList.add('active');document.querySelectorAll('.airport-tab').forEach(function(b){b.classList.toggle('active',b.dataset.airport===ap)})};
 window.bookTransfer=function(airport){
   var type=apTypes[airport]||'arr';
   var data={
@@ -1983,17 +1833,13 @@ window.bookTransfer=function(airport){
   window.open('https://wa.me/'+_W+'?text='+encodeURIComponent(msg),'_blank');
 };
 
-/* ── COMPARE ── */
+/* ── COMPARE — INLINE PANEL ── */
 function toggleCmp(id,checked){
-  if(checked){
-    if(cmpList.indexOf(id)===-1){
-      if(cmpList.length>=2){var removed=cmpList.shift();var oldCb=document.getElementById('cmpcb-'+removed);if(oldCb)oldCb.checked=false}
-      cmpList.push(id);
-    }
-  } else {
-    var idx=cmpList.indexOf(id);if(idx>-1)cmpList.splice(idx,1);
-  }
+  if(checked){if(cmpList.indexOf(id)===-1){if(cmpList.length>=2){var removed=cmpList.shift();var oldCb=document.getElementById('cmpcb-'+removed);if(oldCb)oldCb.checked=false}cmpList.push(id)}}
+  else{var idx=cmpList.indexOf(id);if(idx>-1)cmpList.splice(idx,1)}
   updateCmpBar();
+  /* Auto-refresh panel if open */
+  if(cmpPanelOpen)refreshCmpPanel();
 }
 function updateCmpBar(){
   var bar=document.getElementById('cmp-bar'),row=document.getElementById('cmp-cars-row'),hint=document.getElementById('cmp-hint-txt'),goBtn=document.getElementById('cmp-go-btn');
@@ -2003,20 +1849,14 @@ function updateCmpBar(){
   cmpList.forEach(function(id){
     var c=FLEET[id];var dr=calcRate(c,bkDays||7);
     var div=document.createElement('div');div.className='cmp-car';
-    div.innerHTML='<img src="'+c.img+'" alt="'+c.name+'"><div><span>'+c.name+'</span><span class="cmp-car-price">'+fC(dr)+'/d</span></div>'
-      +'<span class="cmp-rm" data-id="'+id+'" onclick="doRemoveCmp(this)" title="Remove"><i class="fa-solid fa-xmark"></i></span>';
+    div.innerHTML='<img src="'+c.img+'" alt="'+c.name+'"><div><span>'+c.name+'</span><span class="cmp-car-price">'+fC(dr)+'/d</span></div><span class="cmp-rm" data-id="'+id+'" onclick="doRemoveCmp(this)" title="Remove"><i class="fa-solid fa-xmark"></i></span>';
     row.appendChild(div);
   });
   if(cmpList.length===1){hint.textContent='Select another car';goBtn.innerHTML='<i class="fa-solid fa-code-compare"></i> Compare Coverages';goBtn.style.display='inline-flex';goBtn.onclick=function(){cmpMode='basic-vs-full';openCmpModal()}}
   else{hint.textContent='Ready to compare';goBtn.innerHTML='<i class="fa-solid fa-code-compare"></i> Compare Cars';goBtn.style.display='inline-flex';goBtn.onclick=function(){cmpMode='normal';openCmpModal()}}
 }
-window.doRemoveCmp=function(btn){
-  var id=btn.dataset.id;
-  var idx=cmpList.indexOf(id);if(idx>-1)cmpList.splice(idx,1);
-  var cb=document.getElementById('cmpcb-'+id);if(cb)cb.checked=false;
-  updateCmpBar();
-};
-window.clearCmp=function(){cmpList.forEach(function(id){var cb=document.getElementById('cmpcb-'+id);if(cb)cb.checked=false});cmpList=[];updateCmpBar()};
+window.doRemoveCmp=function(btn){var id=btn.dataset.id;var idx=cmpList.indexOf(id);if(idx>-1)cmpList.splice(idx,1);var cb=document.getElementById('cmpcb-'+id);if(cb)cb.checked=false;updateCmpBar();if(cmpPanelOpen)refreshCmpPanel()};
+window.clearCmp=function(){cmpList.forEach(function(id){var cb=document.getElementById('cmpcb-'+id);if(cb)cb.checked=false});cmpList=[];cmpPanelOpen=false;var p=document.getElementById('cmp-panel-wrap');if(p)p.classList.remove('open');updateCmpBar()};
 
 function buildCmpHTML(){
   if(cmpList.length<1)return '';
@@ -2069,17 +1909,24 @@ function buildCmpHTML(){
 
 window.openCmpModal=function(){
   if(cmpList.length<1)return;
-  cmpModalOpen=true;
+  cmpPanelOpen=true;
+  var panel=document.getElementById('cmp-panel-wrap');
   document.getElementById('cmp-content').innerHTML=buildCmpHTML();
-  document.getElementById('cmp-modal').classList.add('open');
-  document.body.style.overflow='hidden';
+  if(panel){panel.classList.add('open');setTimeout(function(){panel.scrollIntoView({behavior:'smooth',block:'nearest'})},80)}
 };
-function refreshCmpModal(){if(!cmpModalOpen||cmpList.length<2)return;document.getElementById('cmp-content').innerHTML=buildCmpHTML()}
-window.closeCmpModal=function(){cmpModalOpen=false;document.getElementById('cmp-modal').classList.remove('open');document.body.style.overflow=''};
-window.closeCmpOutside=function(e){if(e.target===document.getElementById('cmp-modal'))window.closeCmpModal()};
+function refreshCmpPanel(){
+  if(!cmpPanelOpen||cmpList.length<2)return;
+  document.getElementById('cmp-content').innerHTML=buildCmpHTML();
+}
+window.closeCmpModal=function(){
+  cmpPanelOpen=false;
+  var panel=document.getElementById('cmp-panel-wrap');if(panel)panel.classList.remove('open');
+};
+/* closeCmpOutside is a no-op — no overlay to click */
+window.closeCmpOutside=function(){};
 document.addEventListener('keydown',function(e){if(e.key==='Escape')window.closeCmpModal()});
 
-/* ── INIT — safe order ── */
+/* ── INIT ── */
 populateBkCar();
 renderFleetCarousel();
 renderTourCarousel();
@@ -2093,7 +1940,7 @@ var fmt3=function(d){return d.toISOString().split('T')[0]};
 var tfDate=document.getElementById('tf-date');
 if(tfDate){var td2=new Date(today2);td2.setDate(td2.getDate()+7);tfDate.value=fmt3(td2);tfDate.min=fmt3(today2)}
 
-})(); /* end IIFE */
+})();
 </script>
 </body>
 </html>
